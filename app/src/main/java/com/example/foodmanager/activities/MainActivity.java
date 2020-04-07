@@ -13,15 +13,10 @@ import android.widget.SimpleCursorAdapter;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.activities.CategoryActivity;
-import com.example.foodmanager.helpers.CategoryDatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView userList;
-    CategoryDatabaseHelper databaseHelper;
-    SQLiteDatabase db;
-    Cursor userCursor;
-    SimpleCursorAdapter userAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

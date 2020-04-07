@@ -12,13 +12,13 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.foodmanager.R;
-import com.example.foodmanager.helpers.CategoryDatabaseHelper;
+import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.Category;
 
 public class CategoryActivity extends AppCompatActivity {
 
     ListView userList;
-    CategoryDatabaseHelper databaseHelper;
+    DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
@@ -37,7 +37,7 @@ public class CategoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
-        databaseHelper = new CategoryDatabaseHelper(getApplicationContext());
+        databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
     }
@@ -48,9 +48,9 @@ public class CategoryActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        userCursor =  db.rawQuery("select * from "+ CategoryDatabaseHelper.TABLE, null);
+        userCursor =  db.rawQuery("select * from "+ DatabaseHelper.tCategory, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[] {CategoryDatabaseHelper.COLUMN_NAME};
+        String[] headers = new String[] {DatabaseHelper.nameCategory};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
                 userCursor, headers, new int[]{android.R.id.text1}, 0);

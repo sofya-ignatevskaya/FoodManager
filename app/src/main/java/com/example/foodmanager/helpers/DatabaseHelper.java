@@ -12,19 +12,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class CategoryDatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DB_PATH; // полный путь к базе данных
     private static final String DB_NAME = "Products.db"; // название бд
     private static final int SCHEMA = 1; // версия базы данных
-    public static final String TABLE = "category"; // название таблицы в бд
-    // названия столбцов
-    public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_NAME = "CategoryName";
+
+    // таблица category
+    public static final String tCategory = "category";
+    public static final String idCategory = "_id";
+    public static final String nameCategory = "CategoryName";
+
 
     private Context myContext;
 
-   public CategoryDatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, SCHEMA);
         this.myContext = context;
         DB_PATH = context.getFilesDir().getPath() + DB_NAME;
