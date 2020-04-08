@@ -23,6 +23,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String idCategory = "_id";
     public static final String nameCategory = "CategoryName";
 
+    //таблица Gl_Index
+    public static final String tIndex = "Gl_Index";
+    public static final String idIndex = "_id";
+    public static final String typeIndex = "Gl_Type";
+
+    //таблица Gl_Index
+    public static final String tProduct = "product";
+    public static final String idProduct = "_id";
+    public static final String nameProduct = "ProductName";
+    public static final String CategoryId = "CategoryId";
+    public static final String Gl_Id = "Gl_Id";
+    public static final String Proteins = "Proteins";
+    public static final String Fats = "Fats";
+    public static final String Carbohydrates = "Uglevody";
+    public static final String Calories = "Calories";
 
     private Context myContext;
 
