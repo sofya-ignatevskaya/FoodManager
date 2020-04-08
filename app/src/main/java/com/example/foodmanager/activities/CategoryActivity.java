@@ -14,6 +14,7 @@ import android.widget.SimpleCursorAdapter;
 import com.example.foodmanager.R;
 import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.Category;
+import com.example.foodmanager.models.Product;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -29,14 +30,14 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         categoryList = (ListView) findViewById(R.id.list);
-       /* userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        categoryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
-                intent.putExtra("CategoryId", id);
+                Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
-        });*/
+        });
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
