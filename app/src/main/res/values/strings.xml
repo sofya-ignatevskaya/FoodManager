@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FoodManager</string>
+    <string name="search_product">Поиск продукта</string>
+    <string name="add">+</string>
 </resources>
