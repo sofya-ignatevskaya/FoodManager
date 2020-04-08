@@ -17,18 +17,18 @@ import com.example.foodmanager.models.Category;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    ListView userList;
+    ListView categoryList;
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
-    Cursor userCursor;
-    SimpleCursorAdapter userAdapter;
+    Cursor categoryCursor;
+    SimpleCursorAdapter categoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        userList = (ListView) findViewById(R.id.list);
+        categoryList = (ListView) findViewById(R.id.list);
        /* userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,13 +48,13 @@ public class CategoryActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        userCursor =  db.rawQuery("select * from "+ DatabaseHelper.tCategory, null);
+        categoryCursor =  db.rawQuery("select * from "+ DatabaseHelper.tCategory, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[] {DatabaseHelper.nameCategory};
         // создаем адаптер, передаем в него курсор
-        userAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
-                userCursor, headers, new int[]{android.R.id.text1}, 0);
-        userList.setAdapter(userAdapter);
+        categoryAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
+                categoryCursor, headers, new int[]{android.R.id.text1}, 0);
+        categoryList.setAdapter(categoryAdapter);
     }
 
 
@@ -64,7 +64,7 @@ public class CategoryActivity extends AppCompatActivity {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
-        userCursor.close();
+        categoryCursor.close();
     }
 
 
