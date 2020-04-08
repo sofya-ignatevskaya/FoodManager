@@ -8,13 +8,21 @@
         android:id="@+id/name_of_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/white"
         android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/proteins_of_product"
+        android:layout_alignTop="@+id/proteins_of_product"
         android:layout_toStartOf="@id/proteins_of_product"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
         tools:text="Название продукта" />
 
     <TextView
-
         android:id="@+id/proteins_of_product"
+        android:padding="20dp"
+        android:background="@android:color/holo_purple"
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/fats_of_product"
@@ -23,24 +31,31 @@
     <TextView
 
         android:id="@+id/fats_of_product"
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
         android:layout_toLeftOf="@id/carbohydrates_of_product"
         tools:text="10" />
 
     <TextView
-
         android:id="@+id/carbohydrates_of_product"
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/white"
         android:layout_toLeftOf="@id/calories_of_product"
         tools:text="10" />
 
     <TextView
-
         android:id="@+id/calories_of_product"
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:textColor="@android:color/white"
         android:layout_alignParentEnd="true"
         tools:text="10" />
 
