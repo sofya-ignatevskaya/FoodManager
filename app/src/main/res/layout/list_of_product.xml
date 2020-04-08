@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/proteins_of_product"
+        tools:text="Название продукта" />
+
+    <TextView
+
+        android:id="@+id/proteins_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/fats_of_product"
+        tools:text="10" />
+
+    <TextView
+
+        android:id="@+id/fats_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/carbohydrates_of_product"
+        tools:text="10" />
+
+    <TextView
+
+        android:id="@+id/carbohydrates_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/calories_of_product"
+        tools:text="10" />
+
+    <TextView
+
+        android:id="@+id/calories_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        tools:text="10" />
+
+</RelativeLayout>
