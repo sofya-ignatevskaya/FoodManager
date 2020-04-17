@@ -17,6 +17,25 @@
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         tools:text="Название продукта" />
+    <TextView
+        android:id="@+id/textIndex_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:paddingStart="10dp"
+        android:hint="Гликимический индекс: "
+        android:textSize="10sp"
+        />
+    <TextView
+        android:id="@+id/valueIndex_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_toRightOf="@+id/textIndex_of_product"
+        android:paddingStart="4dp"
+        android:textSize="10sp"
+        />
+
 
     <TextView
         android:id="@+id/proteins_of_product"

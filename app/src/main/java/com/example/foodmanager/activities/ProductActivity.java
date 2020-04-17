@@ -18,7 +18,9 @@ public class ProductActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor productCursor;
+    Cursor indexCursor;
     SimpleCursorAdapter productAdapter;
+    SimpleCursorAdapter indexAdapter;
     long productId = 0;
 
     @Override
@@ -45,19 +47,25 @@ public class ProductActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
+        productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " inner join Gl_Index on product.Gl_Id = Gl_Index._id " +
+               " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
+        String[] headers = new String[]{DatabaseHelper.nameProduct, DatabaseHelper.typeIndex, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
         // создаем адаптер, передаем в него курсор
         productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
-                productCursor, headers, new int[]{R.id.name_of_product, R.id.proteins_of_product,
+                productCursor, headers, new int[]{R.id.name_of_product, R.id.valueIndex_of_product, R.id.proteins_of_product,
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
         productList.setAdapter(productAdapter);
+
+        /*indexCursor = db.rawQuery("select * from " + DatabaseHelper.tIndex + " where " + DatabaseHelper.idIndex +  "=?", new String[]{String.valueOf(DatabaseHelper.Gl_Id)});
+        String [] indexHeaders = new String[]{DatabaseHelper.typeIndex};
+        indexAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product, indexCursor, indexHeaders, new int []{R.id.index_of_product}, 0);
+        productList.setAdapter(indexAdapter);*/
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
