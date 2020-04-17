@@ -2,9 +2,12 @@ package com.example.foodmanager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -29,6 +32,14 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         productList = (ListView) findViewById(R.id.list_for_product);
+        productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
