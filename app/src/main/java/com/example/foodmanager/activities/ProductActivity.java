@@ -17,13 +17,10 @@ import com.example.foodmanager.helpers.DatabaseHelper;
 public class ProductActivity extends AppCompatActivity {
 
     ListView productList;
-
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor productCursor;
-    Cursor indexCursor;
     SimpleCursorAdapter productAdapter;
-    SimpleCursorAdapter indexAdapter;
     long productId = 0;
 
     @Override
@@ -40,7 +37,6 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
@@ -69,10 +65,6 @@ public class ProductActivity extends AppCompatActivity {
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
         productList.setAdapter(productAdapter);
 
-        /*indexCursor = db.rawQuery("select * from " + DatabaseHelper.tIndex + " where " + DatabaseHelper.idIndex +  "=?", new String[]{String.valueOf(DatabaseHelper.Gl_Id)});
-        String [] indexHeaders = new String[]{DatabaseHelper.typeIndex};
-        indexAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product, indexCursor, indexHeaders, new int []{R.id.index_of_product}, 0);
-        productList.setAdapter(indexAdapter);*/
     }
 
     @Override
