@@ -36,7 +36,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> productList, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("id", id);
+                intent.putExtra("position", position);
                 startActivity(intent);
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
@@ -62,7 +62,7 @@ public class ProductActivity extends AppCompatActivity {
         productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " inner join Gl_Index on product.Gl_Id = Gl_Index._id " +
                " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.typeIndex, DatabaseHelper.Proteins, DatabaseHelper.Fats,
+        String[] headers = new String[]{DatabaseHelper.ProductId, DatabaseHelper.nameProduct, DatabaseHelper.typeIndex, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
         // создаем адаптер, передаем в него курсор
         productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,

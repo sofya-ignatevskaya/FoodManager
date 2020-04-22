@@ -31,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //таблица Gl_Index
     public static final String tProduct = "product";
     public static final String idProduct = "_id";
+    public static final String ProductId = "ProductId";
     public static final String nameProduct = "ProductName";
     public static final String CategoryId = "CategoryId";
     public static final String Gl_Id = "Gl_Id";

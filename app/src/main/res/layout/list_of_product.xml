@@ -28,6 +28,8 @@
         android:paddingStart="5dp"
         android:hint="1"
         android:textSize="10sp"/>
+        <!--android:visibility="invisible"-->
+
     <TextView
         android:id="@+id/textIndex_of_product"
         android:layout_width="wrap_content"
