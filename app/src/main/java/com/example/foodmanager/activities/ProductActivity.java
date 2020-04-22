@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ public class ProductActivity extends AppCompatActivity {
     Cursor productCursor;
     SimpleCursorAdapter productAdapter;
     long productId = 0;
+    final String LOG_TAG = "myLogs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class ProductActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
+                Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
+                        + id);
             }
         });
         databaseHelper = new DatabaseHelper(getApplicationContext());
