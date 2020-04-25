@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from Product where  Product.ProductId =?", new String[]{String.valueOf(userPosition)});
+        userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(userPosition)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void chooseProduct(View view) {
-        Intent intent = new Intent(this, CategoryActivity.class);
+        Intent intent = new Intent(this, KindActivity.class);
         startActivity(intent);
     }
 

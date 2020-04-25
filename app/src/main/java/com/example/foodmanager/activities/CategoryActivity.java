@@ -24,6 +24,7 @@ public class CategoryActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor categoryCursor;
     SimpleCursorAdapter categoryAdapter;
+    long kindId = 0;
     final String LOG_TAG = "myLogs";
 
     @Override
@@ -45,6 +46,12 @@ public class CategoryActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
+
+        // передается id объекта
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            kindId = extras.getLong("id_kind");
+        }
     }
 
     @Override
@@ -53,13 +60,28 @@ public class CategoryActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        categoryCursor =  db.rawQuery("select * from "+ DatabaseHelper.tCategory, null);
-        // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[] {DatabaseHelper.nameCategory};
-        // создаем адаптер, передаем в него курсор
-        categoryAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
-                categoryCursor, headers, new int[]{android.R.id.text1}, 0);
-        categoryList.setAdapter(categoryAdapter);
+
+            categoryCursor = db.rawQuery("select * from " + DatabaseHelper.tCategory + " where " + DatabaseHelper.categoryKindId + "=?", new String[]{String.valueOf(kindId)});
+            // определяем, какие столбцы из курсора будут выводиться в ListView
+            String[] headers = new String[]{DatabaseHelper.nameCategory};
+            // создаем адаптер, передаем в него курсор
+            categoryAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
+                    categoryCursor, headers, new int[]{android.R.id.text1}, 0);
+            categoryList.setAdapter(categoryAdapter);
+
+        /*if (kindId == 2) {
+            categoryCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.productKindId + "=?" , new String[]{String.valueOf(kindId)});
+            // определяем, какие столбцы из курсора будут выводиться в ListView
+            String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
+                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
+            // создаем адаптер, передаем в него курсор
+            categoryAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
+                    categoryCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
+                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
+            categoryList.setAdapter(categoryAdapter);
+        }*/
+
+
     }
 
 

@@ -23,6 +23,7 @@ public class ProductActivity extends AppCompatActivity {
     Cursor productCursor;
     SimpleCursorAdapter productAdapter;
     long productId = 0;
+    long kindId = 0;
     final String LOG_TAG = "myLogs";
 
     @Override
@@ -51,6 +52,10 @@ public class ProductActivity extends AppCompatActivity {
         if (extras != null) {
             productId = extras.getLong("id");
         }
+        Bundle extrasKind = getIntent().getExtras();
+        if (extrasKind != null) {
+            kindId = extrasKind.getLong("id_kind");
+        }
     }
 
     @Override
@@ -59,15 +64,27 @@ public class ProductActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
-        // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
-                DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
-        // создаем адаптер, передаем в него курсор
-        productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
-                productCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
-                R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
-        productList.setAdapter(productAdapter);
+        if (kindId == 2) {
+            productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.productKindId + "=?", new String[]{String.valueOf(kindId)});
+            // определяем, какие столбцы из курсора будут выводиться в ListView
+            String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
+                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
+            // создаем адаптер, передаем в него курсор
+            productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
+                    productCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
+                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
+            productList.setAdapter(productAdapter);
+        } else {
+            productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
+            // определяем, какие столбцы из курсора будут выводиться в ListView
+            String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
+                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
+            // создаем адаптер, передаем в него курсор
+            productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
+                    productCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
+                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
+            productList.setAdapter(productAdapter);
+        }
 
     }
 

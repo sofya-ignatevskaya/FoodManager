@@ -15,26 +15,26 @@ import java.io.OutputStream;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DB_PATH; // полный путь к базе данных
-    private static final String DB_NAME = "Products.db"; // название бд
+    private static final String DB_NAME = "newdb.db"; // название бд
     private static final int SCHEMA = 1; // версия базы данных
 
     // таблица category
     public static final String tCategory = "category";
     public static final String idCategory = "_id";
+    public static final String categoryKindId = "KindId";
     public static final String nameCategory = "CategoryName";
 
-    //таблица Gl_Index
-    public static final String tIndex = "Gl_Index";
-    public static final String idIndex = "_id";
-    public static final String typeIndex = "Gl_Type";
+    //таблица Kind
+    public static final String tKind = "kind";
+    public static final String idKind= "_id";
+    public static final String nameKind = "NameKind";
 
     //таблица Product
     public static final String tProduct = "product";
     public static final String idProduct = "_id";
-   /* public static final String ProductId = "ProductId";*/
     public static final String nameProduct = "ProductName";
     public static final String CategoryId = "CategoryId";
-    public static final String Gl_Id = "Gl_Id";
+    public static final String productKindId = "KindId";
     public static final String Proteins = "Proteins";
     public static final String Fats = "Fats";
     public static final String Carbohydrates = "Uglevody";
