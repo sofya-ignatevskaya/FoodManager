@@ -22,6 +22,7 @@ public class ProductActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor productCursor;
     SimpleCursorAdapter productAdapter;
+    long categoryId = 0;
     long productId = 0;
     long kindId = 0;
     final String LOG_TAG = "myLogs";
@@ -50,11 +51,17 @@ public class ProductActivity extends AppCompatActivity {
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            productId = extras.getLong("id");
+            categoryId = extras.getLong("id_category");
         }
+
         Bundle extrasKind = getIntent().getExtras();
         if (extrasKind != null) {
             kindId = extrasKind.getLong("id_kind");
+        }
+
+        Bundle extrasProduct = getIntent().getExtras();
+        if (extrasProduct != null) {
+            productId = extrasProduct.getLong("id_product");
         }
     }
 
@@ -75,7 +82,7 @@ public class ProductActivity extends AppCompatActivity {
                     R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
             productList.setAdapter(productAdapter);
         } else {
-            productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(productId)});
+            productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(categoryId)});
             // определяем, какие столбцы из курсора будут выводиться в ListView
             String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                     DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};

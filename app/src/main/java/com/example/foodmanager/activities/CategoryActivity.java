@@ -37,7 +37,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
-                intent.putExtra("id", id);
+                intent.putExtra("id_category", id);
                 startActivity(intent);
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
