@@ -13,15 +13,21 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.foodmanager.R;
+import com.example.foodmanager.adapters.DatabaseAdapter;
+import com.example.foodmanager.adapters.ProductAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
+import com.example.foodmanager.models.Product;
 
 public class ProductActivity extends AppCompatActivity {
 
     ListView productList;
     DatabaseHelper databaseHelper;
+    DatabaseAdapter databaseAdapter;
     SQLiteDatabase db;
     Cursor productCursor;
     SimpleCursorAdapter productAdapter;
+    DatabaseAdapter adapter;
+
     long categoryId = 0;
     long productId = 0;
     long kindId = 0;
@@ -63,6 +69,16 @@ public class ProductActivity extends AppCompatActivity {
         if (extrasProduct != null) {
             productId = extrasProduct.getLong("id_product");
         }
+
+        if (productId > 0) {
+            // получаем элемент по id из бд
+            adapter.open();
+            Product user = adapter.getProduct(productId);
+            adapter.close();
+        } else {
+            // скрываем кнопку удаления
+            //
+        }
     }
 
     @Override
@@ -102,6 +118,8 @@ public class ProductActivity extends AppCompatActivity {
         db.close();
         productCursor.close();
     }
+
+
 }
 
 

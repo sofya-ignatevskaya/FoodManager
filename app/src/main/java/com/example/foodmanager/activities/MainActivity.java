@@ -9,12 +9,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.activities.CategoryActivity;
+import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
+import com.example.foodmanager.models.Product;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
-    long userPosition = 0;
+
+    ArrayAdapter<Product> arrayAdapter;
+    long productId = 0;
+
     final String LOG_TAG = "myLogs";
 
     @Override
@@ -41,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            userPosition = extras.getLong("id_product");
+            productId = extras.getLong("id_product");
 
         }
     }
@@ -52,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(userPosition)});
+        userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
@@ -61,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 userCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
         userList.setAdapter(userAdapter);
+
+       /* DatabaseAdapter adapter = new DatabaseAdapter(this);
+        adapter.open();
+
+        List<Product> products = adapter.getProducts();
+
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.list_of_product, 0);
+        userList.setAdapter(arrayAdapter);
+        adapter.close();*/
     }
 
 
