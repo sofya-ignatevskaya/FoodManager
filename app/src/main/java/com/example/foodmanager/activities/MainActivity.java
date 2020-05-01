@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.activities.CategoryActivity;
@@ -19,6 +20,7 @@ import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     long productId = 0;
 
     final String LOG_TAG = "myLogs";
+    private List<Product> products = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +45,44 @@ public class MainActivity extends AppCompatActivity {
 
         userList = (ListView) findViewById(R.id.userList);
 
-        databaseHelper = new DatabaseHelper(getApplicationContext());
+       /* databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
-        databaseHelper.create_db();
+        databaseHelper.create_db();*/
+        // начальная инициализация списка
+        setInitialData();
+        // получаем элемент ListView
+
+        // создаем адаптер
+        DatabaseAdapter productAdapter = new DatabaseAdapter(this, R.layout.list_of_product, products);
+        // устанавливаем адаптер
+        userList.setAdapter(productAdapter);
+        // слушатель выбора в списке
+        AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+                // получаем выбранный пункт
+                Product selectedProduct = (Product)parent.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        userList.setOnItemClickListener(itemListener);
+
 
         // передается id объекта
-        Bundle extras = getIntent().getExtras();
+       /* Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
 
-        }
+        }*/
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // открываем подключение
-        db = databaseHelper.open();
+        /// открываем подключение
+       /* db = databaseHelper.open();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
@@ -68,18 +92,17 @@ public class MainActivity extends AppCompatActivity {
         userAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
                 userCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
-        userList.setAdapter(userAdapter);
-
-       /* DatabaseAdapter adapter = new DatabaseAdapter(this);
-        adapter.open();
-
-        List<Product> products = adapter.getProducts();
-
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.list_of_product, 0);
-        userList.setAdapter(arrayAdapter);
-        adapter.close();*/
+        userList.setAdapter(userAdapter);*/
     }
 
+    private void setInitialData(){
+
+        products.add(new Product (1, "Молоко", 3.2, 3.6, 4.8, 64));
+        products.add(new Product (2, "Кефир", 2.8, 3.5, 3.9, 50));
+        products.add(new Product (3, "Ряженка", 2.9, 2.5, 4.2, 54));
+        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66));
+        products.add(new Product (5, "Рис", 7, 1, 71.4, 330));
+    }
 
     public void chooseProduct(View view) {
         Intent intent = new Intent(this, KindActivity.class);
