@@ -17,7 +17,9 @@ import android.widget.Toast;
 import com.example.foodmanager.R;
 import com.example.foodmanager.activities.CategoryActivity;
 import com.example.foodmanager.adapters.DatabaseAdapter;
+import com.example.foodmanager.adapters.ProductAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
+import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
 
-    ArrayAdapter<Product> arrayAdapter;
+    DatabaseAdapter adapter;
     long productId = 0;
 
     final String LOG_TAG = "myLogs";
@@ -45,17 +47,18 @@ public class MainActivity extends AppCompatActivity {
 
         userList = (ListView) findViewById(R.id.userList);
 
+        // передается id объекта
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            productId = extras.getLong("id_product");
+
+        }
+
        /* databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();*/
-        // начальная инициализация списка
-        setInitialData();
-        // получаем элемент ListView
 
-        // создаем адаптер
-        DatabaseAdapter productAdapter = new DatabaseAdapter(this, R.layout.list_of_product, products);
-        // устанавливаем адаптер
-        userList.setAdapter(productAdapter);
+
         // слушатель выбора в списке
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -68,14 +71,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         userList.setOnItemClickListener(itemListener);
+       // adapter.close();
 
 
-        // передается id объекта
-       /* Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            productId = extras.getLong("id_product");
 
-        }*/
+
     }
 
     @Override
@@ -93,6 +93,26 @@ public class MainActivity extends AppCompatActivity {
                 userCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
         userList.setAdapter(userAdapter);*/
+        //setInitialData();
+        /*adapter = new DatabaseAdapter(this);
+        adapter.open();
+        products= adapter.getProducts();*/
+       // adapter.open();
+        ListProduct lp = new ListProduct();
+        List<Product> list =  new ArrayList<>();
+        if (productId>0) {
+            Product onePr = adapter.getProduct();
+             list.add(onePr);
+            //lp.products.add(adapter.getProduct(productId));
+        }
+      //  adapter.close();
+
+        //lp.products.add(new Product (1, "Молоко", 3.2, 3.6, 4.8, 64));
+        // создаем адаптер
+        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, list);
+        // устанавливаем адаптер
+
+        userList.setAdapter(productAdapter);
     }
 
     private void setInitialData(){

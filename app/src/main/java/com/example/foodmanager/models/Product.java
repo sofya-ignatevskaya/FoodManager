@@ -9,6 +9,9 @@ public class Product {
     private double calories;
 
     // Конструктор класса
+    /*public Product() {
+
+    }*/
 
     public Product(long id, String name, double proteins, double fats, double carbohydrates, double calories) {
         this.id = id;

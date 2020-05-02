@@ -70,15 +70,15 @@ public class ProductActivity extends AppCompatActivity {
             productId = extrasProduct.getLong("id_product");
         }
 
-        if (productId > 0) {
+       /* //if (productId > 0) {
             // получаем элемент по id из бд
-            adapter.open();
+           // adapter.open();
             Product user = adapter.getProduct(productId);
-            adapter.close();
+            //adapter.close();
         } else {
             // скрываем кнопку удаления
             //
-        }
+        }*/
     }
 
     @Override
