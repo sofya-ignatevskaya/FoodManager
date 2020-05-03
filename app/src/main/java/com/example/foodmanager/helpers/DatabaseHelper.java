@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DB_PATH; // полный путь к базе данных
     private static final String DB_NAME = "newdb.db"; // название бд
-    private static final int SCHEMA = 2; // версия базы данных
+    private static final int SCHEMA = 1; // версия базы данных
 
     // таблица category
     public static final String tCategory = "category";

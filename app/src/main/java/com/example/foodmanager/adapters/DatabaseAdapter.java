@@ -29,25 +29,31 @@ public class DatabaseAdapter {
     public DatabaseAdapter(Context context) {
 
         dbHelper = new DatabaseHelper(context.getApplicationContext());
+        dbHelper.create_db(); // тут изменила
     }
 
 
-    /*public DatabaseAdapter open() {
-        database = dbHelper.getWritableDatabase();
+  /*  public DatabaseAdapter open() {
+       database =  dbHelper.open(); // тут изменила
         return this;
-    }
-
-    public void close() {
-        dbHelper.close();
     }*/
 
+   /* public void close() {
+        dbHelper.close();
+    }
+*/
     private Cursor getAllEntries() {
+
         String[] columns = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
         return database.query(DatabaseHelper.tProduct, columns, null, null, null, null, null);
+
     }
 
     public List<Product> getProducts() {
+
+        database =  dbHelper.open();
+
         ArrayList<Product> products = new ArrayList<>();
         Cursor cursor = getAllEntries();
         if (cursor.moveToFirst()) {
@@ -62,6 +68,7 @@ public class DatabaseAdapter {
             }
             while (cursor.moveToNext());
         }
+
         cursor.close();
         return products;
     }
@@ -71,6 +78,7 @@ public class DatabaseAdapter {
     }*/
 
     public Product getProduct(long id) {
+
         dbHelper.open();
         Product product = null;
         //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
@@ -85,7 +93,6 @@ public class DatabaseAdapter {
             product = new Product(id, name, proteins, fats, carbohydrates, calories);
         }
 
-        dbHelper.close();
         cursor.close();
         return product;
     }

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
 
-    DatabaseAdapter adapter;
+
     long productId = 0;
 
     final String LOG_TAG = "myLogs";
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-       /* databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
-        databaseHelper.create_db();*/
+       databaseHelper = new DatabaseHelper(getApplicationContext());
+       // создаем базу данных
+        databaseHelper.create_db();
 
 
         // слушатель выбора в списке
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         /// открываем подключение
-       /* db = databaseHelper.open();
+       db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
+        /*userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
@@ -98,14 +98,16 @@ public class MainActivity extends AppCompatActivity {
         adapter.open();
         products= adapter.getProducts();*/
        // adapter.open();
+        DatabaseAdapter adapter = new DatabaseAdapter(this);
         ListProduct lp = new ListProduct();
-        List<Product> list =  new ArrayList<>();
-        if (productId>0) {
-            Product onePr = adapter.getProduct();
-             list.add(onePr);
+        List<Product> list ;
+       // if (productId>0) {
+       // adapter.open();
+            list = adapter.getProducts();
+             //list.add(onePr);
             //lp.products.add(adapter.getProduct(productId));
-        }
-      //  adapter.close();
+       // }
+
 
         //lp.products.add(new Product (1, "Молоко", 3.2, 3.6, 4.8, 64));
         // создаем адаптер
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         // устанавливаем адаптер
 
         userList.setAdapter(productAdapter);
+        // adapter.close();
     }
 
     private void setInitialData(){
