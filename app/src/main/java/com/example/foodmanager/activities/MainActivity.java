@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ListView userList;
+    EditText weightEditText;
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor userCursor;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userList = (ListView) findViewById(R.id.userList);
-
+        //weightEditText = (EditText) findViewById(R.id.weightEditText);
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -81,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        /// открываем подключение
-       db = databaseHelper.open();
+
         //получаем данные из бд в виде курсора
         /*userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
@@ -93,29 +94,31 @@ public class MainActivity extends AppCompatActivity {
                 userCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
                 R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
         userList.setAdapter(userAdapter);*/
+
         //setInitialData();
-        /*adapter = new DatabaseAdapter(this);
-        adapter.open();
-        products= adapter.getProducts();*/
-       // adapter.open();
-        DatabaseAdapter adapter = new DatabaseAdapter(this);
+
+        db = databaseHelper.open();
         ListProduct lp = new ListProduct();
-        List<Product> list ;
-       // if (productId>0) {
-       // adapter.open();
-            list = adapter.getProducts();
-             //list.add(onePr);
-            //lp.products.add(adapter.getProduct(productId));
-       // }
 
-
-        //lp.products.add(new Product (1, "Молоко", 3.2, 3.6, 4.8, 64));
-        // создаем адаптер
-        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, list);
+        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, lp.products);
         // устанавливаем адаптер
 
         userList.setAdapter(productAdapter);
-        // adapter.close();
+
+
+        DatabaseAdapter adapter = new DatabaseAdapter(this);
+
+        //List<Product> list ;
+        if (productId>0) {
+            //list = adapter.getProducts();
+            Product onePr = adapter.getProduct(productId, "200");
+            lp.products.add(onePr);
+           // lp.changeWeight(onePr, weightEditText.getText().toString());
+           // productAdapter.add(onePr);
+            //productAdapter.add();
+           // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
+           // productAdapter.notifyDataSetChanged();
+       }
     }
 
     private void setInitialData(){
@@ -137,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
-        userCursor.close();
+       // userCursor.close();
     }
 
 

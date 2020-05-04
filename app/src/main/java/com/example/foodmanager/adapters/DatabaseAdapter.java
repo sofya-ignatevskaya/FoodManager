@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.helpers.DatabaseHelper;
@@ -22,7 +23,7 @@ public class DatabaseAdapter {
     private DatabaseHelper dbHelper;
     private SQLiteDatabase database;
 
-   // private LayoutInflater inflater;
+    // private LayoutInflater inflater;
     //private int layout;
     //private List<Product> products;
 
@@ -38,12 +39,12 @@ public class DatabaseAdapter {
         return this;
     }*/
 
-   /* public void close() {
-        dbHelper.close();
-    }
-*/
-    private Cursor getAllEntries() {
+  /*  public void close() {
+         dbHelper.close();
+     }*/
 
+    private Cursor getAllEntries() {
+        database = dbHelper.open();
         String[] columns = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
         return database.query(DatabaseHelper.tProduct, columns, null, null, null, null, null);
@@ -52,10 +53,11 @@ public class DatabaseAdapter {
 
     public List<Product> getProducts() {
 
-        database =  dbHelper.open();
+        database = dbHelper.open();
 
         ArrayList<Product> products = new ArrayList<>();
         Cursor cursor = getAllEntries();
+
         if (cursor.moveToFirst()) {
             do {
                 long id = cursor.getLong(cursor.getColumnIndex(DatabaseHelper.idProduct));
@@ -69,6 +71,7 @@ public class DatabaseAdapter {
             while (cursor.moveToNext());
         }
 
+        database.close();
         cursor.close();
         return products;
     }
@@ -77,24 +80,54 @@ public class DatabaseAdapter {
         return DatabaseUtils.queryNumEntries(database, DatabaseHelper.tProduct);
     }*/
 
-    public Product getProduct(long id) {
+    public Product getProduct(long id, String text) {
 
-        dbHelper.open();
+        database = dbHelper.open();
         Product product = null;
-        //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
-        Cursor cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct+ "=?", new String[]{String.valueOf(id)});
-        if (cursor.moveToFirst()) {
+        Cursor cursor = null;
+        try {
+            //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
+            cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct + "=?", new String[]{String.valueOf(id)});
+            if (cursor.moveToFirst()) {
 
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.nameProduct));
-            double proteins = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Proteins));
-            double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
-            double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
-            double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
-            product = new Product(id, name, proteins, fats, carbohydrates, calories);
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.nameProduct));
+                double proteins = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Proteins));
+                double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
+                double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
+                double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
+                product = new Product(id, name, proteins, fats, carbohydrates, calories);
+            }
+
+            double myDouble;
+
+       /* String myString = text;
+
+        if (myString != null && !myString.equals("")) {
+            myDouble = Double.valueOf(myString);
+        } else {
+            myDouble = 0;
+        }*/
+
+            double proteins = product.getProteins() / 100 * Double.valueOf(text);
+            product.setProteins(proteins);
+
+            double fats = product.getFats() / 100 * Double.valueOf(text);
+            product.setFats(fats);
+
+            double carbohydrates = product.getCarbohydrates() / 100 * Double.valueOf(text);
+            product.setCarbohydrates(carbohydrates);
+
+            double calories = product.getCalories() / 100 * Double.valueOf(text);
+            product.setCalories(calories);
+
+            //database.close();
+            // cursor.close();
+            return product;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-
-        cursor.close();
-        return product;
     }
 
     public long insert(Product product) {
