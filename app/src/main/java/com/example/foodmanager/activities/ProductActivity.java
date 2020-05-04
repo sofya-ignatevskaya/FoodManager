@@ -43,7 +43,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> productList, View view, int position, long id) {
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WeightActivity.class);
                 intent.putExtra("id_product", id);
                 startActivity(intent);
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "

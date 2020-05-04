@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
+    String txtWeight;
 
 
     long productId = 0;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userList = (ListView) findViewById(R.id.userList);
-        //weightEditText = (EditText) findViewById(R.id.weightEditText);
+        txtWeight = getIntent().getStringExtra("weight");
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -56,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-       databaseHelper = new DatabaseHelper(getApplicationContext());
-       // создаем базу данных
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        // создаем базу данных
         databaseHelper.create_db();
 
 
@@ -67,15 +68,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
                 // получаем выбранный пункт
-                Product selectedProduct = (Product)parent.getItemAtPosition(position);
+                Product selectedProduct = (Product) parent.getItemAtPosition(position);
                 Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
                         Toast.LENGTH_SHORT).show();
             }
         };
         userList.setOnItemClickListener(itemListener);
-       // adapter.close();
-
-
+        // adapter.close();
 
 
     }
@@ -103,31 +102,33 @@ public class MainActivity extends AppCompatActivity {
         ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, lp.products);
         // устанавливаем адаптер
 
+
         userList.setAdapter(productAdapter);
 
 
         DatabaseAdapter adapter = new DatabaseAdapter(this);
 
         //List<Product> list ;
-        if (productId>0) {
+       if (productId > 0) {
             //list = adapter.getProducts();
-            Product onePr = adapter.getProduct(productId, "200");
+            Product onePr = adapter.getProduct(productId, txtWeight);
             lp.products.add(onePr);
-           // lp.changeWeight(onePr, weightEditText.getText().toString());
-           // productAdapter.add(onePr);
-            //productAdapter.add();
-           // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
-           // productAdapter.notifyDataSetChanged();
        }
+        // lp.changeWeight(onePr, weightEditText.getText().toString());
+        // productAdapter.add(onePr);
+        //productAdapter.add();
+        // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
+        // productAdapter.notifyDataSetChanged();
+
     }
 
-    private void setInitialData(){
+    private void setInitialData() {
 
-        products.add(new Product (1, "Молоко", 3.2, 3.6, 4.8, 64));
-        products.add(new Product (2, "Кефир", 2.8, 3.5, 3.9, 50));
-        products.add(new Product (3, "Ряженка", 2.9, 2.5, 4.2, 54));
+        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64));
+        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50));
+        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54));
         products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66));
-        products.add(new Product (5, "Рис", 7, 1, 71.4, 330));
+        products.add(new Product(5, "Рис", 7, 1, 71.4, 330));
     }
 
     public void chooseProduct(View view) {
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
-       // userCursor.close();
+        // userCursor.close();
     }
 
 

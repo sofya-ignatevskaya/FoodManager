@@ -71,7 +71,7 @@ public class DatabaseAdapter {
             while (cursor.moveToNext());
         }
 
-        database.close();
+
         cursor.close();
         return products;
     }

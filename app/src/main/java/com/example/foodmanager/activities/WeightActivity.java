@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.foodmanager.R;
@@ -17,6 +18,7 @@ import java.util.List;
 public class WeightActivity extends AppCompatActivity {
     long productId = 0;
     EditText weightEditText;
+    Button weightButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +26,36 @@ public class WeightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weight);
 
         weightEditText = (EditText) findViewById(R.id.weightEditText);
+        weightButton = (Button) findViewById(R.id.weightButton);
 
-        Bundle extras = getIntent().getExtras();
+       /* Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
-        }
+        }*/
     }
 
-    public void weightButton (View view) {
+    /*public void weightButton (View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
+    }*/
+
+    public void weightButton (View v) {
+        switch (v.getId()) {
+            case R.id.weightButton:
+                // Говорим между какими Activity будет происходить связь
+                Intent intent = new Intent(this, MainActivity.class);
+
+                // указываем первым параметром ключ, а второе значение
+                // по ключу мы будем получать значение с Intent
+                intent.putExtra("weight", weightEditText.getText().toString());
+
+
+                // показываем новое Activity
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
    /* @Override
     protected void onResume() {
         super.onResume();
@@ -52,6 +73,7 @@ public class WeightActivity extends AppCompatActivity {
             /* new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
 
         }*/
+    }
     }
 
 
