@@ -13,12 +13,16 @@ import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WeightActivity extends AppCompatActivity {
+
+
     long productId = 0;
     EditText weightEditText;
     Button weightButton;
+    List<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +31,36 @@ public class WeightActivity extends AppCompatActivity {
 
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         weightButton = (Button) findViewById(R.id.weightButton);
-
-       /* Bundle extras = getIntent().getExtras();
+        products= new ArrayList();
+       Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
-        }*/
+        }
     }
 
     /*public void weightButton (View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        DatabaseAdapter adapter = new DatabaseAdapter(this);
+
+        if (productId > 0) {
+
+            //list = adapter.getProducts();
+            Product onePr = adapter.getProduct(productId,  weightEditText.getText().toString());
+            // lp.changeWeight(onePr, weightEditText.getText().toString());
+            products.add(onePr);
+        }
+       /* //productAdapter.add();
+             new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
+*/
+        }
+
 
     public void weightButton (View v) {
         switch (v.getId()) {
@@ -47,7 +70,7 @@ public class WeightActivity extends AppCompatActivity {
 
                 // указываем первым параметром ключ, а второе значение
                 // по ключу мы будем получать значение с Intent
-                intent.putExtra("weight", weightEditText.getText().toString());
+                intent.putExtra("productWithAnyWeight", products);
 
 
                 // показываем новое Activity
@@ -56,23 +79,9 @@ public class WeightActivity extends AppCompatActivity {
             default:
                 break;
         }
-   /* @Override
-    protected void onResume() {
-        super.onResume();
-        ListProduct lp = new ListProduct();
-        DatabaseAdapter adapter = new DatabaseAdapter(this);
 
-        if (productId > 0) {
 
-            //list = adapter.getProducts();
-            Product onePr = adapter.getProduct(productId, weightEditText.getText().toString());
-            // lp.changeWeight(onePr, weightEditText.getText().toString());
-                lp.products.add(onePr);
-            }
-            //productAdapter.add();
-            /* new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
 
-        }*/
     }
     }
 

@@ -84,23 +84,24 @@ public class DatabaseAdapter {
 
         database = dbHelper.open();
         Product product = null;
-        Cursor cursor = null;
-        try {
-            //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
-            cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct + "=?", new String[]{String.valueOf(id)});
-            if (cursor.moveToFirst()) {
 
-                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.nameProduct));
-                double proteins = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Proteins));
-                double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
-                double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
-                double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
-                product = new Product(id, name, proteins, fats, carbohydrates, calories);
-            }
 
-            double myDouble;
+        //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
+        Cursor cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct + "=?", new String[]{String.valueOf(id)});
+        if (cursor.moveToFirst()) {
 
-       /* String myString = text;
+            String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.nameProduct));
+            double proteins = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Proteins));
+            double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
+            double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
+            double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
+            product = new Product(id, name, proteins, fats, carbohydrates, calories);
+
+        }
+
+        double myDouble;
+
+       /*String myString = text;
 
         if (myString != null && !myString.equals("")) {
             myDouble = Double.valueOf(myString);
@@ -108,26 +109,21 @@ public class DatabaseAdapter {
             myDouble = 0;
         }*/
 
-            double proteins = product.getProteins() / 100 * Double.valueOf(text);
-            product.setProteins(proteins);
+        double proteins = product.getProteins() / 100 * Double.valueOf(text);
+        product.setProteins(proteins);
 
-            double fats = product.getFats() / 100 * Double.valueOf(text);
-            product.setFats(fats);
+        double fats = product.getFats() / 100 * Double.valueOf(text);
+        product.setFats(fats);
 
-            double carbohydrates = product.getCarbohydrates() / 100 * Double.valueOf(text);
-            product.setCarbohydrates(carbohydrates);
+        double carbohydrates = product.getCarbohydrates() / 100 * Double.valueOf(text);
+        product.setCarbohydrates(carbohydrates);
 
-            double calories = product.getCalories() / 100 * Double.valueOf(text);
-            product.setCalories(calories);
+        double calories = product.getCalories() / 100 * Double.valueOf(text);
+        product.setCalories(calories);
 
-            //database.close();
-            // cursor.close();
-            return product;
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
+
+        cursor.close();
+        return product;
     }
 
     public long insert(Product product) {

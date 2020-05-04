@@ -65,10 +65,10 @@ public class ProductActivity extends AppCompatActivity {
             kindId = extrasKind.getLong("id_kind");
         }
 
-        Bundle extrasProduct = getIntent().getExtras();
+        /*Bundle extrasProduct = getIntent().getExtras();
         if (extrasProduct != null) {
             productId = extrasProduct.getLong("id_product");
-        }
+        }*/
 
        /* //if (productId > 0) {
             // получаем элемент по id из бд

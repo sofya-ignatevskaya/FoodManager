@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
     String txtWeight;
+    Product onePr; //= new Product(1, "Молоко", 3.2, 3.6, 4.8, 64);
 
 
     long productId = 0;
@@ -49,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userList = (ListView) findViewById(R.id.userList);
-        txtWeight = getIntent().getStringExtra("weight");
+
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
-
         }
+        txtWeight = getIntent().getStringExtra("weight");
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
@@ -108,17 +109,18 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseAdapter adapter = new DatabaseAdapter(this);
 
-        //List<Product> list ;
-       if (productId > 0) {
+        //List<Product> list ;if(null != profile)
+      if (productId > 0 && txtWeight != null) {
             //list = adapter.getProducts();
-            Product onePr = adapter.getProduct(productId, txtWeight);
+            onePr = adapter.getProduct(productId, txtWeight);
             lp.products.add(onePr);
+           productAdapter.add(onePr);
        }
         // lp.changeWeight(onePr, weightEditText.getText().toString());
         // productAdapter.add(onePr);
-        //productAdapter.add();
+
         // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
-        // productAdapter.notifyDataSetChanged();
+        //productAdapter.notifyDataSetChanged();
 
     }
 
