@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     long productId = 0;
 
     final String LOG_TAG = "myLogs";
-    private List<Product> products = new ArrayList();
+    ArrayList<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
-        txtWeight = getIntent().getStringExtra("weight");
+        /* txtWeight = getIntent().getStringExtra("weight");*/
+        Intent productWeight = getIntent();
+        products = (ArrayList<Product>) productWeight.getSerializableExtra("productsViaWeight");
+        // Toast.makeText(this, products.get(1).getName(), Toast.LENGTH_LONG).show();
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
@@ -99,23 +102,24 @@ public class MainActivity extends AppCompatActivity {
 
         db = databaseHelper.open();
         ListProduct lp = new ListProduct();
-
-        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, lp.products);
-        // устанавливаем адаптер
-
-
-        userList.setAdapter(productAdapter);
+        if (productId > 0) {
+            ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, products);
+            // устанавливаем адаптер
 
 
-        DatabaseAdapter adapter = new DatabaseAdapter(this);
+            userList.setAdapter(productAdapter);
+        }
+
+
+        // DatabaseAdapter adapter = new DatabaseAdapter(this);
 
         //List<Product> list ;if(null != profile)
-      if (productId > 0 && txtWeight != null) {
+      /*if (productId > 0 && txtWeight != null) {
             //list = adapter.getProducts();
             onePr = adapter.getProduct(productId, txtWeight);
             lp.products.add(onePr);
            productAdapter.add(onePr);
-       }
+       }*/
         // lp.changeWeight(onePr, weightEditText.getText().toString());
         // productAdapter.add(onePr);
 

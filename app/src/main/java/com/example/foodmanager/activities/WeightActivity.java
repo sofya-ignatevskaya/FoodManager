@@ -3,6 +3,7 @@ package com.example.foodmanager.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.adapters.DatabaseAdapter;
+import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 
@@ -22,7 +24,9 @@ public class WeightActivity extends AppCompatActivity {
     long productId = 0;
     EditText weightEditText;
     Button weightButton;
-    List<Product> products;
+    ArrayList<Product> products;
+    DatabaseHelper databaseHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,58 +35,38 @@ public class WeightActivity extends AppCompatActivity {
 
         weightEditText = (EditText) findViewById(R.id.weightEditText);
         weightButton = (Button) findViewById(R.id.weightButton);
-        products= new ArrayList();
+        products = new ArrayList<>();
+
        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
+
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        // создаем базу данных
+        databaseHelper.create_db();
+
     }
 
-    /*public void weightButton (View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }*/
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        DatabaseAdapter adapter = new DatabaseAdapter(this);
-
-        if (productId > 0) {
-
-            //list = adapter.getProducts();
-            Product onePr = adapter.getProduct(productId,  weightEditText.getText().toString());
-            // lp.changeWeight(onePr, weightEditText.getText().toString());
-            products.add(onePr);
-        }
-       /* //productAdapter.add();
-             new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
-*/
-        }
 
 
     public void weightButton (View v) {
-        switch (v.getId()) {
-            case R.id.weightButton:
-                // Говорим между какими Activity будет происходить связь
-                Intent intent = new Intent(this, MainActivity.class);
 
-                // указываем первым параметром ключ, а второе значение
-                // по ключу мы будем получать значение с Intent
-                intent.putExtra("productWithAnyWeight", products);
-
-
-                // показываем новое Activity
+                 db = databaseHelper.open();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                products = new ArrayList<>();
+                DatabaseAdapter adapter = new DatabaseAdapter(this);
+                Product onePr = adapter.getProduct(productId, weightEditText.getText().toString());
+                // lp.changeWeight(onePr, weightEditText.getText().toString());
+                products.add(onePr);
+                intent.putExtra("productsViaWeight", products);
                 startActivity(intent);
-                break;
-            default:
-                break;
+
         }
 
 
 
     }
-    }
+
 
 
