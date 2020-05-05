@@ -16,6 +16,7 @@ import com.example.foodmanager.R;
 import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.Product;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,16 +111,20 @@ public class DatabaseAdapter {
         }*/
 
         double proteins = product.getProteins() / 100 * Double.valueOf(text);
-        product.setProteins(proteins);
+        String formatProteins = new DecimalFormat("#0.00").format(proteins);
+        product.setProteins(Double.valueOf(formatProteins));
 
         double fats = product.getFats() / 100 * Double.valueOf(text);
-        product.setFats(fats);
+        String formatFats = new DecimalFormat("#0.00").format(fats);
+        product.setFats(Double.valueOf(formatFats));
 
         double carbohydrates = product.getCarbohydrates() / 100 * Double.valueOf(text);
-        product.setCarbohydrates(carbohydrates);
+        String formatCarbohydrates = new DecimalFormat("#0.00").format(carbohydrates);
+        product.setCarbohydrates(Double.valueOf(formatCarbohydrates));
 
         double calories = product.getCalories() / 100 * Double.valueOf(text);
-        product.setCalories(calories);
+        String formatCalories= new DecimalFormat("#0.00").format(calories);
+        product.setCalories(Double.valueOf(formatCalories));
 
 
         cursor.close();
