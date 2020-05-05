@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String LOG_TAG = "myLogs";
     ArrayList<Product> products;
+    ArrayList<Product> anotherProducts;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +105,14 @@ public class MainActivity extends AppCompatActivity {
         db = databaseHelper.open();
         ListProduct lp = new ListProduct();
         if (products != null) {
-            ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, products);
+
+            anotherProducts = new ArrayList<>(products);
+           /* for (Product i:products
+                 ) {
+                anotherProducts.add(i);
+            }*/
+
+            ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
             // устанавливаем адаптер
 
 

@@ -53,11 +53,12 @@ public class WeightActivity extends AppCompatActivity {
 
         db = databaseHelper.open();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        products = new ArrayList<>();
+       // products = new ArrayList<>();
         DatabaseAdapter adapter = new DatabaseAdapter(this);
         String w = weightEditText.getText().toString();
         if (productId > 0 && w != null) {
 
+            //Product onePr = new Product();
             Product onePr = adapter.getProduct(productId, w);
             // lp.changeWeight(onePr, weightEditText.getText().toString());
             products.add(onePr);
