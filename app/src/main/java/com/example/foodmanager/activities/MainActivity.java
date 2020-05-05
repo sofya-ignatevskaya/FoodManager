@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
             productId = extras.getLong("id_product");
         }
         /* txtWeight = getIntent().getStringExtra("weight");*/
-        Intent productWeight = getIntent();
-        products = (ArrayList<Product>) productWeight.getSerializableExtra("productsViaWeight");
+       // Intent productWeight = getIntent();
+        products =getIntent().getParcelableArrayListExtra("productsViaWeight");
         // Toast.makeText(this, products.get(1).getName(), Toast.LENGTH_LONG).show();
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         db = databaseHelper.open();
         ListProduct lp = new ListProduct();
-        if (productId > 0) {
+        if (products != null) {
             ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, products);
             // устанавливаем адаптер
 

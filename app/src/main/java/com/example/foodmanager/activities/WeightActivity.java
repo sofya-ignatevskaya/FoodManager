@@ -37,7 +37,7 @@ public class WeightActivity extends AppCompatActivity {
         weightButton = (Button) findViewById(R.id.weightButton);
         products = new ArrayList<>();
 
-       Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
@@ -49,24 +49,26 @@ public class WeightActivity extends AppCompatActivity {
     }
 
 
+    public void weightButton(View v) {
 
-    public void weightButton (View v) {
+        db = databaseHelper.open();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        products = new ArrayList<>();
+        DatabaseAdapter adapter = new DatabaseAdapter(this);
+        String w = weightEditText.getText().toString();
+        if (productId > 0 && w != null) {
 
-                 db = databaseHelper.open();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                products = new ArrayList<>();
-                DatabaseAdapter adapter = new DatabaseAdapter(this);
-                Product onePr = adapter.getProduct(productId, weightEditText.getText().toString());
-                // lp.changeWeight(onePr, weightEditText.getText().toString());
-                products.add(onePr);
-                intent.putExtra("productsViaWeight", products);
-                startActivity(intent);
-
+            Product onePr = adapter.getProduct(productId, w);
+            // lp.changeWeight(onePr, weightEditText.getText().toString());
+            products.add(onePr);
         }
-
-
+        intent.putParcelableArrayListExtra("productsViaWeight", products);
+        startActivity(intent);
 
     }
+
+
+}
 
 
 

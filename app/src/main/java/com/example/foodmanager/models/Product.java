@@ -1,6 +1,11 @@
 package com.example.foodmanager.models;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import javax.crypto.spec.PSource;
+
+public class Product implements Parcelable {
     private long id;
     private String name;
     private double proteins;
@@ -22,6 +27,14 @@ public class Product {
         this.calories = calories;
     }
 
+    protected Product(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        proteins = in.readDouble();
+        fats = in.readDouble();
+        carbohydrates = in.readDouble();
+        calories = in.readDouble();
+    }
     // геттеры полей
 
     public long getId() {
@@ -68,4 +81,31 @@ public class Product {
     public void setCalories(double calories) {
         this.calories = calories;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeDouble(proteins);
+        dest.writeDouble(fats);
+        dest.writeDouble(carbohydrates);
+        dest.writeDouble(calories);
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }
