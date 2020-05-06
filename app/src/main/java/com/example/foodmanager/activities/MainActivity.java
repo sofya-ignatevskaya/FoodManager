@@ -3,6 +3,7 @@ package com.example.foodmanager.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,7 +23,10 @@ import com.example.foodmanager.adapters.ProductAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     SimpleCursorAdapter userAdapter;
     String txtWeight;
     Product onePr; //= new Product(1, "Молоко", 3.2, 3.6, 4.8, 64);
-
+    public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
 
     long productId = 0;
 
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Product> anotherProducts;
     Product productWithWeight;
     ProductAdapter productAdapter;
+    List<Product> connectionsGet;
+
 
 
     @Override
@@ -61,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
             productId = extras.getLong("id_product");
         }
         /* txtWeight = getIntent().getStringExtra("weight");*/
-       // Intent productWeight = getIntent();
+        // Intent productWeight = getIntent();
         //products =getIntent().getParcelableArrayListExtra("productsViaWeight");
         // Toast.makeText(this, products.get(1).getName(), Toast.LENGTH_LONG).show();
 
         //получаю продукт из WA
         Intent intent = getIntent();
-         productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
+        productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
@@ -95,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
+        Type type = new TypeToken<List<Product>>() {}.getType();
+        connectionsGet = new Gson().fromJson(connectionsJSONString, type);
+
+
         //получаем данные из бд в виде курсора
         /*userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
         // определяем, какие столбцы из курсора будут выводиться в ListView
@@ -111,21 +122,17 @@ public class MainActivity extends AppCompatActivity {
         db = databaseHelper.open();
         ListProduct lp = new ListProduct();
         anotherProducts = new ArrayList<>();
+
+        productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
+        userList.setAdapter(productAdapter);
+        if (connectionsGet != null) {
+            productAdapter.addAll(connectionsGet);
+        }
+
         if (productWithWeight != null) {
 
-
-           /* for (Product i:products
-                 ) {
-                anotherProducts.add(i);
-            }*/
-
-             productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
-            // устанавливаем адаптер
-            userList.setAdapter(productAdapter);
             productAdapter.add(productWithWeight);
             productAdapter.notifyDataSetChanged();
-
-
         }
 
 
@@ -146,14 +153,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void add(View view){
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-
-            productAdapter.add(productWithWeight);
-
-            productAdapter.notifyDataSetChanged();
-
+        if (productWithWeight != null) {
+            SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+            List<Product> connections = new ArrayList<>();
+            if (connectionsGet != null) {
+                connections.addAll(connectionsGet);
+            }
+            connections.add(productWithWeight);
+            String connectionsJSONString = new Gson().toJson(connections);
+            editor.putString(KEY_CONNECTIONS, connectionsJSONString);
+            editor.commit();
+        }
     }
+
 
     private void setInitialData() {
 
