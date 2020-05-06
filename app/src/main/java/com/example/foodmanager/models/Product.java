@@ -27,7 +27,7 @@ public class Product implements Parcelable {
         this.calories = calories;
     }
 
-    protected Product(Parcel in) {
+    public Product(Parcel in) {
         id = in.readLong();
         name = in.readString();
         proteins = in.readDouble();
@@ -97,7 +97,7 @@ public class Product implements Parcelable {
         dest.writeDouble(calories);
     }
 
-    public static final Creator<Product> CREATOR = new Creator<Product>() {
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
         @Override
         public Product createFromParcel(Parcel in) {
             return new Product(in);

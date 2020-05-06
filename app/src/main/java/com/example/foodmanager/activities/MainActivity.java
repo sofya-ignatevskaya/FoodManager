@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     final String LOG_TAG = "myLogs";
     ArrayList<Product> products;
     ArrayList<Product> anotherProducts;
+    Product productWithWeight;
+    ProductAdapter productAdapter;
 
 
     @Override
@@ -60,8 +62,12 @@ public class MainActivity extends AppCompatActivity {
         }
         /* txtWeight = getIntent().getStringExtra("weight");*/
        // Intent productWeight = getIntent();
-        products =getIntent().getParcelableArrayListExtra("productsViaWeight");
+        //products =getIntent().getParcelableArrayListExtra("productsViaWeight");
         // Toast.makeText(this, products.get(1).getName(), Toast.LENGTH_LONG).show();
+
+        //получаю продукт из WA
+        Intent intent = getIntent();
+         productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
@@ -104,19 +110,22 @@ public class MainActivity extends AppCompatActivity {
 
         db = databaseHelper.open();
         ListProduct lp = new ListProduct();
-        if (products != null) {
+        anotherProducts = new ArrayList<>();
+        if (productWithWeight != null) {
 
-            anotherProducts = new ArrayList<>(products);
+
            /* for (Product i:products
                  ) {
                 anotherProducts.add(i);
             }*/
 
-            ProductAdapter productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
+             productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
             // устанавливаем адаптер
-
-
             userList.setAdapter(productAdapter);
+            productAdapter.add(productWithWeight);
+            productAdapter.notifyDataSetChanged();
+
+
         }
 
 
@@ -133,7 +142,16 @@ public class MainActivity extends AppCompatActivity {
         // productAdapter.add(onePr);
 
         // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
-        //productAdapter.notifyDataSetChanged();
+
+
+    }
+
+    public void add(View view){
+
+
+            productAdapter.add(productWithWeight);
+
+            productAdapter.notifyDataSetChanged();
 
     }
 

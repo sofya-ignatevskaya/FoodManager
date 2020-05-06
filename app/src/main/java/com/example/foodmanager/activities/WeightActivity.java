@@ -27,7 +27,7 @@ public class WeightActivity extends AppCompatActivity {
     ArrayList<Product> products;
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
-
+    Product onePr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +59,14 @@ public class WeightActivity extends AppCompatActivity {
         if (productId > 0 && w != null) {
 
             //Product onePr = new Product();
-            Product onePr = adapter.getProduct(productId, w);
+             onePr = adapter.getProduct(productId, w);
             // lp.changeWeight(onePr, weightEditText.getText().toString());
-            products.add(onePr);
+
+               // products.add( new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories()));
+
+            //products.add(onePr);
         }
-        intent.putParcelableArrayListExtra("productsViaWeight", products);
+        intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories()));
         startActivity(intent);
 
     }
