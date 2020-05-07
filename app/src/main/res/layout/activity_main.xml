@@ -3,13 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Выбрать продукт"
         android:onClick="chooseProduct" />
+    <Button
+        android:id="@+id/cleanProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Очистить"
+        android:onClick="cleanProduct" />
     <ListView
         android:id="@+id/userList"
         tools:listitem="@layout/list_of_product"

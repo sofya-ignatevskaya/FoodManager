@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     Product productWithWeight;
     ProductAdapter productAdapter;
     List<Product> connectionsGet;
+    List<Product> connections;
+    SharedPreferences.Editor editor;
 
 
 
@@ -158,15 +161,15 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
 
         if (productWithWeight != null) {
-            SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-            List<Product> connections = new ArrayList<>();
+             editor = getPreferences(MODE_PRIVATE).edit();
+            connections = new ArrayList<>();
             if (connectionsGet != null) {
                 connections.addAll(connectionsGet);
             }
             connections.add(productWithWeight);
             String connectionsJSONString = new Gson().toJson(connections);
             editor.putString(KEY_CONNECTIONS, connectionsJSONString);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -179,6 +182,26 @@ public class MainActivity extends AppCompatActivity {
         products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66));
         products.add(new Product(5, "Рис", 7, 1, 71.4, 330));
     }
+
+    public void cleanProduct (View view) {
+        editor = getPreferences(MODE_PRIVATE).edit();
+        editor.clear();
+        editor.apply();
+        productAdapter.clear();
+        productAdapter.notifyDataSetChanged();
+
+
+    }
+
+    /*public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.cleanProduct:
+
+                break;
+            default:
+                break;
+        }
+    }*/
 
     public void chooseProduct(View view) {
         Intent intent = new Intent(this, KindActivity.class);
