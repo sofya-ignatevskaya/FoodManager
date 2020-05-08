@@ -15,7 +15,7 @@
         android:layout_alignTop="@+id/proteins_of_product"
         android:layout_toStartOf="@id/proteins_of_product"
         android:gravity="top"
-        android:paddingTop="5dp"
+        android:paddingTop="20dp"
         android:paddingStart="10dp"
         tools:text="Название продукта" />
 
@@ -30,27 +30,9 @@
         android:textSize="10sp"/>
         <!--android:visibility="invisible"-->
 
-    <TextView
-        android:id="@+id/textIndex_of_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/name_of_product"
 
-        android:layout_marginBottom="20dp"
-        android:hint="Гликимический индекс: "
-        android:paddingStart="10dp"
-        android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/valueIndex_of_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/name_of_product"
-        android:layout_alignParentBottom="@+id/textIndex_of_product"
-        android:layout_marginBottom="7dp"
-        android:paddingStart="10dp"
-        android:textSize="10sp"
-        tools:text="Низкий"/>
+
 
     <TextView
         android:id="@+id/proteins_of_product"
