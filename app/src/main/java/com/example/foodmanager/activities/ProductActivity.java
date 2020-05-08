@@ -91,21 +91,21 @@ public class ProductActivity extends AppCompatActivity {
             productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.productKindId + "=?", new String[]{String.valueOf(kindId)});
             // определяем, какие столбцы из курсора будут выводиться в ListView
             String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
-                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
+                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories, DatabaseHelper.Weight};
             // создаем адаптер, передаем в него курсор
             productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
                     productCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
-                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
+                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product, R.id.weight_of_product}, 0);
             productList.setAdapter(productAdapter);
         } else {
             productCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.CategoryId + "=?", new String[]{String.valueOf(categoryId)});
             // определяем, какие столбцы из курсора будут выводиться в ListView
             String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
-                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
+                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories, DatabaseHelper.Weight};
             // создаем адаптер, передаем в него курсор
             productAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
                     productCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
-                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
+                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product, R.id.weight_of_product}, 0);
             productList.setAdapter(productAdapter);
         }
 

@@ -24,9 +24,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
+
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view=inflater.inflate(this.layout, parent, false);
+        View view = inflater.inflate(this.layout, parent, false);
 
         TextView idProduct = (TextView) view.findViewById(R.id.id_of_product);
         TextView name = (TextView) view.findViewById(R.id.name_of_product);
@@ -34,6 +35,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView fats = (TextView) view.findViewById(R.id.fats_of_product);
         TextView carbohydrates = (TextView) view.findViewById(R.id.carbohydrates_of_product);
         TextView calories = (TextView) view.findViewById(R.id.calories_of_product);
+        TextView weight = (TextView) view.findViewById(R.id.weight_of_product);
 
         Product product = products.get(position);
 
@@ -43,6 +45,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         fats.setText(String.valueOf(product.getFats()));
         carbohydrates.setText(String.valueOf(product.getCarbohydrates()));
         calories.setText(String.valueOf(product.getCalories()));
+        weight.setText(String.valueOf(product.getWeight()));
 
         return view;
     }

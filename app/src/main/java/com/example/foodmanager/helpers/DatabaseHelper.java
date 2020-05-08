@@ -39,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Fats = "Fats";
     public static final String Carbohydrates = "Uglevody";
     public static final String Calories = "Calories";
+    public static final String Weight = "Weight";
 
     private Context myContext;
 

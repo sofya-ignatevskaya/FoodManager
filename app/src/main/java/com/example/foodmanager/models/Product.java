@@ -12,19 +12,21 @@ public class Product implements Parcelable {
     private double fats;
     private double carbohydrates;
     private double calories;
+    private double weight;
 
     // Конструктор класса
     public Product() {
 
     }
 
-    public Product(long id, String name, double proteins, double fats, double carbohydrates, double calories) {
+    public Product(long id, String name, double proteins, double fats, double carbohydrates, double calories, double weight) {
         this.id = id;
         this.name = name;
         this.proteins = proteins;
         this.fats = fats;
         this.carbohydrates = carbohydrates;
         this.calories = calories;
+        this.weight = weight;
     }
 
     public Product(Parcel in) {
@@ -34,6 +36,7 @@ public class Product implements Parcelable {
         fats = in.readDouble();
         carbohydrates = in.readDouble();
         calories = in.readDouble();
+        weight=in.readDouble();
     }
     // геттеры полей
 
@@ -61,6 +64,10 @@ public class Product implements Parcelable {
         return calories;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
     //сеттеры
     public void setName(String name) {
         this.name = name;
@@ -82,6 +89,10 @@ public class Product implements Parcelable {
         this.calories = calories;
     }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -95,6 +106,7 @@ public class Product implements Parcelable {
         dest.writeDouble(fats);
         dest.writeDouble(carbohydrates);
         dest.writeDouble(calories);
+        dest.writeDouble(weight);
     }
 
     public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {

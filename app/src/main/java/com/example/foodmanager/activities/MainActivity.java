@@ -177,11 +177,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setInitialData() {
 
-        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64));
-        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50));
-        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54));
-        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66));
-        products.add(new Product(5, "Рис", 7, 1, 71.4, 330));
+        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64,100));
+        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50,100));
+        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54,100));
+        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66,100));
+        products.add(new Product(5, "Рис", 7, 1, 71.4, 330,100));
     }
 
     public void cleanProduct (View view) {

@@ -66,7 +66,7 @@ public class WeightActivity extends AppCompatActivity {
 
             //products.add(onePr);
         }
-        intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories()));
+        intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories(), onePr.getWeight()));
         startActivity(intent);
 
     }

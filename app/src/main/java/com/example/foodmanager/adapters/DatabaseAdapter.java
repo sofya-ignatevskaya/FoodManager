@@ -67,7 +67,8 @@ public class DatabaseAdapter {
                 double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
                 double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
                 double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
-                products.add(new Product(id, name, proteins, fats, carbohydrates, calories));
+                double weight = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Weight));
+                products.add(new Product(id, name, proteins, fats, carbohydrates, calories,weight));
             }
             while (cursor.moveToNext());
         }
@@ -94,7 +95,8 @@ public class DatabaseAdapter {
             double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
             double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
             double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
-            product = new Product(id, name, proteins, fats, carbohydrates, calories);
+            double weight = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Weight));
+            product = new Product(id, name, proteins, fats, carbohydrates, calories, weight);
         }
 
         DecimalFormat df = new DecimalFormat("#.##");
@@ -105,7 +107,9 @@ public class DatabaseAdapter {
         double carbohydrates = product.getCarbohydrates() / 100 * Double.parseDouble(text);
         product.setCarbohydrates(roundAvoid(carbohydrates,2));
         double calories = product.getCalories() / 100 * Double.parseDouble(text);
-        product.setCalories(roundAvoid(calories,2));
+        product.setCalories(roundAvoid(calories,0));
+        double weight =  Double.parseDouble(text);
+        product.setWeight(roundAvoid(weight, 0));
 
         cursor.close();
         return product;
