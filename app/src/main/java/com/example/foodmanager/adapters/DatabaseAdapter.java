@@ -86,8 +86,6 @@ public class DatabaseAdapter {
         database = dbHelper.open();
         Product product = null;
 
-
-        //String query = String.format("SELECT * FROM product WHERE product._id =  ", DatabaseHelper.tProduct, DatabaseHelper.idProduct);
         Cursor cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct + "=?", new String[]{String.valueOf(id)});
         if (cursor.moveToFirst()) {
 
@@ -97,40 +95,26 @@ public class DatabaseAdapter {
             double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
             double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
             product = new Product(id, name, proteins, fats, carbohydrates, calories);
-
         }
 
-
-
-       /*String myString = text;
-
-        if (myString != null && !myString.equals("")) {
-            myDouble = Double.valueOf(myString);
-        } else {
-            myDouble = 0;
-        }*/
-
+        DecimalFormat df = new DecimalFormat("#.##");
         double proteins = product.getProteins() / 100 * Double.parseDouble(text);
-        String formatProteins = new DecimalFormat("#0.00").format(proteins);
-        product.setProteins(Double.parseDouble(formatProteins));
-
+        product.setProteins(roundAvoid(proteins,2));
         double fats = product.getFats() / 100 * Double.parseDouble(text);
-        String formatFats = new DecimalFormat("#0.00").format(fats);
-        product.setFats(Double.parseDouble(formatFats));
-
+        product.setFats(roundAvoid(fats,2));
         double carbohydrates = product.getCarbohydrates() / 100 * Double.parseDouble(text);
-        String formatCarbohydrates = new DecimalFormat("#0.00").format(carbohydrates);
-        product.setCarbohydrates(Double.parseDouble(formatCarbohydrates));
-
+        product.setCarbohydrates(roundAvoid(carbohydrates,2));
         double calories = product.getCalories() / 100 * Double.parseDouble(text);
-        String formatCalories= new DecimalFormat("#0.00").format(calories);
-        product.setCalories(Double.parseDouble(formatCalories));
-
+        product.setCalories(roundAvoid(calories,2));
 
         cursor.close();
         return product;
     }
 
+    public static double roundAvoid(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    }
     public long insert(Product product) {
 
         ContentValues cv = new ContentValues();

@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putString(KEY_CONNECTIONS, connectionsJSONString);
             editor.apply();
         }
+        productWithWeight = null;
     }
 
 
@@ -214,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
         // Закрываем подключение и курсор
         db.close();
         // userCursor.close();
+
     }
 
 
