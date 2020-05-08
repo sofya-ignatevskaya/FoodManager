@@ -100,7 +100,7 @@ public class DatabaseAdapter {
 
         }
 
-        double myDouble;
+
 
        /*String myString = text;
 
@@ -110,21 +110,21 @@ public class DatabaseAdapter {
             myDouble = 0;
         }*/
 
-        double proteins = product.getProteins() / 100 * Double.valueOf(text);
+        double proteins = product.getProteins() / 100 * Double.parseDouble(text);
         String formatProteins = new DecimalFormat("#0.00").format(proteins);
-        product.setProteins(Double.valueOf(formatProteins));
+        product.setProteins(Double.parseDouble(formatProteins));
 
-        double fats = product.getFats() / 100 * Double.valueOf(text);
+        double fats = product.getFats() / 100 * Double.parseDouble(text);
         String formatFats = new DecimalFormat("#0.00").format(fats);
-        product.setFats(Double.valueOf(formatFats));
+        product.setFats(Double.parseDouble(formatFats));
 
-        double carbohydrates = product.getCarbohydrates() / 100 * Double.valueOf(text);
+        double carbohydrates = product.getCarbohydrates() / 100 * Double.parseDouble(text);
         String formatCarbohydrates = new DecimalFormat("#0.00").format(carbohydrates);
-        product.setCarbohydrates(Double.valueOf(formatCarbohydrates));
+        product.setCarbohydrates(Double.parseDouble(formatCarbohydrates));
 
-        double calories = product.getCalories() / 100 * Double.valueOf(text);
+        double calories = product.getCalories() / 100 * Double.parseDouble(text);
         String formatCalories= new DecimalFormat("#0.00").format(calories);
-        product.setCalories(Double.valueOf(formatCalories));
+        product.setCalories(Double.parseDouble(formatCalories));
 
 
         cursor.close();
