@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/AppTheme"
-        >
-        <activity android:name=".activities.WeightActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.UpdateActivity"></activity>
+        <activity android:name=".activities.WeightActivity" />
         <activity android:name=".activities.KindActivity" />
         <activity android:name=".activities.ProductActivity" />
         <activity android:name=".activities.CategoryActivity" />

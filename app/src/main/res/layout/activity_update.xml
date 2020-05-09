@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/updateName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Название" />
+    <EditText
+        android:id="@+id/updateProteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Белки"
+        android:layout_below="@+id/updateName"/>
+    <EditText
+        android:id="@+id/updateFats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Жиры"
+        android:layout_below="@+id/updateProteins"
+        />
+    <EditText
+        android:id="@+id/updateCarbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Углеводы"
+        android:layout_below="@+id/updateFats"/>
+    <EditText
+        android:id="@+id/updateCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Калории"
+        android:layout_below="@+id/updateCarbo"/>
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Изменить"
+        android:layout_below="@+id/updateCalories"
+        android:onClick="updateButton"
+        />
+
+</RelativeLayout>

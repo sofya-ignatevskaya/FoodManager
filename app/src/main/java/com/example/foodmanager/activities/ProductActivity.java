@@ -50,6 +50,21 @@ public class ProductActivity extends AppCompatActivity {
                         + id);
             }
         });
+        productList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            public boolean onItemLongClick(AdapterView<?> productList, View view, int position, long id) {
+
+                Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
+                intent.putExtra("id_product_long", id);
+                startActivity(intent);
+                Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
+                        + id);
+                return true;
+            }
+
+        });
+
+
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
