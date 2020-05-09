@@ -9,39 +9,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Название" />
+
     <EditText
         android:id="@+id/updateProteins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Белки"
-        android:layout_below="@+id/updateName"/>
+        android:layout_below="@+id/updateName"
+        tools:text="Белки" />
+
     <EditText
         android:id="@+id/updateFats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Жиры"
         android:layout_below="@+id/updateProteins"
-        />
+        tools:text="Жиры" />
+
     <EditText
         android:id="@+id/updateCarbo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Углеводы"
-        android:layout_below="@+id/updateFats"/>
+        android:layout_below="@+id/updateFats"
+        tools:text="Углеводы" />
+
     <EditText
         android:id="@+id/updateCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Калории"
-        android:layout_below="@+id/updateCarbo"/>
+        android:layout_below="@+id/updateCarbo"
+        tools:text="Калории" />
+
     <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Изменить"
         android:layout_below="@+id/updateCalories"
         android:onClick="updateButton"
-        />
+        android:text="Изменить" />
 
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/updateButton"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/updateButton"
+        android:onClick="deleteButton"
+        android:text="Удалить" />
 </RelativeLayout>

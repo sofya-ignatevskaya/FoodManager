@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-    <Button
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выбрать продукт"
-        android:onClick="chooseProduct" />
-    <Button
-        android:id="@+id/cleanProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Очистить"
-        android:onClick="cleanProduct" />
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="chooseProduct"
+            android:text="Выбрать продукт" />
+
+        <Button
+            android:id="@+id/cleanProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="cleanProduct"
+            android:text="Очистить" />
+
+        <Button
+            android:id="@+id/addProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addProduct"
+            android:text="Добваить" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/userList"
-        tools:listitem="@layout/list_of_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_of_product" />
+
+
 </LinearLayout>

@@ -70,7 +70,12 @@ public class WeightActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Закрываем подключение и курсор
 
+    }
 
 }
 
