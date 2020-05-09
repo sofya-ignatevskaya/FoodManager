@@ -123,13 +123,14 @@ public class MainActivity extends AppCompatActivity {
         //setInitialData();
 
         db = databaseHelper.open();
-        ListProduct lp = new ListProduct();
+        //ListProduct lp = new ListProduct();
         anotherProducts = new ArrayList<>();
 
         productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
         userList.setAdapter(productAdapter);
         if (connectionsGet != null) {
             productAdapter.addAll(connectionsGet);
+            productAdapter.notifyDataSetChanged();
         }
 
         if (productWithWeight != null) {
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
         productWithWeight = null;
+
     }
 
 
@@ -188,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
         editor = getPreferences(MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();
+        connectionsGet.clear();
+        productWithWeight = null;
         productAdapter.clear();
         productAdapter.notifyDataSetChanged();
 
