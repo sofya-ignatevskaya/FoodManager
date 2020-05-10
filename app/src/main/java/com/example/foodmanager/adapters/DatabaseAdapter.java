@@ -147,6 +147,7 @@ public class DatabaseAdapter {
         cv.put(DatabaseHelper.Fats, product.getFats());
         cv.put(DatabaseHelper.Carbohydrates, product.getCarbohydrates());
         cv.put(DatabaseHelper.Calories, product.getCalories());
+        cv.put(DatabaseHelper.Weight, product.getWeight());
         return database.update(DatabaseHelper.tProduct, cv, whereClause, null);
     }
 }

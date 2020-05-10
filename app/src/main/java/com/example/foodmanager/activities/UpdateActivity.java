@@ -19,19 +19,25 @@ public class UpdateActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Product product;
-    Product updateProduct;
+
     DatabaseAdapter adapter;
+
+    TextView name;
+    TextView proteins;
+    TextView fats;
+    TextView carbohydrates;
+    TextView calories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-        TextView name = (TextView) findViewById(R.id.updateName);
-        TextView proteins = (TextView) findViewById(R.id.updateProteins);
-        TextView fats = (TextView) findViewById(R.id.updateFats);
-        TextView carbohydrates = (TextView) findViewById(R.id.updateCarbo);
-        TextView calories = (TextView) findViewById(R.id.updateCalories);
-        Button updateButton = (Button) findViewById(R.id.updateButton);
+        name = (TextView) findViewById(R.id.updateName);
+        proteins = (TextView) findViewById(R.id.updateProteins);
+        fats = (TextView) findViewById(R.id.updateFats);
+        carbohydrates = (TextView) findViewById(R.id.updateCarbo);
+        calories = (TextView) findViewById(R.id.updateCalories);
+        // Button updateButton = (Button) findViewById(R.id.updateButton);
 
         Bundle extrasKind = getIntent().getExtras();
         if (extrasKind != null) {
@@ -42,9 +48,9 @@ public class UpdateActivity extends AppCompatActivity {
         databaseHelper.create_db();
         db = databaseHelper.open();
         // products = new ArrayList<>();
-         adapter = new DatabaseAdapter(this);
-        product = adapter.getProduct(productId,"100");
-       // String nameProduct = product.getName();
+        adapter = new DatabaseAdapter(this);
+        product = adapter.getProduct(productId, "100");
+        // String nameProduct = product.getName();
         name.setText(product.getName());
         proteins.setText(String.valueOf(product.getProteins()));
         fats.setText(String.valueOf(product.getFats()));
@@ -55,16 +61,35 @@ public class UpdateActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateProduct = adapter.getProduct(productId,"100");
-
-
-
     }
+
     public void updateButton(View v) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+        String updateName = name.getText().toString();
+        double updateProteins = Double.parseDouble(proteins.getText().toString());
+        double updateFats = Double.parseDouble(fats.getText().toString());
+        double updateCarbohydrates = Double.parseDouble(carbohydrates.getText().toString());
+        double updateCalories = Double.parseDouble(calories.getText().toString());
+        double updateWeight = 100;
+        Product updateProduct = new Product(productId, updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight);
         adapter.update(updateProduct);
+        goHome();
+    }
+
+    public void deleteButton(View v) {
+        //Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+        adapter.delete(productId);
+        goHome();
+        // startActivity(intent);
+    }
+
+    private void goHome() {
+        // переход к главной activity
+        Intent intent = new Intent(this, ProductActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
