@@ -194,8 +194,6 @@ public class MainActivity extends AppCompatActivity {
         productWithWeight = null;
         productAdapter.clear();
         productAdapter.notifyDataSetChanged();
-
-
     }
 
     /*public void onClick(View v) {
@@ -208,6 +206,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
 
+    public void addProduct (View view) {
+        Intent intent = new Intent(this, AddActivity.class);
+        startActivity(intent);
+    }
     public void chooseProduct(View view) {
         Intent intent = new Intent(this, KindActivity.class);
         startActivity(intent);
