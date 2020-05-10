@@ -190,7 +190,9 @@ public class MainActivity extends AppCompatActivity {
         editor = getPreferences(MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();
-        connectionsGet.clear();
+        if (connectionsGet != null) {
+            connectionsGet.clear();
+        }
         productWithWeight = null;
         productAdapter.clear();
         productAdapter.notifyDataSetChanged();

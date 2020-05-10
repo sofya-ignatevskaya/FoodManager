@@ -56,15 +56,25 @@ public class AddActivity extends AppCompatActivity {
         kindSelection.setVisibility(View.INVISIBLE);
         categorySelection = (TextView) findViewById(R.id.categorySelection);
         categorySelection.setVisibility(View.INVISIBLE);
-        categorySpinner.setVisibility(View.VISIBLE);
+       // categorySpinner.setVisibility(View.GONE);
 
-        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+
+        //kindSpinner.setSelection(2);
+       /* switch (kindItem) {
+            case 0:
+                categorySpinner.setVisibility(View.GONE);
+                break;
+            case 1:
+                categorySpinner.setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }*/
+
         ArrayAdapter<String> kindAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kind);
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, category);
-        // Определяем разметку для использования при выборе элемента
         kindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к элементу spinner
         kindSpinner.setAdapter(kindAdapter);
         categorySpinner.setAdapter(categoryAdapter);
 
@@ -77,6 +87,13 @@ public class AddActivity extends AppCompatActivity {
                 item = (String) parent.getItemAtPosition(position);
                 kindSelection.setText(item);
                 categorySelection.setText(item);
+                if(item.equals("Готовые блюда"))
+                {
+                    categorySpinner.setEnabled(false);
+                }
+                else {
+                    categorySpinner.setEnabled(true);
+                }
             }
 
             @Override
@@ -89,12 +106,8 @@ public class AddActivity extends AppCompatActivity {
         kindItem = kindSpinner.getSelectedItemPosition();
 
 
-        if (kindItem == 0) {
-            categorySpinner.setVisibility(View.VISIBLE);
-        }
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
         databaseHelper.create_db();
         db = databaseHelper.open();
         adapter = new DatabaseAdapter(this);
@@ -105,8 +118,6 @@ public class AddActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-
     }
 
     public void addButton(View v) {
@@ -119,6 +130,7 @@ public class AddActivity extends AppCompatActivity {
         int updateKind = 0;
         int updateCategory = 0;
 
+        kindItem = kindSpinner.getSelectedItemPosition();
         switch (kindItem) {
             case 0:
                 updateKind = 1;
@@ -129,32 +141,38 @@ public class AddActivity extends AppCompatActivity {
             default:
                 break;
         }
+        if (updateKind ==1) {
+            categoryItem = categorySpinner.getSelectedItemPosition();
+            switch (categoryItem) {
+                case 0:
+                    updateCategory = 1;
+                    updateKind = 1;
+                    break;
+                case 1:
+                    updateCategory = 2;
+                    updateKind = 1;
+                    break;
+                case 2:
+                    updateCategory = 3;
+                    updateKind = 1;
 
-        categoryItem = categorySpinner.getSelectedItemPosition();
-        switch (categoryItem) {
-            case 0:
-                updateCategory = 1;
-
-                break;
-            case 1:
-                updateCategory = 2;
-                break;
-            case 2:
-                updateCategory = 3;
-                break;
-            case 3:
-                updateCategory = 4;
-                break;
-            case 4:
-                updateCategory = 5;
-                break;
-            case 5:
-                updateCategory = 6;
-                break;
-            default:
-                break;
+                    break;
+                case 3:
+                    updateCategory = 4;
+                    updateKind = 1;
+                    break;
+                case 4:
+                    updateCategory = 5;
+                    updateKind = 1;
+                    break;
+                case 5:
+                    updateCategory = 6;
+                    updateKind = 1;
+                    break;
+                default:
+                    break;
+            }
         }
-
         Product updateProduct = new Product(updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight, updateKind, updateCategory);
         adapter.insert(updateProduct);
         goHome();
@@ -162,7 +180,7 @@ public class AddActivity extends AppCompatActivity {
 
     private void goHome() {
         // переход к главной activity
-        Intent intent = new Intent(this, ProductActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }

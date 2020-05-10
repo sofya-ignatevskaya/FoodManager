@@ -120,7 +120,7 @@ public class DatabaseAdapter {
         return Math.round(value * scale) / scale;
     }
     public long insert(Product product) {
-
+        database = dbHelper.open();
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.nameProduct, product.getName());
         cv.put(DatabaseHelper.Proteins, product.getProteins());
