@@ -22,6 +22,7 @@ import com.example.foodmanager.activities.CategoryActivity;
 import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.adapters.ProductAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
+import com.example.foodmanager.models.DeleteDialogFragment;
 import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 import com.google.gson.Gson;
@@ -31,8 +32,11 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import interfaces.deleteInterface;
 
+
+public class MainActivity extends AppCompatActivity
+        implements deleteInterface.Datable {
 
     ListView userList;
     EditText weightEditText;
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     List<Product> connectionsGet;
     List<Product> connections;
     SharedPreferences.Editor editor;
-
+    Product selectedProduct;
 
 
     @Override
@@ -89,23 +93,46 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
                 // получаем выбранный пункт
-                Product selectedProduct = (Product) parent.getItemAtPosition(position);
+                selectedProduct = (Product) parent.getItemAtPosition(position);
                 Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
                         Toast.LENGTH_SHORT).show();
+
+                DeleteDialogFragment dialog = new DeleteDialogFragment();
+                Bundle args = new Bundle();
+                args.putString("selectedProduct", selectedProduct.getName());
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), "custom");
+
+
             }
         };
         userList.setOnItemClickListener(itemListener);
+
         // adapter.close();
 
 
     }
 
     @Override
+    public void remove(String name) {
+        if (selectedProduct.getName().equals(name)) {
+            productAdapter.remove(selectedProduct);
+            //connections.remove(selectedProduct);
+            productAdapter.notifyDataSetChanged();
+        }
+    }
+
+    /*if (selectedProduct != null && connectionsGet != null) {
+                connectionsGet.remove(selectedProduct);
+            }*/
+
+    @Override
     protected void onResume() {
         super.onResume();
 
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
-        Type type = new TypeToken<List<Product>>() {}.getType();
+        Type type = new TypeToken<List<Product>>() {
+        }.getType();
         connectionsGet = new Gson().fromJson(connectionsJSONString, type);
 
 
@@ -121,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         userList.setAdapter(userAdapter);*/
 
         //setInitialData();
+
 
         db = databaseHelper.open();
         //ListProduct lp = new ListProduct();
@@ -162,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
 
         if (productWithWeight != null) {
-             editor = getPreferences(MODE_PRIVATE).edit();
+            editor = getPreferences(MODE_PRIVATE).edit();
             connections = new ArrayList<>();
             if (connectionsGet != null) {
                 connections.addAll(connectionsGet);
@@ -178,15 +206,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setInitialData() {
-
-        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64,100));
-        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50,100));
-        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54,100));
-        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66,100));
-        products.add(new Product(5, "Рис", 7, 1, 71.4, 330,100));
+        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64, 100));
+        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50, 100));
+        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54, 100));
+        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66, 100));
+        products.add(new Product(5, "Рис", 7, 1, 71.4, 330, 100));
     }
 
-    public void cleanProduct (View view) {
+    public void dialogButton(View view) {
+        DeleteDialogFragment dialog = new DeleteDialogFragment();
+        dialog.show(getSupportFragmentManager(), "custom");
+    }
+
+    public void cleanProduct(View view) {
         editor = getPreferences(MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();
@@ -208,10 +240,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
 
-    public void addProduct (View view) {
+    public void addProduct(View view) {
         Intent intent = new Intent(this, AddActivity.class);
         startActivity(intent);
     }
+
     public void chooseProduct(View view) {
         Intent intent = new Intent(this, KindActivity.class);
         startActivity(intent);

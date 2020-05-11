@@ -32,6 +32,12 @@
             android:layout_height="wrap_content"
             android:onClick="addProduct"
             android:text="Добавить" />
+        <Button
+            android:id="@+id/dialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="dialogButton"
+            android:text="Д" />
     </LinearLayout>
 
     <ListView
