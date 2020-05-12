@@ -1,55 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="chooseProduct"
-            android:text="Выбрать продукт" />
-
-        <Button
-            android:id="@+id/cleanProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="cleanProduct"
-            android:text="Очистить" />
-
-        <Button
-            android:id="@+id/addProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="addProduct"
-            android:text="Добавить" />
-        <Button
-            android:id="@+id/dialogButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="dialogButton"
-            android:text="Д" />
-    </LinearLayout>
-
- <ListView
-        android:id="@+id/userList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/list_of_product" />
 
     <Button
-        android:id="@+id/Button"
+        android:id="@+id/chooseProduct"
+        android:layout_width="147dp"
+        android:layout_height="34dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="chooseProduct"
+        android:text="Выбрать продукт" />
+
+
+    <ImageButton
+        android:id="@+id/cleanProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/chooseProduct"
+        android:onClick="cleanProduct"
+        android:src="@drawable/delete_blue"
+        android:background="@android:drawable/screen_background_light_transparent"/>
+
+    <ImageButton
+        android:id="@+id/addProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="dialogButton"
-        android:text="Д" />
-</LinearLayout>
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="19dp"
+        android:layout_toLeftOf="@+id/chooseProduct"
+        android:onClick="addProduct"
+        android:src="@drawable/plus_blue"
+        android:background="@android:drawable/screen_background_light_transparent"/>
+
+    <ListView
+        android:id="@+id/userList"
+        android:layout_width="match_parent"
+        android:layout_height="481dp"
+        android:layout_below="@+id/chooseProduct"
+        android:layout_marginTop="15dp"
+        tools:listitem="@layout/list_of_product">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userList"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Всего" />
+
+    <TextView
+        android:id="@+id/numberCal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/userList"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/all"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="калорий"
+        android:layout_below="@+id/userList"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/numberCal"
+        />
+    <TextView
+        android:id="@+id/proteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:text="Белки: "
+        />
+    <TextView
+        android:id="@+id/numberProteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/proteins"
+        />
+    <TextView
+        android:id="@+id/fats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/numberProteins"
+        android:text="Жиры: "
+        />
+    <TextView
+        android:id="@+id/numberFats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/fats"
+        />
+    <TextView
+        android:id="@+id/carbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/numberFats"
+        android:text="Углеводы: "
+        />
+    <TextView
+        android:id="@+id/numberCarbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/all"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/carbo"
+        />
+
+
+</RelativeLayout>
