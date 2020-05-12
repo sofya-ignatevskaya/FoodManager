@@ -4,82 +4,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/name_of_product"
+        android:layout_width="412dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/darker_gray"
+        android:gravity="top"
+        android:textColor="@android:color/white"
+
+        />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/white"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/proteins_of_product"
-        android:layout_alignTop="@+id/proteins_of_product"
-        android:layout_toStartOf="@id/proteins_of_product"
-        android:gravity="top"
-        android:paddingTop="20dp"
-        android:paddingStart="10dp"
-        tools:text="Название продукта" />
-
+        android:layout_marginLeft="10dp"
+        tools:text="Название продукта"
+        />
 
     <TextView
         android:id="@+id/weight_of_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_alignLeft="@+id/calories_of_product"
+        android:layout_alignTop="@+id/name_of_product"
         tools:text="100" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/name_of_product"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/weight_of_product"
+        android:text="г" />
 
     <TextView
         android:id="@+id/id_of_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/name_of_product"
-        android:paddingStart="5dp"
         android:hint="1"
-        android:textSize="10sp"/>
-        <!--android:visibility="invisible"-->
+        android:paddingStart="5dp"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        />
 
 
 
-
+    <TextView
+        android:id="@+id/proteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/proteins_of_product"
+        android:text="Белки" />
 
     <TextView
         android:id="@+id/proteins_of_product"
-        android:padding="20dp"
-        android:background="@android:color/holo_purple"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/fats_of_product"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="0dp"
+        android:text="0"
         tools:text="10" />
 
     <TextView
-
-        android:id="@+id/fats_of_product"
-        android:padding="20dp"
+        android:id="@+id/fats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
-        android:layout_toLeftOf="@id/carbohydrates_of_product"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/fats_of_product"
+        android:text="Жиры" />
+
+    <TextView
+        android:id="@+id/fats_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toLeftOf="@+id/proteins"
         tools:text="10" />
+
+    <TextView
+        android:id="@+id/carbohydrates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_marginLeft="10dp"
+        android:text="Углеводы" />
 
     <TextView
         android:id="@+id/carbohydrates_of_product"
-        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
-        android:textColor="@android:color/white"
-        android:layout_toLeftOf="@id/calories_of_product"
+        android:layout_alignBottom="@+id/name_of_product"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/carbohydrates"
         tools:text="10" />
 
     <TextView
-        android:id="@+id/calories_of_product"
-        android:padding="20dp"
+        android:id="@+id/calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:textColor="@android:color/white"
-        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="23dp"
+        android:layout_toRightOf="@+id/calories_of_product"
+        android:text="ккал" />
+
+    <TextView
+        android:id="@+id/calories_of_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/proteins"
+        android:layout_marginTop="23dp"
+
+
         tools:text="10" />
 
 </RelativeLayout>

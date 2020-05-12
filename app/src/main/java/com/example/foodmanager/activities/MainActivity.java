@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity
         proteinsText.setText(String.valueOf(roundAvoid(proteins, 1)));
         fatsText.setText(String.valueOf(roundAvoid(fats, 1)));
         carbohydratesText.setText(String.valueOf(roundAvoid(carbohydrates, 1)));
-
     }
 
     @Override
