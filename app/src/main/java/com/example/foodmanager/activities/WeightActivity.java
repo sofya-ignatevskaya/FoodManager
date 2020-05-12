@@ -12,11 +12,9 @@ import android.widget.EditText;
 import com.example.foodmanager.R;
 import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
-import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WeightActivity extends AppCompatActivity {
 

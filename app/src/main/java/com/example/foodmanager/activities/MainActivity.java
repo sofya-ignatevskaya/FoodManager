@@ -7,11 +7,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -19,12 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodmanager.R;
-import com.example.foodmanager.activities.CategoryActivity;
-import com.example.foodmanager.adapters.DatabaseAdapter;
 import com.example.foodmanager.adapters.ProductAdapter;
 import com.example.foodmanager.helpers.DatabaseHelper;
 import com.example.foodmanager.models.DeleteDialogFragment;
-import com.example.foodmanager.models.ListProduct;
 import com.example.foodmanager.models.Product;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -116,6 +110,23 @@ public class MainActivity extends AppCompatActivity
             productAdapter.remove(selectedProduct);
             productAdapter.notifyDataSetChanged();
         }
+
+        double calories = 0;
+        double proteins = 0;
+        double fats = 0;
+        double carbohydrates = 0;
+
+        for (Product i : anotherProducts) {
+            calories += i.getCalories();
+            proteins += i.getProteins();
+            fats += i.getFats();
+            carbohydrates += i.getCarbohydrates();
+        }
+        caloriesText.setText(String.valueOf(roundAvoid(calories, 1)));
+        proteinsText.setText(String.valueOf(roundAvoid(proteins, 1)));
+        fatsText.setText(String.valueOf(roundAvoid(fats, 1)));
+        carbohydratesText.setText(String.valueOf(roundAvoid(carbohydrates, 1)));
+
     }
 
     @Override
@@ -155,12 +166,14 @@ public class MainActivity extends AppCompatActivity
             fats += i.getFats();
             carbohydrates += i.getCarbohydrates();
         }
-        caloriesText.setText(String.valueOf(calories));
-        proteinsText.setText(String.valueOf(proteins));
-        fatsText.setText(String.valueOf(fats));
-        carbohydratesText.setText(String.valueOf(carbohydrates));
-
-
+        caloriesText.setText(String.valueOf(roundAvoid(calories, 1)));
+        proteinsText.setText(String.valueOf(roundAvoid(proteins,1)));
+        fatsText.setText(String.valueOf(roundAvoid(fats,1)));
+        carbohydratesText.setText(String.valueOf(roundAvoid(carbohydrates, 1)));
+    }
+    public static double roundAvoid(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
     }
 
     @Override
