@@ -40,11 +40,16 @@
             android:text="Д" />
     </LinearLayout>
 
-    <ListView
+ <ListView
         android:id="@+id/userList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/list_of_product" />
 
-
+    <Button
+        android:id="@+id/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="dialogButton"
+        android:text="Д" />
 </LinearLayout>

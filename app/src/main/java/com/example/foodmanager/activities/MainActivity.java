@@ -117,9 +117,9 @@ public class MainActivity extends AppCompatActivity
     public void remove(String name) {
         if (selectedProduct.getName().equals(name)) {
             productAdapter.remove(selectedProduct);
-            //connections.remove(selectedProduct);
             productAdapter.notifyDataSetChanged();
         }
+
     }
 
     /*if (selectedProduct != null && connectionsGet != null) {
@@ -189,17 +189,17 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
 
-        if (productWithWeight != null) {
+      //  if (productWithWeight != null) {
             editor = getPreferences(MODE_PRIVATE).edit();
             connections = new ArrayList<>();
-            if (connectionsGet != null) {
-                connections.addAll(connectionsGet);
+            if (anotherProducts != null) {
+                connections.addAll(anotherProducts);
             }
-            connections.add(productWithWeight);
+            //connections.add(productWithWeight);
             String connectionsJSONString = new Gson().toJson(connections);
             editor.putString(KEY_CONNECTIONS, connectionsJSONString);
             editor.apply();
-        }
+      //  }
         productWithWeight = null;
 
     }
