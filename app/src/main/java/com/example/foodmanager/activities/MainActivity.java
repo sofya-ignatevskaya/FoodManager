@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodmanager.R;
@@ -59,7 +60,10 @@ public class MainActivity extends AppCompatActivity
     List<Product> connections;
     SharedPreferences.Editor editor;
     Product selectedProduct;
-
+    TextView caloriesText;
+    TextView proteinsText;
+    TextView fatsText;
+    TextView carbohydratesText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +71,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         userList = (ListView) findViewById(R.id.userList);
+        caloriesText = (TextView) findViewById(R.id.numberCal);
+        proteinsText = (TextView) findViewById(R.id.numberProteins);
+        fatsText = (TextView) findViewById(R.id.numberFats);
+        carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
 
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
-        /* txtWeight = getIntent().getStringExtra("weight");*/
-        // Intent productWeight = getIntent();
-        //products =getIntent().getParcelableArrayListExtra("productsViaWeight");
-        // Toast.makeText(this, products.get(1).getName(), Toast.LENGTH_LONG).show();
 
         //получаю продукт из WA
         Intent intent = getIntent();
@@ -85,7 +89,6 @@ public class MainActivity extends AppCompatActivity
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
-
 
         // слушатель выбора в списке
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
@@ -102,15 +105,9 @@ public class MainActivity extends AppCompatActivity
                 args.putString("selectedProduct", selectedProduct.getName());
                 dialog.setArguments(args);
                 dialog.show(getSupportFragmentManager(), "custom");
-
-
             }
         };
         userList.setOnItemClickListener(itemListener);
-
-        // adapter.close();
-
-
     }
 
     @Override
@@ -119,12 +116,7 @@ public class MainActivity extends AppCompatActivity
             productAdapter.remove(selectedProduct);
             productAdapter.notifyDataSetChanged();
         }
-
     }
-
-    /*if (selectedProduct != null && connectionsGet != null) {
-                connectionsGet.remove(selectedProduct);
-            }*/
 
     @Override
     protected void onResume() {
@@ -134,20 +126,6 @@ public class MainActivity extends AppCompatActivity
         Type type = new TypeToken<List<Product>>() {
         }.getType();
         connectionsGet = new Gson().fromJson(connectionsJSONString, type);
-
-
-        //получаем данные из бд в виде курсора
-        /*userCursor = db.rawQuery("select * from Product where  Product._id =?", new String[]{String.valueOf(productId)});
-        // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
-                DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
-        // создаем адаптер, передаем в него курсор
-        userAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
-                userCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
-                R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
-        userList.setAdapter(userAdapter);*/
-
-        //setInitialData();
 
 
         db = databaseHelper.open();
@@ -160,27 +138,27 @@ public class MainActivity extends AppCompatActivity
             productAdapter.addAll(connectionsGet);
             productAdapter.notifyDataSetChanged();
         }
-
         if (productWithWeight != null) {
 
             productAdapter.add(productWithWeight);
             productAdapter.notifyDataSetChanged();
         }
 
+        double calories = 0;
+        double proteins = 0;
+        double fats = 0;
+        double carbohydrates = 0;
 
-        // DatabaseAdapter adapter = new DatabaseAdapter(this);
-
-        //List<Product> list ;if(null != profile)
-      /*if (productId > 0 && txtWeight != null) {
-            //list = adapter.getProducts();
-            onePr = adapter.getProduct(productId, txtWeight);
-            lp.products.add(onePr);
-           productAdapter.add(onePr);
-       }*/
-        // lp.changeWeight(onePr, weightEditText.getText().toString());
-        // productAdapter.add(onePr);
-
-        // new Product(onePr.getId(),onePr.getName(), onePr.getProteins(),onePr.getFats(),onePr.getCarbohydrates(), onePr.getCalories())
+        for (Product i : anotherProducts) {
+            calories += i.getCalories();
+            proteins += i.getProteins();
+            fats += i.getFats();
+            carbohydrates += i.getCarbohydrates();
+        }
+        caloriesText.setText(String.valueOf(calories));
+        proteinsText.setText(String.valueOf(proteins));
+        fatsText.setText(String.valueOf(fats));
+        carbohydratesText.setText(String.valueOf(carbohydrates));
 
 
     }
@@ -189,34 +167,20 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
 
-      //  if (productWithWeight != null) {
-            editor = getPreferences(MODE_PRIVATE).edit();
-            connections = new ArrayList<>();
-            if (anotherProducts != null) {
-                connections.addAll(anotherProducts);
-            }
-            //connections.add(productWithWeight);
-            String connectionsJSONString = new Gson().toJson(connections);
-            editor.putString(KEY_CONNECTIONS, connectionsJSONString);
-            editor.apply();
-      //  }
+        //  if (productWithWeight != null) {
+        editor = getPreferences(MODE_PRIVATE).edit();
+        connections = new ArrayList<>();
+        if (anotherProducts != null) {
+            connections.addAll(anotherProducts);
+        }
+        //connections.add(productWithWeight);
+        String connectionsJSONString = new Gson().toJson(connections);
+        editor.putString(KEY_CONNECTIONS, connectionsJSONString);
+        editor.apply();
+        //  }
         productWithWeight = null;
-
     }
 
-
-    private void setInitialData() {
-        products.add(new Product(1, "Молоко", 3.2, 3.6, 4.8, 64, 100));
-        products.add(new Product(2, "Кефир", 2.8, 3.5, 3.9, 50, 100));
-        products.add(new Product(3, "Ряженка", 2.9, 2.5, 4.2, 54, 100));
-        products.add(new Product(4, "Йогурт", 5, 3.2, 3.5, 66, 100));
-        products.add(new Product(5, "Рис", 7, 1, 71.4, 330, 100));
-    }
-
-    public void dialogButton(View view) {
-        DeleteDialogFragment dialog = new DeleteDialogFragment();
-        dialog.show(getSupportFragmentManager(), "custom");
-    }
 
     public void cleanProduct(View view) {
         editor = getPreferences(MODE_PRIVATE).edit();
@@ -229,16 +193,6 @@ public class MainActivity extends AppCompatActivity
         productAdapter.clear();
         productAdapter.notifyDataSetChanged();
     }
-
-    /*public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cleanProduct:
-
-                break;
-            default:
-                break;
-        }
-    }*/
 
     public void addProduct(View view) {
         Intent intent = new Intent(this, AddActivity.class);
