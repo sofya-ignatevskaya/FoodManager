@@ -5,6 +5,14 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Вы хотите добавить\n новый продукт?"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
         android:id="@+id/kindSelection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,47 +28,131 @@
         android:id="@+id/addName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Название" />
+        android:layout_below="@+id/question"
+        android:gravity="center"
+        android:ellipsize="start"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="Название продукта" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="для 100 г"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/addName"
+        />
+    <TextView
+        android:id="@+id/proteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weight"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="Белки" />
+
 
     <EditText
         android:id="@+id/addProteins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addName"
-        tools:text="Белки" />
+        android:layout_below="@+id/weight"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:hint="0"
+        android:backgroundTint="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/fats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/proteins"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="10dp"
+        android:text="Жиры" />
 
     <EditText
         android:id="@+id/addFats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addProteins"
-        tools:text="Жиры" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="0"/>
+
+    <TextView
+        android:id="@+id/carbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fats"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="10dp"
+        android:text="Углеводы" />
 
     <EditText
         android:id="@+id/addCarbo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addFats"
-        tools:text="Углеводы" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="0" />
+
+    <TextView
+        android:id="@+id/calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carbo"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="Калории" />
 
     <EditText
         android:id="@+id/addCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addCarbo"
-        tools:text="Калории" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="0"/>
 
     <Spinner
         android:id="@+id/kindSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addCalories" />
+        android:layout_below="@+id/addCalories"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="65dp"/>
 
     <Spinner
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/kindSpinner" />
+        android:layout_below="@+id/kindSpinner"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="65dp"
+        />
 
     <Button
         android:id="@+id/addButton"
@@ -68,6 +160,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/categorySpinner"
         android:onClick="addButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:text="Добавить" />
 
 

@@ -11,8 +11,8 @@
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Вы хотите изменить\n или удалить продукт?"
-        android:layout_marginTop="120dp"
+        android:hint="Вы хотите изменить или\n удалить этот продукт?"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         />
 
@@ -145,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/updateButton"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="50dp"
         android:layout_toRightOf="@+id/updateButton"
 
         android:onClick="deleteButton"
