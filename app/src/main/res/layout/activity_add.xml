@@ -129,7 +129,7 @@
         android:layout_below="@+id/addCarbo"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/transparent"
         android:hint="0"/>
 
@@ -139,9 +139,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addCalories"
 
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginRight="65dp"/>
+
+        android:layout_marginLeft="73dp"
+        android:layout_marginRight="67dp"/>
 
     <Spinner
         android:id="@+id/categorySpinner"
@@ -150,8 +150,8 @@
         android:layout_below="@+id/kindSpinner"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginRight="65dp"
+        android:layout_marginLeft="73dp"
+        android:layout_marginRight="67dp"
         />
 
     <Button
