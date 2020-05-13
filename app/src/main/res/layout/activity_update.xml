@@ -2,47 +2,140 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    >
+
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Вы хотите изменить\n или удалить продукт?"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        />
+
 
     <EditText
         android:id="@+id/updateName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Название" />
+        android:layout_below="@+id/question"
+
+        android:gravity="center"
+        android:ellipsize="start"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/transparent"
+        tools:hint="Название продукта" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="для 100 г"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/updateName"
+        />
+
+    <TextView
+        android:id="@+id/proteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weight"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="Белки" />
 
     <EditText
         android:id="@+id/updateProteins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/updateName"
-        tools:text="Белки" />
+        android:layout_below="@+id/weight"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        tools:text="0"
+        android:backgroundTint="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/fats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/proteins"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="10dp"
+
+        android:text="Жиры" />
 
     <EditText
         android:id="@+id/updateFats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateProteins"
-        tools:text="Жиры" />
+        tools:text="0"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/carbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fats"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="10dp"
+        android:text="Углеводы" />
 
     <EditText
         android:id="@+id/updateCarbo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateFats"
-        tools:text="Углеводы" />
+        tools:text="0"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carbo"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="Калории" />
 
     <EditText
         android:id="@+id/updateCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateCarbo"
-        tools:text="Калории" />
+        tools:text="0"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+       android:layout_marginBottom="10dp"
+        android:backgroundTint="@android:color/transparent"/>
 
     <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/updateCalories"
         android:onClick="updateButton"
         android:text="Изменить" />
@@ -52,8 +145,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/updateButton"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/updateButton"
+
         android:onClick="deleteButton"
         android:text="Удалить" />
 </RelativeLayout>
