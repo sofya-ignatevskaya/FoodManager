@@ -18,7 +18,6 @@ public class Product implements Parcelable {
 
     // Конструктор класса
     public Product() {
-
     }
 
     public Product(long id, String name, double proteins, double fats, double carbohydrates, double calories, double weight) {

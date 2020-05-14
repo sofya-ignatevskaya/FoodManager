@@ -24,25 +24,11 @@ public class DatabaseAdapter {
     private DatabaseHelper dbHelper;
     private SQLiteDatabase database;
 
-    // private LayoutInflater inflater;
-    //private int layout;
-    //private List<Product> products;
-
     public DatabaseAdapter(Context context) {
 
         dbHelper = new DatabaseHelper(context.getApplicationContext());
         dbHelper.create_db(); // тут изменила
     }
-
-
-  /*  public DatabaseAdapter open() {
-       database =  dbHelper.open(); // тут изменила
-        return this;
-    }*/
-
-  /*  public void close() {
-         dbHelper.close();
-     }*/
 
     private Cursor getAllEntries() {
         database = dbHelper.open();
@@ -51,7 +37,6 @@ public class DatabaseAdapter {
         return database.query(DatabaseHelper.tProduct, columns, null, null, null, null, null);
 
     }
-
     public List<Product> getProducts() {
 
         database = dbHelper.open();
@@ -73,14 +58,9 @@ public class DatabaseAdapter {
             while (cursor.moveToNext());
         }
 
-
         cursor.close();
         return products;
     }
-
-   /* public long getCount(){
-        return DatabaseUtils.queryNumEntries(database, DatabaseHelper.tProduct);
-    }*/
 
     public Product getProduct(long id, String text) {
 
@@ -133,7 +113,6 @@ public class DatabaseAdapter {
 
         return database.insert(DatabaseHelper.tProduct, null, cv);
     }
-
     public long delete(long productId) {
 
         String whereClause = "_id = ?";
@@ -142,7 +121,6 @@ public class DatabaseAdapter {
     }
 
     public long update(Product product) {
-
         String whereClause = DatabaseHelper.idProduct + "=" + String.valueOf(product.getId());
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.nameProduct, product.getName());

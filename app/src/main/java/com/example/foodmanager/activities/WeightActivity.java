@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.adapters.DatabaseAdapter;
@@ -26,6 +27,7 @@ public class WeightActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Product onePr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,6 @@ public class WeightActivity extends AppCompatActivity {
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
-
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
@@ -48,26 +49,24 @@ public class WeightActivity extends AppCompatActivity {
 
 
     public void weightButton(View v) {
-
-        db = databaseHelper.open();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-       // products = new ArrayList<>();
-        DatabaseAdapter adapter = new DatabaseAdapter(this);
-        String w = weightEditText.getText().toString();
-        if (productId > 0 && w != null) {
-
-            //Product onePr = new Product();
-             onePr = adapter.getProduct(productId, w);
-            // lp.changeWeight(onePr, weightEditText.getText().toString());
-
-               // products.add( new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories()));
-
-            //products.add(onePr);
+        try {
+            db = databaseHelper.open();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            // products = new ArrayList<>();
+            DatabaseAdapter adapter = new DatabaseAdapter(this);
+            String w = weightEditText.getText().toString();
+            if (productId > 0 && w != null) {
+                onePr = adapter.getProduct(productId, w);
+            }
+            intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories(), onePr.getWeight()));
+            startActivity(intent);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Введите вес продукта",
+                    Toast.LENGTH_SHORT).show();
         }
-        intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories(), onePr.getWeight()));
-        startActivity(intent);
-
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

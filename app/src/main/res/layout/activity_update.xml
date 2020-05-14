@@ -59,6 +59,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
+        android:inputType="numberDecimal"
         tools:text="0"
         android:backgroundTint="@android:color/transparent"/>
 
@@ -79,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateProteins"
+        android:inputType="numberDecimal"
         tools:text="0"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
@@ -101,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateFats"
+        android:inputType="numberDecimal"
         tools:text="0"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
@@ -123,6 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/updateCarbo"
+        android:inputType="numberDecimal"
         tools:text="0"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"

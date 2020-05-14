@@ -46,7 +46,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         carbohydrates.setText(String.valueOf(product.getCarbohydrates()));
         calories.setText(String.valueOf(product.getCalories()));
         weight.setText(String.valueOf(product.getWeight()));
-
         return view;
     }
 }

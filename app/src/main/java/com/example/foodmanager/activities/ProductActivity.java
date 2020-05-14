@@ -69,8 +69,6 @@ public class ProductActivity extends AppCompatActivity {
             }
 
         });
-
-
         databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
         databaseHelper.create_db();
@@ -85,21 +83,6 @@ public class ProductActivity extends AppCompatActivity {
         if (extrasKind != null) {
             kindId = extrasKind.getLong("id_kind");
         }
-
-        /*Bundle extrasProduct = getIntent().getExtras();
-        if (extrasProduct != null) {
-            productId = extrasProduct.getLong("id_product");
-        }*/
-
-       /* //if (productId > 0) {
-            // получаем элемент по id из бд
-           // adapter.open();
-            Product user = adapter.getProduct(productId);
-            //adapter.close();
-        } else {
-            // скрываем кнопку удаления
-            //
-        }*/
     }
 
     @Override

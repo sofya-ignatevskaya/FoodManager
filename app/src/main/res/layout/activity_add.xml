@@ -65,6 +65,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
         android:hint="0"
+        android:inputType="numberDecimal"
         android:backgroundTint="@android:color/transparent"/>
 
     <TextView
@@ -87,6 +88,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/transparent"
+        android:inputType="numberDecimal"
         android:hint="0"/>
 
     <TextView
@@ -109,6 +111,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/transparent"
+        android:inputType="numberDecimal"
         android:hint="0" />
 
     <TextView
@@ -131,6 +134,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/transparent"
+        android:inputType="numberDecimal"
         android:hint="0"/>
 
     <Spinner

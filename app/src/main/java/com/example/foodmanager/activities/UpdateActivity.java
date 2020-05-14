@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.adapters.DatabaseAdapter;
@@ -65,15 +66,21 @@ public class UpdateActivity extends AppCompatActivity {
 
     public void updateButton(View v) {
 
-        String updateName = name.getText().toString();
-        double updateProteins = Double.parseDouble(proteins.getText().toString());
-        double updateFats = Double.parseDouble(fats.getText().toString());
-        double updateCarbohydrates = Double.parseDouble(carbohydrates.getText().toString());
-        double updateCalories = Double.parseDouble(calories.getText().toString());
-        double updateWeight = 100;
-        Product updateProduct = new Product(productId, updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight);
-        adapter.update(updateProduct);
-        goHome();
+        try {
+            String updateName = name.getText().toString();
+            double updateProteins = Double.parseDouble(proteins.getText().toString());
+            double updateFats = Double.parseDouble(fats.getText().toString());
+            double updateCarbohydrates = Double.parseDouble(carbohydrates.getText().toString());
+            double updateCalories = Double.parseDouble(calories.getText().toString());
+            double updateWeight = 100;
+            Product updateProduct = new Product(productId, updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight);
+            adapter.update(updateProduct);
+            goHome();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Не все поля заполнены",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void deleteButton(View v) {

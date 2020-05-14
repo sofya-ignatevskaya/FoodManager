@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.nfc.FormatException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.adapters.DatabaseAdapter;
@@ -121,61 +123,67 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void addButton(View v) {
-        String updateName = name.getText().toString();
-        double updateProteins = Double.parseDouble(proteins.getText().toString());
-        double updateFats = Double.parseDouble(fats.getText().toString());
-        double updateCarbohydrates = Double.parseDouble(carbohydrates.getText().toString());
-        double updateCalories = Double.parseDouble(calories.getText().toString());
-        double updateWeight = 100;
-        int updateKind = 0;
-        int updateCategory = 0;
+        try {
+            String updateName = name.getText().toString();
+            double updateProteins = Double.parseDouble(proteins.getText().toString());
+            double updateFats = Double.parseDouble(fats.getText().toString());
+            double updateCarbohydrates = Double.parseDouble(carbohydrates.getText().toString());
+            double updateCalories = Double.parseDouble(calories.getText().toString());
+            double updateWeight = 100;
+            int updateKind = 0;
+            int updateCategory = 0;
 
-        kindItem = kindSpinner.getSelectedItemPosition();
-        switch (kindItem) {
-            case 0:
-                updateKind = 1;
-                break;
-            case 1:
-                updateKind = 2;
-                break;
-            default:
-                break;
-        }
-        if (updateKind ==1) {
-            categoryItem = categorySpinner.getSelectedItemPosition();
-            switch (categoryItem) {
+            kindItem = kindSpinner.getSelectedItemPosition();
+            switch (kindItem) {
                 case 0:
-                    updateCategory = 1;
                     updateKind = 1;
                     break;
                 case 1:
-                    updateCategory = 2;
-                    updateKind = 1;
-                    break;
-                case 2:
-                    updateCategory = 3;
-                    updateKind = 1;
-
-                    break;
-                case 3:
-                    updateCategory = 4;
-                    updateKind = 1;
-                    break;
-                case 4:
-                    updateCategory = 5;
-                    updateKind = 1;
-                    break;
-                case 5:
-                    updateCategory = 6;
-                    updateKind = 1;
+                    updateKind = 2;
                     break;
                 default:
                     break;
             }
+            if (updateKind == 1) {
+                categoryItem = categorySpinner.getSelectedItemPosition();
+                switch (categoryItem) {
+                    case 0:
+                        updateCategory = 1;
+                        updateKind = 1;
+                        break;
+                    case 1:
+                        updateCategory = 2;
+                        updateKind = 1;
+                        break;
+                    case 2:
+                        updateCategory = 3;
+                        updateKind = 1;
+
+                        break;
+                    case 3:
+                        updateCategory = 4;
+                        updateKind = 1;
+                        break;
+                    case 4:
+                        updateCategory = 5;
+                        updateKind = 1;
+                        break;
+                    case 5:
+                        updateCategory = 6;
+                        updateKind = 1;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Product updateProduct = new Product(updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight, updateKind, updateCategory);
+            adapter.insert(updateProduct);
+            goHome();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Не все поля заполнены",
+                    Toast.LENGTH_SHORT).show();
         }
-        Product updateProduct = new Product(updateName, updateProteins, updateFats, updateCarbohydrates, updateCalories, updateWeight, updateKind, updateCategory);
-        adapter.insert(updateProduct);
-        goHome();
     }
 
     private void goHome() {

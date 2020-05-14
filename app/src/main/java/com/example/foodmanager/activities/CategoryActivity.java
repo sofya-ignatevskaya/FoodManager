@@ -53,7 +53,6 @@ public class CategoryActivity extends AppCompatActivity {
             kindId = extras.getLong("id_kind");
         }
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -68,24 +67,7 @@ public class CategoryActivity extends AppCompatActivity {
             categoryAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
                     categoryCursor, headers, new int[]{android.R.id.text1}, 0);
             categoryList.setAdapter(categoryAdapter);
-
-        /*if (kindId == 2) {
-            categoryCursor = db.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.productKindId + "=?" , new String[]{String.valueOf(kindId)});
-            // определяем, какие столбцы из курсора будут выводиться в ListView
-            String[] headers = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
-                    DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
-            // создаем адаптер, передаем в него курсор
-            categoryAdapter = new SimpleCursorAdapter(this, R.layout.list_of_product,
-                    categoryCursor, headers, new int[]{R.id.id_of_product, R.id.name_of_product, R.id.proteins_of_product,
-                    R.id.fats_of_product, R.id.carbohydrates_of_product, R.id.calories_of_product}, 0);
-            categoryList.setAdapter(categoryAdapter);
-        }*/
-
-
     }
-
-
-
     @Override
     public void onDestroy(){
         super.onDestroy();

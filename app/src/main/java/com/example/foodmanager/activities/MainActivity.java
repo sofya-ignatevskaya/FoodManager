@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity
         Intent intent = getIntent();
         productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
 
-        databaseHelper = new DatabaseHelper(getApplicationContext());
+       // databaseHelper = new DatabaseHelper(getApplicationContext());
         // создаем базу данных
-        databaseHelper.create_db();
+       // databaseHelper.create_db();
 
         // слушатель выбора в списке
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity
 
                 // получаем выбранный пункт
                 selectedProduct = (Product) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
-                        Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
+                        Toast.LENGTH_SHORT).show();*/
 
                 DeleteDialogFragment dialog = new DeleteDialogFragment();
                 Bundle args = new Bundle();
@@ -137,9 +137,6 @@ public class MainActivity extends AppCompatActivity
         }.getType();
         connectionsGet = new Gson().fromJson(connectionsJSONString, type);
 
-
-        db = databaseHelper.open();
-        //ListProduct lp = new ListProduct();
         anotherProducts = new ArrayList<>();
 
         productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
@@ -204,6 +201,17 @@ public class MainActivity extends AppCompatActivity
         productWithWeight = null;
         productAdapter.clear();
         productAdapter.notifyDataSetChanged();
+
+        double calories = 0;
+        double proteins = 0;
+        double fats = 0;
+        double carbohydrates = 0;
+
+
+        caloriesText.setText(String.valueOf(calories));
+        proteinsText.setText(String.valueOf(proteins));
+        fatsText.setText(String.valueOf(fats));
+        carbohydratesText.setText(String.valueOf(carbohydrates));
     }
 
     public void addProduct(View view) {
