@@ -47,7 +47,9 @@
         android:layout_height="481dp"
         android:layout_below="@+id/chooseProduct"
         android:layout_marginTop="15dp"
-        tools:listitem="@layout/list_of_product">
+        tools:listitem="@layout/list_of_product"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent">
 
     </ListView>
 
@@ -80,7 +82,7 @@
         android:layout_alignTop="@+id/bgResult"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/all"
-        android:textColor="#476100"
+        android:textColor="#AD0000"
         />
 
     <TextView
@@ -107,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textColor="#476100"
+        android:textColor="#AD0000"
         android:layout_alignBottom="@+id/bgResult"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/proteins"
@@ -130,7 +132,7 @@
         android:layout_alignBottom="@+id/bgResult"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/fats"
-        android:textColor="#BF5C00"
+        android:textColor="#AD0000"
         />
     <TextView
         android:id="@+id/carbo"

@@ -64,8 +64,8 @@ public class CategoryActivity extends AppCompatActivity {
             // определяем, какие столбцы из курсора будут выводиться в ListView
             String[] headers = new String[]{DatabaseHelper.nameCategory};
             // создаем адаптер, передаем в него курсор
-            categoryAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
-                    categoryCursor, headers, new int[]{android.R.id.text1}, 0);
+            categoryAdapter = new SimpleCursorAdapter(this, R.layout.list_for_kind_and_category,
+                    categoryCursor, headers, new int[]{R.id.name}, 0);
             categoryList.setAdapter(categoryAdapter);
     }
     @Override

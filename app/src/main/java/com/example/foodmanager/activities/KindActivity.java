@@ -65,8 +65,8 @@ public class KindActivity extends AppCompatActivity {
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.nameKind};
         // создаем адаптер, передаем в него курсор
-        kindAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
-                kindCursor, headers, new int[]{android.R.id.text1}, 0);
+        kindAdapter = new SimpleCursorAdapter(this, R.layout.list_for_kind_and_category,
+                kindCursor, headers, new int[]{R.id.name}, 0);
         kindList.setAdapter(kindAdapter);
     }
 

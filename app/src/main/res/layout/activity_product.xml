@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CC99CC">
+    android:background="@android:color/white"
+    >
  <LinearLayout
      android:orientation="horizontal"
      android:layout_width="match_parent"
@@ -16,7 +17,9 @@
          android:layout_width="0dp"
          android:layout_weight="1"
          android:paddingStart="10dp"
-         android:layout_height="wrap_content" />
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="10dp"
+         />
     <Button
         android:id="@+id/addButton"
         android:text="@string/add"
@@ -32,5 +35,7 @@
         android:id="@+id/list_for_product"
         tools:listitem="@layout/list_of_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent"/>
 </LinearLayout>

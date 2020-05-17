@@ -13,6 +13,7 @@
         android:layout_alignParentEnd="true"
         android:background="#D9ABC6A2"
         android:gravity="top"
+        android:layout_marginBottom="5dp"
 
         />
 
@@ -74,7 +75,7 @@
        android:layout_toRightOf="@+id/proteins"
         android:layout_marginLeft="10dp"
         android:text="0"
-        android:textColor="#476100"
+        android:textColor="#AD0000"
         tools:text="0" />
 
     <TextView
@@ -94,7 +95,7 @@
         android:layout_alignBottom="@+id/parent_of_product"
       android:layout_toRightOf="@+id/fats"
         android:layout_marginLeft="10dp"
-        android:textColor="#BF5C00"
+        android:textColor="#AD0000"
         tools:text="0"
         />
 
