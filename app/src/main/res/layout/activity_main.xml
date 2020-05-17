@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8BA781">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/fon"
     >
 
@@ -44,12 +48,12 @@
     <ListView
         android:id="@+id/userList"
         android:layout_width="match_parent"
-        android:layout_height="481dp"
+        android:layout_height="520dp"
         android:layout_below="@+id/chooseProduct"
-        android:layout_marginTop="15dp"
-        tools:listitem="@layout/list_of_product"
+        android:layout_marginTop="14dp"
+        android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:divider="@android:color/transparent">
+        tools:listitem="@layout/list_of_product">
 
     </ListView>
 
@@ -156,4 +160,5 @@
         />
 
 
+</RelativeLayout>
 </RelativeLayout>

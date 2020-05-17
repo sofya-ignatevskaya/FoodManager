@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8BA781">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/group2">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Введите вес продукта"
+        android:textColor="#450101"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
         />
@@ -17,7 +22,7 @@
         android:id="@+id/weightEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="#450101"
         android:inputType="numberDecimal"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -31,4 +36,5 @@
         android:layout_below="@+id/weightEditText"
         android:layout_centerHorizontal="true"
         />
+</RelativeLayout>
 </RelativeLayout>

@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8BA781">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/group1"
     >
 
 
@@ -11,31 +16,33 @@
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Вы хотите изменить или\n удалить этот продукт?"
-        android:layout_marginTop="60dp"
+        android:text="Вы хотите изменить или\n удалить этот продукт?"
+        android:layout_marginTop="230dp"
         android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"
         />
 
 
     <EditText
         android:id="@+id/updateName"
-        android:layout_width="wrap_content"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/question"
 
-        android:gravity="center"
-        android:ellipsize="start"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="20dp"
         android:backgroundTint="@android:color/transparent"
-        tools:hint="Название продукта" />
+        android:ellipsize="start"
+        android:gravity="center"
+        android:textColor="#450101"
+        tools:text="Название продукта" />
 
     <TextView
         android:id="@+id/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="для 100 г"
+        android:text="для 100 г"
+        android:textColor="@android:color/black"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/updateName"
         />
@@ -49,7 +56,8 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        android:text="Белки" />
+        android:text="Белки"
+        android:textColor="#450101"/>
 
     <EditText
         android:id="@+id/updateProteins"
@@ -61,7 +69,8 @@
         android:layout_marginBottom="10dp"
         android:inputType="numberDecimal"
         tools:text="0"
-        android:backgroundTint="@android:color/transparent"/>
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/fats"
@@ -72,8 +81,8 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="10dp"
-
-        android:text="Жиры" />
+        android:text="Жиры"
+        android:textColor="#450101"/>
 
     <EditText
         android:id="@+id/updateFats"
@@ -85,7 +94,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@android:color/transparent"/>
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/carbo"
@@ -96,7 +106,9 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="27dp"
         android:layout_marginBottom="10dp"
-        android:text="Углеводы" />
+        android:text="Углеводы"
+        android:textColor="#450101"
+        />
 
     <EditText
         android:id="@+id/updateCarbo"
@@ -108,7 +120,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@android:color/transparent"/>
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/calories"
@@ -119,7 +132,8 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
-        android:text="Калории" />
+        android:text="Калории"
+        android:textColor="#450101"/>
 
     <EditText
         android:id="@+id/updateCalories"
@@ -131,27 +145,30 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="80dp"
        android:layout_marginBottom="10dp"
-        android:backgroundTint="@android:color/transparent"/>
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@android:color/black"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/updateCalories"
         android:onClick="updateButton"
-        android:text="Изменить" />
+        android:src="@drawable/update"
+        android:backgroundTint="@android:color/transparent"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/updateButton"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="53dp"
         android:layout_toRightOf="@+id/updateButton"
-
         android:onClick="deleteButton"
-        android:text="Удалить" />
+        android:src="@drawable/delete"
+        android:backgroundTint="@android:color/transparent"/>
+</RelativeLayout>
 </RelativeLayout>
