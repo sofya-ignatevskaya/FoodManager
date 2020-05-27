@@ -4,174 +4,193 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8BA781">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fon"
-    >
 
-
-    <ImageButton
-        android:id="@+id/chooseProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:onClick="chooseProduct"
-        android:src="@drawable/select"
-        android:backgroundTint="@android:color/transparent"
-        android:text="Выбрать продукт" />
-
-
-    <ImageButton
-        android:id="@+id/cleanProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="63dp"
-        android:layout_marginTop="60dp"
-        android:layout_toRightOf="@+id/chooseProduct"
-        android:onClick="cleanProduct"
-        android:src="@drawable/korzina"
-        android:backgroundTint="@android:color/transparent"
-        android:background="@android:drawable/screen_background_light_transparent"/>
-
-    <ImageButton
-        android:id="@+id/addProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_toLeftOf="@+id/chooseProduct"
-        android:onClick="addProduct"
-        android:src="@drawable/plus"
-        android:backgroundTint="@android:color/transparent"
-        android:background="@android:drawable/screen_background_light_transparent"/>
-
-    <ListView
-        android:id="@+id/userList"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:layout_below="@+id/chooseProduct"
-        android:layout_marginTop="14dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        tools:listitem="@layout/list_of_product">
-
-    </ListView>
-
-    <TextView
-        android:id="@+id/bgResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/userList"
-        android:layout_marginTop="70dp"
-        android:paddingBottom="47dp"
-        android:background="#D98BA781"
-         />
-
-    <TextView
-        android:id="@+id/all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/bgResult"
-        android:layout_marginLeft="15dp"
-        android:text="Всего"
-        android:textColor="@android:color/black"/>
-
-    <TextView
-        android:id="@+id/numberCal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_alignTop="@+id/bgResult"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/all"
-        android:textColor="#AD0000"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="калорий"
-        android:layout_alignTop="@+id/bgResult"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/numberCal"
-        android:textColor="@android:color/black"
-        />
-    <TextView
-        android:id="@+id/proteins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="330dp"
-        android:text="Белки"
-        android:textColor="#450101"
-        />
-    <TextView
-        android:id="@+id/numberProteins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="#AD0000"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/proteins"
-        />
-    <TextView
-        android:id="@+id/fats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="190dp"
-        android:text="Жиры"
-        android:textColor="#450101"
-        />
-    <TextView
-        android:id="@+id/numberFats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/fats"
-        android:textColor="#AD0000"
-        />
-    <TextView
-        android:id="@+id/carbo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_marginLeft="15dp"
-        android:text="Углеводы"
-        android:layout_alignParentStart="true"
-        android:textColor="#450101"
-        />
-    <TextView
-        android:id="@+id/numberCarbo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_alignBottom="@+id/bgResult"
-        android:layout_toRightOf="@+id/carbo"
-        android:layout_marginLeft="10dp"
-        android:textColor="#AD0000"
-        />
-
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/bgResult"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:onClick="settingsButton"
-        android:src="@drawable/settings"
-        android:backgroundTint="@android:color/transparent"
-        android:background="@android:drawable/screen_background_light_transparent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/fon">
 
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/chooseProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="chooseProduct"
+            android:src="@drawable/select"
+            android:text="Выбрать продукт" />
+
+
+        <ImageButton
+            android:id="@+id/cleanProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/chooseProduct"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="cleanProduct"
+            android:src="@drawable/korzina" />
+
+        <ImageButton
+            android:id="@+id/addProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_toLeftOf="@+id/chooseProduct"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="addProduct"
+            android:src="@drawable/plus" />
+
+        <ListView
+            android:id="@+id/userList"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:layout_below="@+id/chooseProduct"
+            android:layout_marginTop="14dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            tools:listitem="@layout/list_of_product">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/bgResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userList"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="70dp"
+            android:background="#D98BA781"
+            android:paddingBottom="47dp" />
+
+        <TextView
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_marginLeft="15dp"
+            android:text="Всего"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/numberCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/all"
+            android:text="0"
+            android:textColor="#AD0000" />
+
+        <TextView
+            android:id="@+id/ofText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/numberCal"
+            android:text="из"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/normCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/ofText"
+            android:text="1200"
+            android:textColor="#AD0000" />
+
+        <TextView
+            android:id="@+id/caloriesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/normCal"
+            android:text="калорий"
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:id="@+id/proteins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="330dp"
+            android:text="Белки"
+            android:textColor="#450101" />
+
+        <TextView
+            android:id="@+id/numberProteins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/proteins"
+            android:text="0"
+            android:textColor="#AD0000" />
+
+        <TextView
+            android:id="@+id/fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="190dp"
+            android:text="Жиры"
+            android:textColor="#450101" />
+
+        <TextView
+            android:id="@+id/numberFats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/fats"
+            android:text="0"
+            android:textColor="#AD0000" />
+
+        <TextView
+            android:id="@+id/carbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="15dp"
+            android:text="Углеводы"
+            android:textColor="#450101" />
+
+        <TextView
+            android:id="@+id/numberCarbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bgResult"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/carbo"
+            android:text="0"
+            android:textColor="#AD0000" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/bgResult"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="settingsButton"
+            android:src="@drawable/settings" />
+
+
+    </RelativeLayout>
 </RelativeLayout>
