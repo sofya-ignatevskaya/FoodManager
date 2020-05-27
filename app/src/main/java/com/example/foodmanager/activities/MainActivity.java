@@ -7,9 +7,12 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         fatsText = (TextView) findViewById(R.id.numberFats);
         carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
 
+
         // передается id объекта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -80,9 +84,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = getIntent();
         productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
 
-       // databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
-       // databaseHelper.create_db();
 
         // слушатель выбора в списке
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity
                 selectedProduct = (Product) parent.getItemAtPosition(position);
                 /*Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
                         Toast.LENGTH_SHORT).show();*/
-
                 DeleteDialogFragment dialog = new DeleteDialogFragment();
                 Bundle args = new Bundle();
                 args.putString("selectedProduct", selectedProduct.getName());
@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
+        //Здесь происходит получсение настроек
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
         Type type = new TypeToken<List<Product>>() {
         }.getType();
@@ -146,11 +147,11 @@ public class MainActivity extends AppCompatActivity
             productAdapter.notifyDataSetChanged();
         }
         if (productWithWeight != null) {
-
             productAdapter.add(productWithWeight);
             productAdapter.notifyDataSetChanged();
         }
 
+        //расчёт итогов КБЖУ
         double calories = 0;
         double proteins = 0;
         double fats = 0;
@@ -163,10 +164,11 @@ public class MainActivity extends AppCompatActivity
             carbohydrates += i.getCarbohydrates();
         }
         caloriesText.setText(String.valueOf(roundAvoid(calories, 1)));
-        proteinsText.setText(String.valueOf(roundAvoid(proteins,1)));
-        fatsText.setText(String.valueOf(roundAvoid(fats,1)));
+        proteinsText.setText(String.valueOf(roundAvoid(proteins, 1)));
+        fatsText.setText(String.valueOf(roundAvoid(fats, 1)));
         carbohydratesText.setText(String.valueOf(roundAvoid(carbohydrates, 1)));
     }
+
     public static double roundAvoid(double value, int places) {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-
+        //Сохранение настроек
         //  if (productWithWeight != null) {
         editor = getPreferences(MODE_PRIVATE).edit();
         connections = new ArrayList<>();
@@ -213,6 +215,10 @@ public class MainActivity extends AppCompatActivity
         fatsText.setText(String.valueOf(fats));
         carbohydratesText.setText(String.valueOf(carbohydrates));
     }
+    public void settingsButton(View view) {
+        Intent intent = new Intent(this, NormActivity.class);
+        startActivity(intent);
+    }
 
     public void addProduct(View view) {
         Intent intent = new Intent(this, AddActivity.class);
@@ -229,7 +235,6 @@ public class MainActivity extends AppCompatActivity
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
-        // userCursor.close();
 
     }
 

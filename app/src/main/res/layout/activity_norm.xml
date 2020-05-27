@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8BA781">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/group1">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:text="Вы хотите расчитать\nдневную норму калорий?"
+            android:textColor="@android:color/black" />
+
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="67dp" />
+
+        <TextView
+            android:id="@+id/weightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/genderSpinner"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:text="Вес" />
+
+        <TextView
+            android:id="@+id/weightMeasurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderSpinner"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:text="кг" />
+
+        <EditText
+            android:id="@+id/weightValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderSpinner"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/weightMeasurement"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/heightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weightText"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:text="Рост" />
+
+        <TextView
+            android:id="@+id/heightMeasurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weightMeasurement"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="75dp"
+            android:text="см" />
+
+        <EditText
+            android:id="@+id/heightValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weightValue"
+            android:layout_marginTop="-7dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/heightMeasurement"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/ageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heightText"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:text="Возраст" />
+
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
