@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/weightValue"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="-5dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/heightMeasurement"
             android:backgroundTint="@android:color/transparent"
@@ -99,7 +99,74 @@
             android:layout_marginTop="20dp"
             android:text="Возраст" />
 
+        <EditText
+            android:id="@+id/ageValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/heightValue"
+            android:layout_marginTop="-6dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="98dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
 
+        <Spinner
+            android:id="@+id/sportSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ageText"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="67dp" />
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_below="@+id/sportSpinner"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="23dp"
+            android:text="Рассчитать" />
+
+        <TextView
+            android:id="@+id/normaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calculateButton"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="45dp"
+            android:text="Ваша норма калорий" />
+
+        <TextView
+            android:id="@+id/normaValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calculateButton"
+            android:layout_toRightOf="@+id/normaText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="45dp"
+            tools:text = "1200"
+            android:text="Ваша норма калорий" />
+
+        <Button
+            android:id="@+id/defaultButtom"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="75dp"
+            android:layout_marginBottom="160dp"
+            android:text="По умолчанию" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="160dp"
+            android:layout_toRightOf="@+id/defaultButtom"
+            android:layout_marginLeft="10dp"
+            android:text="Установить" />
 
 
     </RelativeLayout>
