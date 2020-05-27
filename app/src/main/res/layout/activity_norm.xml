@@ -155,6 +155,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="75dp"
             android:layout_marginTop="23dp"
+            android:onClick="calculateButton"
             android:text="Рассчитать" />
 
         <TextView
@@ -180,22 +181,25 @@
             android:textColor="#450101"/>
 
         <Button
-            android:id="@+id/defaultButtom"
+            android:id="@+id/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="75dp"
             android:layout_marginBottom="160dp"
-            android:text="По умолчанию" />
+            android:text="По умолчанию"
+            android:onClick="defaultButton"/>
 
         <Button
+            android:id="@+id/installButton"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="160dp"
-            android:layout_toRightOf="@+id/defaultButtom"
+            android:layout_toRightOf="@+id/defaultButton"
             android:layout_marginLeft="10dp"
-            android:text="Установить" />
+            android:text="Установить"
+            android:onClick="installButton"/>
 
 
     </RelativeLayout>

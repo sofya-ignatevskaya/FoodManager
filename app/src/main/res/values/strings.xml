@@ -3,8 +3,8 @@
     <string name="search_product">Поиск продукта</string>
     <string name="add">+</string>
     <string-array name="gender">
-        <item>Женщина</item>
-        <item>Мужчина</item>
+        <item>Женский</item>
+        <item>Мужской</item>
     </string-array>
     <string-array name="sport">
         <item>нет</item>
