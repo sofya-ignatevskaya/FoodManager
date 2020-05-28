@@ -57,6 +57,7 @@ public class AddActivity extends AppCompatActivity {
         kindSelection = (TextView) findViewById(R.id.kindSelection);
         kindSelection.setVisibility(View.INVISIBLE);
         categorySelection = (TextView) findViewById(R.id.categorySelection);
+        //видимость
         categorySelection.setVisibility(View.INVISIBLE);
        // categorySpinner.setVisibility(View.GONE);
 

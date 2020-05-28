@@ -166,6 +166,7 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="50dp"
             android:text="Ваша норма калорий"
+            android:visibility="invisible"
             android:textColor="@android:color/black"/>
 
         <TextView
@@ -176,11 +177,11 @@
             android:layout_toRightOf="@+id/normaText"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
-            tools:text = "1200"
-            android:text="1200"
+            android:text="0"
+            android:visibility="invisible"
             android:textColor="#450101"/>
 
-        <Button
+       <!-- <Button
             android:id="@+id/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
@@ -188,7 +189,7 @@
             android:layout_marginStart="75dp"
             android:layout_marginBottom="160dp"
             android:text="По умолчанию"
-            android:onClick="defaultButton"/>
+            android:onClick="defaultButton"/>-->
 
         <Button
             android:id="@+id/installButton"
@@ -196,10 +197,10 @@
             android:layout_height="38dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="160dp"
-            android:layout_toRightOf="@+id/defaultButton"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="75dp"
             android:text="Установить"
-            android:onClick="installButton"/>
+            android:onClick="installButton"
+            android:visibility="invisible"/>
 
 
     </RelativeLayout>

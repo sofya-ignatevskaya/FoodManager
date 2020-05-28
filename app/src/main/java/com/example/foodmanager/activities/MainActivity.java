@@ -32,24 +32,21 @@ import java.util.List;
 
 import interfaces.deleteInterface;
 
+import static com.example.foodmanager.activities.NormActivity.APP_PREFERENCES_NORMA;
+
 
 public class MainActivity extends AppCompatActivity
         implements deleteInterface.Datable {
 
     ListView userList;
-    EditText weightEditText;
-    DatabaseHelper databaseHelper;
     SQLiteDatabase db;
-    Cursor userCursor;
-    SimpleCursorAdapter userAdapter;
-    String txtWeight;
-    Product onePr; //= new Product(1, "Молоко", 3.2, 3.6, 4.8, 64);
+
+    //название файла настроек
     public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
 
     long productId = 0;
 
     final String LOG_TAG = "myLogs";
-    ArrayList<Product> products;
     ArrayList<Product> anotherProducts;
     Product productWithWeight;
     ProductAdapter productAdapter;
@@ -61,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     TextView proteinsText;
     TextView fatsText;
     TextView carbohydratesText;
+    TextView normEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         proteinsText = (TextView) findViewById(R.id.numberProteins);
         fatsText = (TextView) findViewById(R.id.numberFats);
         carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
-
+        normEditText = (TextView) findViewById(R.id.normCal);
 
         // передается id объекта
         Bundle extras = getIntent().getExtras();
@@ -133,6 +131,11 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
 
         //Здесь происходит получсение настроек
+        //для нормы калорий
+        if(getPreferences(MODE_PRIVATE).contains(APP_PREFERENCES_NORMA)) {
+            normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));
+        }
+        //для списка
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
         Type type = new TypeToken<List<Product>>() {
         }.getType();

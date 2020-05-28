@@ -4,15 +4,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodmanager.R;
+import com.example.foodmanager.adapters.DatabaseAdapter;
 
 public class NormActivity extends AppCompatActivity {
 
@@ -22,11 +25,17 @@ public class NormActivity extends AppCompatActivity {
     EditText heightEditText;
     EditText ageEditText;
     TextView normEditText;
+    TextView normTextView;
+    Button installButton;
+
 
     int genderPosition;
     int sportPosition;
 
     double normCalories = 0;
+
+    //файл настроек
+    public static final String APP_PREFERENCES_NORMA = "normCalories"; //норма калорийности
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +47,17 @@ public class NormActivity extends AppCompatActivity {
         weightEditText = (EditText) findViewById(R.id.weightValue);
         heightEditText = (EditText) findViewById(R.id.heightValue);
         ageEditText = (EditText) findViewById(R.id.ageValue);
-        normEditText= (TextView) findViewById(R.id.normaValue);
-
-        genderPosition = genderSpinner.getSelectedItemPosition();
-        sportPosition = sportSpinner.getSelectedItemPosition();
+        normEditText = (TextView) findViewById(R.id.normaValue);
+        normTextView = (TextView) findViewById(R.id.normaText);
+        installButton = (Button) findViewById(R.id.installButton);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void calculateButton(View view) {
         try {
-
+            //получение позиции
+            genderPosition = genderSpinner.getSelectedItemPosition();
+            sportPosition = sportSpinner.getSelectedItemPosition();
+            //получение данных
             double weight = Double.parseDouble(weightEditText.getText().toString());
             double height = Double.parseDouble(heightEditText.getText().toString());
             double age = Double.parseDouble(ageEditText.getText().toString());
@@ -85,7 +94,16 @@ public class NormActivity extends AppCompatActivity {
                 default:
                     break;
             }
-            normEditText.setText(String.valueOf(normCalories));
+            DatabaseAdapter da = new DatabaseAdapter(this);
+            normEditText.setText(String.valueOf(da.roundAvoid(normCalories, 0)));
+
+            //включение видимости
+            String caloriesVisibility = normEditText.getText().toString();
+            if (!caloriesVisibility.equals("0")) {
+                normTextView.setVisibility(View.VISIBLE);
+                normEditText.setVisibility(View.VISIBLE);
+                installButton.setVisibility(View.VISIBLE);
+            }
         } catch (NumberFormatException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), "Не все поля заполнены",
@@ -93,9 +111,19 @@ public class NormActivity extends AppCompatActivity {
         }
     }
 
-        public void installButton(View view){
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        editor.putString(APP_PREFERENCES_NORMA, String.valueOf(normCalories));
+        editor.apply();
+    }
 
-        }
-
+    public void installButton(View view){
+        // переход к главной activity
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
 
 }
