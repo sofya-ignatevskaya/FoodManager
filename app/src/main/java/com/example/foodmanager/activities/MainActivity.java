@@ -32,7 +32,7 @@ import java.util.List;
 
 import interfaces.deleteInterface;
 
-import static com.example.foodmanager.activities.NormActivity.APP_PREFERENCES_NORMA;
+
 
 
 public class MainActivity extends AppCompatActivity
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity
 
     //название файла настроек
     public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
+    //норма калорийности
+    public static final String APP_PREFERENCES_NORMA = "normCalories";
 
     long productId = 0;
 
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity
     TextView fatsText;
     TextView carbohydratesText;
     TextView normEditText;
+    String normCalories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,10 @@ public class MainActivity extends AppCompatActivity
         //получаю продукт из WA
         Intent intent = getIntent();
         productWithWeight = (Product) intent.getParcelableExtra("productsViaWeight");
+
+        //получаю норму калорий из NA
+        normCalories = getIntent().getStringExtra("value_of_normaCalories");
+
 
 
         // слушатель выбора в списке
@@ -132,8 +139,11 @@ public class MainActivity extends AppCompatActivity
 
         //Здесь происходит получсение настроек
         //для нормы калорий
-        if(getPreferences(MODE_PRIVATE).contains(APP_PREFERENCES_NORMA)) {
-            normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));
+        if(normCalories!=null) {
+            //normEditText.setText(normCalories);
+            if (getPreferences(MODE_PRIVATE).contains(APP_PREFERENCES_NORMA)) {
+                normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));
+            }
         }
         //для списка
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
@@ -181,6 +191,13 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
         //Сохранение настроек
+        //для калорийности
+        if(normCalories!=null) {
+            SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+            editor.putString(APP_PREFERENCES_NORMA, String.valueOf(normCalories));
+            editor.apply();
+        }
+        //для списка продуктов
         //  if (productWithWeight != null) {
         editor = getPreferences(MODE_PRIVATE).edit();
         connections = new ArrayList<>();

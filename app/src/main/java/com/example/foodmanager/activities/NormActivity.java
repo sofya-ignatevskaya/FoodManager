@@ -34,8 +34,6 @@ public class NormActivity extends AppCompatActivity {
 
     double normCalories = 0;
 
-    //файл настроек
-    public static final String APP_PREFERENCES_NORMA = "normCalories"; //норма калорийности
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,15 +112,14 @@ public class NormActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putString(APP_PREFERENCES_NORMA, String.valueOf(normCalories));
-        editor.apply();
+
     }
 
     public void installButton(View view){
         // переход к главной activity
         Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        // передача данных для другого окна
+        intent.putExtra("value_of_normaCalories", normEditText.getText().toString());
         startActivity(intent);
     }
 
