@@ -16,16 +16,18 @@
         android:textColor="#450101"
         android:layout_above="@+id/weightEditText"
         android:layout_centerHorizontal="true"
+        style="@style/TextSize18"
         />
 
     <EditText
         android:id="@+id/weightEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#450101"
+        android:textColor="@android:color/black"
         android:inputType="numberDecimal"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        style="@style/TextSize18"
        />
     <Button
         android:id="@+id/weightButton"

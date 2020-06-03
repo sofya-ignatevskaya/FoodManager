@@ -20,6 +20,7 @@
         android:layout_marginTop="230dp"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/black"
+        style="@style/TextSize18"
         />
 
 
@@ -28,7 +29,7 @@
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/question"
-
+        style="@style/TextSize18"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:backgroundTint="@android:color/transparent"
@@ -45,6 +46,7 @@
         android:textColor="@android:color/black"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/updateName"
+        style="@style/TextSize14"
         />
 
     <TextView
@@ -57,7 +59,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:text="Белки"
-        android:textColor="#450101"/>
+        android:textColor="#450101"
+        style="@style/TextSize16"/>
 
     <EditText
         android:id="@+id/updateProteins"
@@ -69,8 +72,10 @@
         android:layout_marginBottom="10dp"
         android:inputType="numberDecimal"
         tools:text="0"
+        android:layout_alignBaseline="@+id/proteins"
         android:backgroundTint="@android:color/transparent"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        style="@style/TextSize16"/>
 
     <TextView
         android:id="@+id/fats"
@@ -82,7 +87,8 @@
         android:layout_marginTop="23dp"
         android:layout_marginBottom="10dp"
         android:text="Жиры"
-        android:textColor="#450101"/>
+        android:textColor="#450101"
+        style="@style/TextSize16"/>
 
     <EditText
         android:id="@+id/updateFats"
@@ -95,7 +101,9 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/transparent"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:layout_alignBaseline="@+id/fats"
+        style="@style/TextSize16"/>
 
     <TextView
         android:id="@+id/carbo"
@@ -108,6 +116,7 @@
         android:layout_marginBottom="10dp"
         android:text="Углеводы"
         android:textColor="#450101"
+        style="@style/TextSize16"
         />
 
     <EditText
@@ -121,7 +130,9 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/transparent"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:layout_alignBaseline="@+id/carbo"
+        style="@style/TextSize16"/>
 
     <TextView
         android:id="@+id/calories"
@@ -133,7 +144,8 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:text="Калории"
-        android:textColor="#450101"/>
+        android:textColor="#450101"
+        style="@style/TextSize16"/>
 
     <EditText
         android:id="@+id/updateCalories"
@@ -146,7 +158,9 @@
         android:layout_marginEnd="80dp"
        android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/transparent"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:layout_alignBaseline="@+id/calories"
+        style="@style/TextSize16"/>
 
     <ImageButton
         android:id="@+id/updateButton"

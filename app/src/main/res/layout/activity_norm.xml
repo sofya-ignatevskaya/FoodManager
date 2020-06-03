@@ -15,9 +15,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="200dp"
             android:text="Вы хотите расчитать\nдневную норму калорий?"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            style="@style/TextSize18"
+            />
         <TextView
             android:id="@+id/genderText"
             android:layout_width="wrap_content"
@@ -26,7 +28,10 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="40dp"
             android:text="Пол"
-            android:textColor="#450101"/>
+            android:layout_alignBaseline="@+id/genderSpinner"
+            android:textColor="#450101"
+            style="@style/TextSize16"
+            />
 
         <Spinner
             android:id="@+id/genderSpinner"
@@ -47,7 +52,9 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Вес"
-            android:textColor="#450101"/>
+            android:layout_alignBaseline="@+id/weightMeasurement"
+            android:textColor="#450101"
+            style="@style/TextSize16"/>
 
         <TextView
             android:id="@+id/weightMeasurement"
@@ -58,6 +65,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="80dp"
             android:text="кг"
+            style="@style/TextSize16"
             android:textColor="@android:color/black"/>
 
         <EditText
@@ -70,6 +78,8 @@
             android:layout_toLeftOf="@+id/weightMeasurement"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            android:layout_alignBaseline="@+id/weightMeasurement"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
 
         <TextView
@@ -80,6 +90,8 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Рост"
+            android:layout_alignBaseline="@+id/heightMeasurement"
+            style="@style/TextSize16"
             android:textColor="#450101"/>
 
         <TextView
@@ -91,6 +103,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="75dp"
             android:text="см"
+            style="@style/TextSize16"
             android:textColor="@android:color/black"/>
 
         <EditText
@@ -103,6 +116,8 @@
             android:layout_toLeftOf="@+id/heightMeasurement"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            android:layout_alignBaseline="@+id/heightMeasurement"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
 
         <TextView
@@ -113,6 +128,8 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Возраст"
+            android:layout_alignBaseline="@+id/ageValue"
+            style="@style/TextSize16"
             android:textColor="#450101"/>
 
         <EditText
@@ -120,11 +137,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/heightValue"
-            android:layout_marginTop="-6dp"
+            android:layout_marginTop="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="98dp"
+            android:layout_marginEnd="100dp"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
         <TextView
             android:id="@+id/sportText"
@@ -134,6 +152,7 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Физичсекая\nактивность"
+            style="@style/TextSize16"
             android:textColor="#450101"/>
 
         <Spinner
@@ -165,6 +184,7 @@
             android:layout_below="@id/calculateButton"
             android:layout_marginStart="80dp"
             android:layout_marginTop="50dp"
+            style="@style/TextSize16"
             android:text="Ваша норма калорий"
             android:visibility="invisible"
             android:textColor="@android:color/black"/>
@@ -177,6 +197,7 @@
             android:layout_toRightOf="@+id/normaText"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
+            style="@style/TextSize16"
             android:text="0"
             android:visibility="invisible"
             android:textColor="#450101"/>
