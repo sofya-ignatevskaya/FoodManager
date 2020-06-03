@@ -2,6 +2,7 @@ package com.example.foodmanager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -41,10 +42,12 @@ public class MainActivity extends AppCompatActivity
     ListView userList;
     SQLiteDatabase db;
 
-    //название файла настроек
+    //название файла настроек для списка продуктов
     public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
-    //норма калорийности
+    //название файла настроек для нормы калорийности
     public static final String APP_PREFERENCES_NORMA = "normCalories";
+    public static final String APP_PREFERENCES = "mysettings";
+    SharedPreferences mSettings;
 
     long productId = 0;
 
@@ -88,7 +91,8 @@ public class MainActivity extends AppCompatActivity
         //получаю норму калорий из NA
         normCalories = getIntent().getStringExtra("value_of_normaCalories");
 
-
+        //инициализация файла настроек для нормы калорийности
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         // слушатель выбора в списке
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
@@ -139,17 +143,25 @@ public class MainActivity extends AppCompatActivity
 
         //Здесь происходит получсение настроек
         //для нормы калорий
-        if(normCalories!=null) {
+       /* if(normCalories!=null) {
             //normEditText.setText(normCalories);
             if (getPreferences(MODE_PRIVATE).contains(APP_PREFERENCES_NORMA)) {
                 normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));
             }
+        }*/
+        if (normCalories != null) {
+            normEditText.setText(normCalories);
+        }
+        if (normCalories == null && mSettings.contains(APP_PREFERENCES_NORMA)) {
+            normEditText.setText(mSettings.getString(APP_PREFERENCES_NORMA, null));
         }
         //для списка
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
         Type type = new TypeToken<List<Product>>() {
         }.getType();
         connectionsGet = new Gson().fromJson(connectionsJSONString, type);
+       /* String connectionsJSONStringCalories = getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, null);
+        normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));*/
 
         anotherProducts = new ArrayList<>();
 
@@ -192,23 +204,24 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
         //Сохранение настроек
         //для калорийности
-        if(normCalories!=null) {
-            SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-            editor.putString(APP_PREFERENCES_NORMA, String.valueOf(normCalories));
+        if ( normEditText!= null) {
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putString(APP_PREFERENCES_NORMA, normEditText.getText().toString());
             editor.apply();
         }
+        normCalories = null;
+
         //для списка продуктов
-        //  if (productWithWeight != null) {
         editor = getPreferences(MODE_PRIVATE).edit();
         connections = new ArrayList<>();
         if (anotherProducts != null) {
             connections.addAll(anotherProducts);
         }
-        //connections.add(productWithWeight);
         String connectionsJSONString = new Gson().toJson(connections);
         editor.putString(KEY_CONNECTIONS, connectionsJSONString);
+        String connectionJSONStringCalories = new Gson().toJson(normCalories);
+        editor.putString(APP_PREFERENCES_NORMA,connectionJSONStringCalories);
         editor.apply();
-        //  }
         productWithWeight = null;
     }
 
