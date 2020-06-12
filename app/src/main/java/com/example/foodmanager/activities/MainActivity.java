@@ -34,8 +34,6 @@ import java.util.List;
 import interfaces.deleteInterface;
 
 
-
-
 public class MainActivity extends AppCompatActivity
         implements deleteInterface.Datable {
 
@@ -77,6 +75,11 @@ public class MainActivity extends AppCompatActivity
         fatsText = (TextView) findViewById(R.id.numberFats);
         carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
         normEditText = (TextView) findViewById(R.id.normCal);
+        ImageButton settingButton = (ImageButton) findViewById(R.id.settingsButton);
+        ImageButton addButton = (ImageButton) findViewById(R.id.addButton);
+        ImageButton chooseButton = (ImageButton) findViewById(R.id.chooseProduct);
+
+
 
         // передается id объекта
         Bundle extras = getIntent().getExtras();
@@ -204,7 +207,7 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
         //Сохранение настроек
         //для калорийности
-        if ( normEditText!= null) {
+        if (normEditText != null) {
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString(APP_PREFERENCES_NORMA, normEditText.getText().toString());
             editor.apply();
@@ -220,7 +223,7 @@ public class MainActivity extends AppCompatActivity
         String connectionsJSONString = new Gson().toJson(connections);
         editor.putString(KEY_CONNECTIONS, connectionsJSONString);
         String connectionJSONStringCalories = new Gson().toJson(normCalories);
-        editor.putString(APP_PREFERENCES_NORMA,connectionJSONStringCalories);
+        editor.putString(APP_PREFERENCES_NORMA, connectionJSONStringCalories);
         editor.apply();
         productWithWeight = null;
     }
@@ -248,20 +251,28 @@ public class MainActivity extends AppCompatActivity
         fatsText.setText(String.valueOf(fats));
         carbohydratesText.setText(String.valueOf(carbohydrates));
     }
-    public void settingsButton(View view) {
-        Intent intent = new Intent(this, NormActivity.class);
-        startActivity(intent);
-    }
 
-    public void addProduct(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
-        startActivity(intent);
-    }
 
-    public void chooseProduct(View view) {
-        Intent intent = new Intent(this, KindActivity.class);
-        startActivity(intent);
-    }
+        public void onButtonClick(View v) {
+            switch (v.getId()) {
+                case R.id.settingsButton:
+                    Intent intent = new Intent(this, NormActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.addProduct:
+                    Intent intent1 = new Intent(this, AddActivity.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.chooseProduct:
+                    Intent intent2 = new Intent(this, KindActivity.class);
+                    startActivity(intent2);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
 
     @Override
     public void onDestroy() {
