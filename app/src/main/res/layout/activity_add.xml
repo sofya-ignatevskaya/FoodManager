@@ -173,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addCalories"
-
+        android:entries="@array/kind"
         android:layout_marginLeft="73dp"
         android:layout_marginRight="67dp"/>
 
@@ -186,6 +186,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="73dp"
         android:layout_marginRight="67dp"
+        android:entries="@array/category"
         />
 
     <ImageButton

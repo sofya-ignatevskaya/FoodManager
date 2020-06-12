@@ -59,56 +59,6 @@ public class AddActivity extends AppCompatActivity {
         categorySelection = (TextView) findViewById(R.id.categorySelection);
         //видимость
         categorySelection.setVisibility(View.INVISIBLE);
-       // categorySpinner.setVisibility(View.GONE);
-
-
-        //kindSpinner.setSelection(2);
-       /* switch (kindItem) {
-            case 0:
-                categorySpinner.setVisibility(View.GONE);
-                break;
-            case 1:
-                categorySpinner.setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
-        }*/
-
-        ArrayAdapter<String> kindAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kind);
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, category);
-        kindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        kindSpinner.setAdapter(kindAdapter);
-        categorySpinner.setAdapter(categoryAdapter);
-
-
-        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                // Получаем выбранный объект
-                item = (String) parent.getItemAtPosition(position);
-                kindSelection.setText(item);
-                categorySelection.setText(item);
-                if(item.equals("Готовые блюда"))
-                {
-                    categorySpinner.setEnabled(false);
-                }
-                else {
-                    categorySpinner.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        };
-        kindSpinner.setOnItemSelectedListener(itemSelectedListener);
-        categorySpinner.setOnItemSelectedListener(itemSelectedListener);
-        kindItem = kindSpinner.getSelectedItemPosition();
-
-
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         databaseHelper.create_db();

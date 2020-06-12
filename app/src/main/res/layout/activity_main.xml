@@ -31,7 +31,7 @@
             android:layout_toRightOf="@+id/chooseProduct"
             android:background="@android:drawable/screen_background_light_transparent"
             android:backgroundTint="@android:color/transparent"
-            android:onClick="cleanProduct"
+            android:onClick="onButtonClick"
             android:src="@drawable/korzina" />
 
         <ImageButton
