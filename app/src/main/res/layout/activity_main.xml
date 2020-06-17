@@ -48,11 +48,13 @@
         <ListView
             android:id="@+id/userList"
             android:layout_width="match_parent"
-            android:layout_height="520dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/chooseProduct"
             android:layout_marginTop="14dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
+            android:layout_above="@+id/bgResult"
+            android:layout_marginBottom="50dp"
             tools:listitem="@layout/list_of_product">
 
         </ListView>
@@ -61,133 +63,134 @@
             android:id="@+id/bgResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/userList"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="70dp"
+
             android:background="#D98BA781"
             android:paddingBottom="47dp" />
 
         <TextView
             android:id="@+id/all"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="15dp"
             android:text="Всего"
-            android:textColor="@android:color/black"
-            style="@style/TextSize16"/>
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/numberCal"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/all"
             android:text="0"
-            android:textColor="#AD0000"
-            style="@style/TextSize16"/>
+            android:textColor="#AD0000" />
 
         <TextView
             android:id="@+id/ofText"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/numberCal"
             android:text="из"
-            android:textColor="@android:color/black"
-            style="@style/TextSize16"/>
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/normCal"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/ofText"
             android:text="1200"
-            android:textColor="#AD0000"
-            style="@style/TextSize16"/>
+            android:textColor="#AD0000" />
 
         <TextView
             android:id="@+id/caloriesText"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/normCal"
             android:text="калорий"
-            android:textColor="@android:color/black"
-            style="@style/TextSize16"/>
+            android:textColor="@android:color/black" />
 
 
         <TextView
             android:id="@+id/proteins"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_alignParentStart="true"
             android:layout_marginStart="330dp"
             android:text="Белки"
-            android:textColor="#450101"
-            style="@style/TextSize16"/>
+            android:textColor="#450101" />
 
         <TextView
             android:id="@+id/numberProteins"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/proteins"
             android:text="0"
-            android:textColor="#AD0000"
-            style="@style/TextSize16"/>
+            android:textColor="#AD0000" />
 
         <TextView
             android:id="@+id/fats"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_alignParentStart="true"
             android:layout_marginStart="190dp"
             android:text="Жиры"
-            android:textColor="#450101"
-            style="@style/TextSize16"/>
+            android:textColor="#450101" />
 
         <TextView
             android:id="@+id/numberFats"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/fats"
             android:text="0"
-            android:textColor="#AD0000"
-            style="@style/TextSize16"/>
+            android:textColor="#AD0000" />
 
         <TextView
             android:id="@+id/carbo"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="15dp"
             android:text="Углеводы"
-            android:textColor="#450101"
-            style="@style/TextSize16"/>
+            android:textColor="#450101" />
 
         <TextView
             android:id="@+id/numberCarbo"
+            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/carbo"
             android:text="0"
-            android:textColor="#AD0000"
-            style="@style/TextSize16"/>
+            android:textColor="#AD0000" />
 
         <ImageButton
             android:id="@+id/settingsButton"
