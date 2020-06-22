@@ -162,27 +162,27 @@
         android:layout_alignBaseline="@+id/calories"
         style="@style/TextSize16"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="32dp"
         android:layout_below="@+id/updateCalories"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/weightbutton"
         android:onClick="updateButton"
-        android:src="@drawable/update"
-        android:backgroundTint="@android:color/transparent"/>
+        android:text="ИЗМЕНИТЬ" />
 
-    <ImageButton
+    <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_alignBottom="@+id/updateButton"
-        android:layout_marginLeft="53dp"
+        android:layout_marginLeft="75dp"
         android:layout_toRightOf="@+id/updateButton"
         android:onClick="deleteButton"
-        android:src="@drawable/delete"
-        android:backgroundTint="@android:color/transparent"/>
+        android:background="@drawable/weightbutton"
+        android:text="УДАЛИТЬ"/>
 </RelativeLayout>
 </RelativeLayout>

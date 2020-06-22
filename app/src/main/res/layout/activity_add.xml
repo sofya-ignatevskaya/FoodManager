@@ -4,215 +4,208 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8BA781">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/group1">
 
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вы хотите добавить\n новый продукт?"
-        android:layout_marginTop="210dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"
-        style="@style/TextSize18"
-        />
-
-
-    <TextView
-        android:id="@+id/kindSelection"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </TextView>
+        android:layout_height="match_parent"
+        android:background="@drawable/group1">
 
-    <TextView
-        android:id="@+id/categorySelection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </TextView>
-
-    <EditText
-        android:id="@+id/addName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
-        android:gravity="center"
-        android:ellipsize="start"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@android:color/transparent"
-        android:hint="Название продукта"
-        android:textColor="#450101"
-        style="@style/TextSize18"
-       />
-
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="для 100 г"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/addName"
-        android:textColor="@android:color/black"
-        />
-    <TextView
-        android:id="@+id/proteins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weight"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        android:text="Белки"
-        android:layout_alignBaseline="@+id/addProteins"
-        android:textColor="#450101"
-        style="@style/TextSize16"/>
+        <TextView
+            android:id="@+id/question"
+            style="@style/TextSize18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:text="Вы хотите добавить\n новый продукт?"
+            android:textColor="@android:color/black" />
 
 
-    <EditText
-        android:id="@+id/addProteins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weight"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="10dp"
-        android:hint="0"
-        style="@style/TextSize16"
-        android:inputType="numberDecimal"
-        android:backgroundTint="@android:color/transparent"/>
+        <TextView
+            android:id="@+id/kindSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></TextView>
 
-    <TextView
-        android:id="@+id/fats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/proteins"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="10dp"
-        android:text="Жиры"
-        android:textColor="#450101"
-        android:layout_alignBaseline="@+id/addFats"
-        style="@style/TextSize16"/>
+        <TextView
+            android:id="@+id/categorySelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></TextView>
 
-    <EditText
-        android:id="@+id/addFats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addProteins"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@android:color/transparent"
-        android:inputType="numberDecimal"
-        android:hint="0"
-        style="@style/TextSize16"
-        />
+        <EditText
+            android:id="@+id/addName"
+            style="@style/TextSize18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/transparent"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="Название продукта"
+            android:textColor="#450101" />
 
-    <TextView
-        android:id="@+id/carbo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fats"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="10dp"
-        android:text="Углеводы"
-        android:textColor="#450101"
-        android:layout_alignBaseline="@+id/addCarbo"
-        style="@style/TextSize16"/>
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addName"
+            android:layout_centerHorizontal="true"
+            android:text="для 100 г"
+            android:textColor="@android:color/black" />
 
-    <EditText
-        android:id="@+id/addCarbo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addFats"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@android:color/transparent"
-        android:inputType="numberDecimal"
-        android:hint="0"
-        style="@style/TextSize16"
-        />
-
-    <TextView
-        android:id="@+id/calories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carbo"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="25dp"
-        android:text="Калории"
-        android:textColor="#450101"
-        android:layout_alignBaseline="@+id/addCalories"
-        style="@style/TextSize16"/>
-
-    <EditText
-        android:id="@+id/addCalories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addCarbo"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@android:color/transparent"
-        android:inputType="numberDecimal"
-        android:hint="0"
-        style="@style/TextSize16"
-        />
-
-    <Spinner
-        android:id="@+id/kindSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addCalories"
-
-        android:layout_marginLeft="73dp"
-        android:layout_marginRight="67dp"/>
-
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/kindSpinner"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="73dp"
-        android:layout_marginRight="67dp"
-        />
-
-    <ImageButton
-        android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/categorySpinner"
-        android:onClick="addButton"
-        android:layout_centerHorizontal="true"
-
-        android:src="@drawable/add"
-        android:backgroundTint="@android:color/transparent"
-        />
+        <TextView
+            android:id="@+id/proteins"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight"
+            android:layout_alignBaseline="@+id/addProteins"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Белки"
+            android:textColor="#450101" />
 
 
-   <!-- <TextView
-        android:id="@+id/recycle"
-        android:layout_width="314dp"
-        android:layout_height="518dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="51dp"
-        android:background="#B38BA781"
-        android:paddingBottom="47dp" />-->
+        <EditText
+            android:id="@+id/addProteins"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/fats"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/proteins"
+            android:layout_alignBaseline="@+id/addFats"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="10dp"
+            android:text="Жиры"
+            android:textColor="#450101" />
+
+        <EditText
+            android:id="@+id/addFats"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addProteins"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/carbo"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fats"
+            android:layout_alignBaseline="@+id/addCarbo"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="10dp"
+            android:text="Углеводы"
+            android:textColor="#450101" />
+
+        <EditText
+            android:id="@+id/addCarbo"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addFats"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/calories"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carbo"
+            android:layout_alignBaseline="@+id/addCalories"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="25dp"
+            android:text="Калории"
+            android:textColor="#450101" />
+
+        <EditText
+            android:id="@+id/addCalories"
+            style="@style/TextSize16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addCarbo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="0"
+            android:inputType="numberDecimal" />
+
+        <Spinner
+            android:id="@+id/kindSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addCalories"
+
+            android:layout_marginLeft="73dp"
+            android:layout_marginRight="67dp" />
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kindSpinner"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="67dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/categorySpinner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+
+            android:background="@drawable/weightbutton"
+            android:onClick="addButton"
+            android:text="ДОБАВИТЬ" />
 
 
-</RelativeLayout>
+        <!-- <TextView
+             android:id="@+id/recycle"
+             android:layout_width="314dp"
+             android:layout_height="518dp"
+             android:layout_alignParentStart="true"
+             android:layout_alignParentEnd="true"
+             android:layout_marginStart="46dp"
+             android:layout_marginTop="90dp"
+             android:layout_marginEnd="51dp"
+             android:background="#B38BA781"
+             android:paddingBottom="47dp" />-->
+
+
+    </RelativeLayout>
 </RelativeLayout>
