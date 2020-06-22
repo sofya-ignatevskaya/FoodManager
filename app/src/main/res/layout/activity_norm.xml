@@ -168,12 +168,13 @@
 
         <Button
             android:id="@+id/calculateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_width="109dp"
+            android:layout_height="28dp"
             android:layout_below="@+id/sportSpinner"
             android:layout_alignParentStart="true"
             android:layout_marginStart="75dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/weightbutton"
             android:onClick="calculateButton"
             android:text="Рассчитать" />
 
