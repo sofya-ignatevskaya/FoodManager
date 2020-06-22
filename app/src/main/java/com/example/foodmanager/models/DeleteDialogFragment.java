@@ -11,6 +11,8 @@ import androidx.fragment.app.DialogFragment;
 import interfaces.deleteInterface;
 import android.content.DialogInterface;
 
+import com.example.foodmanager.R;
+
 
 public class DeleteDialogFragment extends DialogFragment {
     private deleteInterface.Datable datable;
@@ -27,7 +29,7 @@ public class DeleteDialogFragment extends DialogFragment {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         return builder
                 .setTitle("Удаление")
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(R.drawable.deletecross)
                 .setMessage("Вы действительно хотите удалить \"" + product + "\" ?")
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
