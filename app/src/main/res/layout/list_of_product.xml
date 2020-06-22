@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/parent_of_product"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="60dp"
         android:text="Белки"
         android:textColor="#450101"
         style="@style/TextSize16"/>
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/parent_of_product"
        android:layout_toRightOf="@+id/proteins"
-        android:layout_marginLeft="-40dp"
+        android:layout_marginLeft="-50dp"
         android:text="0"
         android:textColor="#AD0000"
         tools:text="0"
@@ -90,7 +90,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/parent_of_product"
         android:layout_centerHorizontal="true"
-
         android:text="Жиры"
         android:textColor="#450101"
         style="@style/TextSize16"/>

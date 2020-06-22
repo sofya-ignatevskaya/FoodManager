@@ -132,8 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="330dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="60dp"
             android:text="Белки"
             android:textColor="#450101" />
 
@@ -143,9 +143,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="-50dp"
             android:layout_toRightOf="@+id/proteins"
             android:text="0"
+            android:layout_alignParentEnd="true"
             android:textColor="#AD0000" />
 
         <TextView
@@ -154,8 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="190dp"
+            android:layout_centerHorizontal="true"
             android:text="Жиры"
             android:textColor="#450101" />
 
