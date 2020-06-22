@@ -67,7 +67,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="70dp"
-
             android:background="#D98BA781"
             android:paddingBottom="47dp" />
 
