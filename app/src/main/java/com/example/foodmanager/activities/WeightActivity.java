@@ -41,16 +41,14 @@ public class WeightActivity extends AppCompatActivity {
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
-        databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
-        databaseHelper.create_db();
+
 
     }
 
 
     public void weightButton(View v) {
         try {
-            db = databaseHelper.open();
+
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             // products = new ArrayList<>();
             DatabaseAdapter adapter = new DatabaseAdapter(this);

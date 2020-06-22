@@ -1,8 +1,10 @@
 package com.example.foodmanager.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -262,14 +264,4 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, KindActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // Закрываем подключение и курсор
-        db.close();
-
-    }
-
-
 }
