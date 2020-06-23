@@ -54,9 +54,7 @@ public class AddActivity extends AppCompatActivity {
         calories = (TextView) findViewById(R.id.addCalories);
         kindSpinner = (Spinner) findViewById(R.id.kindSpinner);
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        kindSelection = (TextView) findViewById(R.id.kindSelection);
         kindSelection.setVisibility(View.INVISIBLE);
-        categorySelection = (TextView) findViewById(R.id.categorySelection);
         //видимость
         categorySelection.setVisibility(View.INVISIBLE);
 
