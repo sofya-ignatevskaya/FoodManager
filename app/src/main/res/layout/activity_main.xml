@@ -20,7 +20,8 @@
             android:backgroundTint="@android:color/transparent"
             android:onClick="onButtonClick"
             android:src="@drawable/select"
-            android:text="Выбрать продукт" />
+            android:text="Выбрать продукт"
+            />
 
 
         <ImageButton
