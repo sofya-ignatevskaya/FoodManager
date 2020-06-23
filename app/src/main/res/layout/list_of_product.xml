@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/parent_of_product"
         android:layout_width="412dp"
@@ -14,7 +13,6 @@
         android:background="#D9ABC6A2"
         android:gravity="top"
         android:layout_marginBottom="5dp"
-
         />
 
     <TextView
@@ -59,7 +57,6 @@
         android:textSize="10sp"
         android:visibility="invisible"
         style="@style/TextSize16"/>
-
 
     <TextView
         android:id="@+id/proteins"
@@ -150,5 +147,4 @@
         android:textColor="#450101"
         tools:text="0"
         style="@style/TextSize16"/>
-
 </RelativeLayout>

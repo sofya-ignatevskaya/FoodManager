@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="200dp"
-            android:text="Вы хотите расчитать\nдневную норму калорий?"
+            android:text="Вы хотите рассчитать\nдневную норму калорий?"
             android:textColor="@android:color/black" />
 
         <TextView
@@ -203,16 +203,6 @@
             android:textColor="#450101"
             android:visibility="invisible" />
 
-        <!-- <Button
-            android:id="@+id/defaultButton"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="75dp"
-            android:layout_marginBottom="160dp"
-            android:text="По умолчанию"
-            android:onClick="defaultButton"/>-->
-
         <Button
             android:id="@+id/installButton"
             android:layout_width="109dp"
@@ -224,7 +214,5 @@
             android:background="@drawable/weightbutton"
             android:text="Установить"
             android:visibility="invisible" />
-
-
     </RelativeLayout>
 </RelativeLayout>

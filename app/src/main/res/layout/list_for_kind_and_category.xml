@@ -15,7 +15,6 @@
         android:layout_marginBottom="20dp"
         android:background="#D9ABC6A2"
         android:gravity="top"
-
         />
 
     <TextView
@@ -28,6 +27,4 @@
         android:layout_marginTop="28dp"
         tools:text="Название"
         android:textColor="#450101"/>
-
-
 </RelativeLayout>

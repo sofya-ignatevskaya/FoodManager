@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/fon">
 
-
         <ImageButton
             android:id="@+id/chooseProduct"
             android:layout_width="wrap_content"
@@ -21,7 +20,6 @@
             android:onClick="chooseProduct"
             android:src="@drawable/select"
             android:text="Выбрать продукт" />
-
 
         <ImageButton
             android:id="@+id/cleanProduct"
@@ -201,7 +199,6 @@
             android:backgroundTint="@android:color/transparent"
             android:onClick="settingsButton"
             android:src="@drawable/settings" />
-
 
     </RelativeLayout>
 </RelativeLayout>
