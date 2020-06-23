@@ -19,6 +19,18 @@
             android:layout_marginTop="210dp"
             android:text="Вы хотите добавить\n новый продукт?"
             android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/kindSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/categorySelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
 
         <EditText
             android:id="@+id/addName"
