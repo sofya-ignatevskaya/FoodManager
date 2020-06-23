@@ -15,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="170dp"
             android:text="Вы хотите рассчитать\nдневную норму калорий?"
             android:textColor="@android:color/black"
             style="@style/TextSize18"
@@ -184,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/calculateButton"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             style="@style/TextSize16"
             android:text="Ваша норма калорий"
             android:visibility="invisible"
@@ -197,34 +198,23 @@
             android:layout_below="@id/calculateButton"
             android:layout_toRightOf="@+id/normaText"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             style="@style/TextSize16"
             android:text="0"
             android:visibility="invisible"
             android:textColor="#450101"/>
 
-       <!-- <Button
-            android:id="@+id/defaultButton"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="75dp"
-            android:layout_marginBottom="160dp"
-            android:text="По умолчанию"
-            android:onClick="defaultButton"/>-->
-
         <Button
             android:id="@+id/installButton"
             android:layout_width="109dp"
             android:layout_height="28dp"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/normaText"
             android:layout_marginStart="75dp"
-            android:layout_marginBottom="175dp"
+            android:layout_marginTop="30dp"
             android:onClick="installButton"
             android:background="@drawable/weightbutton"
             android:text="Установить"
             android:visibility="invisible" />
-
 
     </RelativeLayout>
 </RelativeLayout>

@@ -46,7 +46,6 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
         name = (TextView) findViewById(R.id.addName);
         proteins = (TextView) findViewById(R.id.addProteins);
         fats = (TextView) findViewById(R.id.addFats);
@@ -54,16 +53,10 @@ public class AddActivity extends AppCompatActivity {
         calories = (TextView) findViewById(R.id.addCalories);
         kindSpinner = (Spinner) findViewById(R.id.kindSpinner);
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        kindSelection.setVisibility(View.INVISIBLE);
-        //видимость
-        categorySelection.setVisibility(View.INVISIBLE);
-
         databaseHelper = new DatabaseHelper(getApplicationContext());
         databaseHelper.create_db();
         db = databaseHelper.open();
         adapter = new DatabaseAdapter(this);
-
-
     }
 
     @Override
