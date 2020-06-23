@@ -228,7 +228,6 @@ public class MainActivity extends AppCompatActivity
         productWithWeight = null;
     }
 
-
         public void onButtonClick(View v) {
             switch (v.getId()) {
                 case R.id.cleanProduct:

@@ -20,6 +20,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="250dp"
             android:layout_marginBottom="60dp"
+           android:layout_alignParentTop="true"
             android:paddingLeft="90dp"
             android:text="Вам нужно добавить\nуже готовое блюдо или\nпродукт?"
             android:textColor="@android:color/black" />
