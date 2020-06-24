@@ -75,11 +75,6 @@ public class MainActivity extends AppCompatActivity
         fatsText = (TextView) findViewById(R.id.numberFats);
         carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
         normEditText = (TextView) findViewById(R.id.normCal);
-        ImageButton settingButton = (ImageButton) findViewById(R.id.settingsButton);
-        ImageButton addButton = (ImageButton) findViewById(R.id.addButton);
-        ImageButton chooseButton = (ImageButton) findViewById(R.id.chooseProduct);
-
-
 
         // передается id объекта
         Bundle extras = getIntent().getExtras();
