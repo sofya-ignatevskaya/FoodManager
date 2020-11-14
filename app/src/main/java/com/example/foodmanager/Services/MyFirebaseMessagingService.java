@@ -40,7 +40,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(defSoundUri);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificationBuilder.build());*/
+        notificationManager.notify(0, notificationBuilder.build());}*/
 
-    }
+
 }
