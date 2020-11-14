@@ -36,8 +36,6 @@ import java.util.List;
 import interfaces.deleteInterface;
 
 
-
-
 public class MainActivity extends AppCompatActivity
         implements deleteInterface.Datable {
 
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
         //Сохранение настроек
         //для калорийности
-        if ( normEditText!= null) {
+        if (normEditText != null) {
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString(APP_PREFERENCES_NORMA, normEditText.getText().toString());
             editor.apply();
@@ -222,7 +220,7 @@ public class MainActivity extends AppCompatActivity
         String connectionsJSONString = new Gson().toJson(connections);
         editor.putString(KEY_CONNECTIONS, connectionsJSONString);
         String connectionJSONStringCalories = new Gson().toJson(normCalories);
-        editor.putString(APP_PREFERENCES_NORMA,connectionJSONStringCalories);
+        editor.putString(APP_PREFERENCES_NORMA, connectionJSONStringCalories);
         editor.apply();
         productWithWeight = null;
     }
@@ -250,6 +248,7 @@ public class MainActivity extends AppCompatActivity
         fatsText.setText(String.valueOf(fats));
         carbohydratesText.setText(String.valueOf(carbohydrates));
     }
+
     public void settingsButton(View view) {
         Intent intent = new Intent(this, NormActivity.class);
         startActivity(intent);
