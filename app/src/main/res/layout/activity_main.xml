@@ -19,8 +19,7 @@
             android:backgroundTint="@android:color/transparent"
             android:onClick="onButtonClick"
             android:src="@drawable/select"
-            android:text="Выбрать продукт"
-            />
+            android:text="@string/main_chooseProductButton" />
 
         <ImageButton
             android:id="@+id/cleanProduct"
@@ -48,14 +47,13 @@
             android:id="@+id/userList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/bgResult"
             android:layout_below="@+id/chooseProduct"
             android:layout_marginTop="14dp"
+            android:layout_marginBottom="50dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
-            android:layout_above="@+id/bgResult"
-            android:layout_marginBottom="50dp"
-            tools:listitem="@layout/list_of_product">
-        </ListView>
+            tools:listitem="@layout/list_of_product"></ListView>
 
         <TextView
             android:id="@+id/bgResult"
@@ -75,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="15dp"
-            android:text="Всего"
+            android:text="@string/main_result"
             android:textColor="@android:color/black" />
 
         <TextView
@@ -86,7 +84,7 @@
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/all"
-            android:text="0"
+            android:text="@string/main_quantity_of_calories"
             android:textColor="#AD0000" />
 
         <TextView
@@ -97,7 +95,7 @@
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/numberCal"
-            android:text="из"
+            android:text="@string/main_from"
             android:textColor="@android:color/black" />
 
         <TextView
@@ -108,7 +106,7 @@
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/ofText"
-            android:text="1200"
+            android:text="@string/main_norm_of_calories_value"
             android:textColor="#AD0000" />
 
         <TextView
@@ -119,7 +117,7 @@
             android:layout_alignTop="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/normCal"
-            android:text="калорий"
+            android:text="@string/main_calories_text"
             android:textColor="@android:color/black" />
 
 
@@ -131,7 +129,7 @@
             android:layout_alignBottom="@+id/bgResult"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="60dp"
-            android:text="Белки"
+            android:text="@string/main_proteins"
             android:textColor="#450101" />
 
         <TextView
@@ -140,10 +138,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="-50dp"
             android:layout_toRightOf="@+id/proteins"
-            android:text="0"
-            android:layout_alignParentEnd="true"
+            android:text="@string/main_proteins_value"
             android:textColor="#AD0000" />
 
         <TextView
@@ -153,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/bgResult"
             android:layout_centerHorizontal="true"
-            android:text="Жиры"
+            android:text="@string/main_fats"
             android:textColor="#450101" />
 
         <TextView
@@ -164,7 +162,7 @@
             android:layout_alignBottom="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/fats"
-            android:text="0"
+            android:text="@string/main_fats_value"
             android:textColor="#AD0000" />
 
         <TextView
@@ -175,7 +173,7 @@
             android:layout_alignBottom="@+id/bgResult"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="15dp"
-            android:text="Углеводы"
+            android:text="@string/main_carbohydrates"
             android:textColor="#450101" />
 
         <TextView
@@ -186,7 +184,7 @@
             android:layout_alignBottom="@+id/bgResult"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/carbo"
-            android:text="0"
+            android:text="@string/main_carbohydrates_value"
             android:textColor="#AD0000" />
 
         <ImageButton

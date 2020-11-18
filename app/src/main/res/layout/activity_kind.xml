@@ -17,12 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="250dp"
             android:layout_marginBottom="60dp"
-           android:layout_alignParentTop="true"
             android:paddingLeft="90dp"
-            android:text="Вам нужно добавить\nуже готовое блюдо или\nпродукт?"
+            android:text="@string/kind_question"
             android:textColor="@android:color/black" />
 
         <ListView
@@ -35,7 +35,6 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
             tools:listitem="@layout/list_for_kind_and_category"
-
             />
     </RelativeLayout>
 </RelativeLayout>

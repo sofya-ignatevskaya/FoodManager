@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NormActivity"></activity>
+        <activity android:name=".activities.NormActivity"/>
         <activity android:name=".activities.AddActivity" />
         <activity android:name=".activities.UpdateActivity" />
         <activity android:name=".activities.WeightActivity" />
@@ -24,8 +24,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.foodmanager.Services.MyFirebaseMessagingService"
-                 android:exported = "false">
+        <service
+            android:name="com.example.foodmanager.Services.MyFirebaseMessagingService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    >
- <LinearLayout
-     android:orientation="horizontal"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-    >
-     <EditText
-         android:id="@+id/searchEditText"
-         android:hint="@string/search_product"
-         android:layout_width="0dp"
-         android:layout_weight="1"
-         android:paddingStart="10dp"
-         android:layout_marginTop="20dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="20dp"
-         />
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:src="@drawable/home"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@android:color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="homeButton"
-        />
+    android:orientation="vertical">
 
- </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:hint="@string/search_product"
+            android:paddingStart="10dp" />
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:onClick="homeButton"
+            android:src="@drawable/home" />
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/list_for_product"
-        tools:listitem="@layout/list_of_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:divider="@android:color/transparent"/>
+        tools:listitem="@layout/list_of_product" />
 </LinearLayout>

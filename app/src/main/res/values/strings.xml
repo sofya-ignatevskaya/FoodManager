@@ -2,15 +2,72 @@
     <string name="app_name">FoodManager</string>
     <string name="search_product">Поиск продукта</string>
     <string name="add">+</string>
+    <string name="add_name_product">Название продукта</string>
+    <string name="question_add_product">Вы хотите добавить\n новый продукт?</string>
+    <string name="a_hundred_g">для 100 г</string>
+    <string name="add_proteins">Белки</string>
+    <string name="add_proteins_value">0</string>
+    <string name="add_fats">Жиры</string>
+    <string name="add_fats_value">0</string>
+    <string name="add_carbohydrates">Углеводы</string>
+    <string name="add_carbohydrates_value">0</string>
+    <string name="add_calories">Калории</string>
+    <string name="add_calories_value">0</string>
+    <string name="add_AddButton">ДОБАВИТЬ</string>
+    <string name="kind_question">Вам нужно добавить\nуже готовое блюдо или\nпродукт?</string>
+    <string name="main_chooseProductButton">Выбрать продукт</string>
+    <string name="main_result">Всего</string>
+    <string name="main_quantity_of_calories">0</string>
+    <string name="main_from">из</string>
+    <string name="main_norm_of_calories_value">1200</string>
+    <string name="main_calories_text">калорий</string>
+    <string name="main_proteins">Белки</string>
+    <string name="main_proteins_value">0</string>
+    <string name="main_fats">Жиры</string>
+    <string name="main_fats_value">0</string>
+    <string name="main_carbohydrates">Углеводы</string>
+    <string name="main_carbohydrates_value">0</string>
+    <string name="norm_question">Вы хотите рассчитать\nдневную норму калорий?</string>
+    <string name="norm_gender">Пол</string>
+    <string name="norm_weight">Вес</string>
+    <string name="norm_weightMesurement">кг</string>
+    <string name="norm_weightValue">0</string>
+    <string name="norm_height">Рост</string>
+    <string name="norm_heihtMeasurement">см</string>
+    <string name="norm_height_value">0</string>
+    <string name="norm_age">Возраст</string>
+    <string name="norm_age_value">0</string>
+    <string name="norm_sport">Физичсекая\nактивность</string>
+    <string name="norm_calculateButton">Рассчитать</string>
+    <string name="norm_OurNormOfCalories">Ваша норма калорий</string>
+    <string name="norm_normOfCalories_value">0</string>
+    <string name="norm_installButton">Установить</string>
+    <string name="update_question">Вы хотите изменить или\n удалить этот продукт?</string>
+    <string name="update_a_hundred_g">для 100 г</string>
+    <string name="update_proteins">Белки</string>
+    <string name="update_fats">Жиры</string>
+    <string name="update_carbohydrates">Углеводы</string>
+    <string name="update_calories">Калории</string>
+    <string name="update_updateButton">ИЗМЕНИТЬ</string>
+    <string name="delete_deleteButton">УДАЛИТЬ</string>
+    <string name="weight_writeWeightOfProduct">Введите вес продукта</string>
+    <string name="weight_weightButton">Ок</string>
+    <string name="list_hint_of_ID">1</string>
+    <string name="list_proteins">Белки</string>
+    <string name="list_proteins_value">0</string>
+    <string name="list_fats">Жиры</string>
+    <string name="list_carbohydrates">Углеводы</string>
+    <string name="list_calories">ккал</string>
+    <string name="list_g">г</string>
     <string-array name="gender">
         <item>Женский</item>
         <item>Мужской</item>
     </string-array>
     <string-array name="sport">
         <item>нет</item>
-        <item>лёгкая (1-3 раза в нед)</item>
-        <item>средняя (4-5 раза в нед)</item>
-        <item>высокая (6-7 раза в нед)</item>
+        <item>лёгкая (1–3 раза в нед)</item>
+        <item>средняя (4–5 раза в нед)</item>
+        <item>высокая (6–7 раза в нед)</item>
         <item>очень высокая (ежедн. по 2 и > раз)</item>
     </string-array>
     <string-array name="kind">

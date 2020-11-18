@@ -14,17 +14,16 @@
         android:layout_marginEnd="89dp"
         android:layout_marginBottom="20dp"
         android:background="#D9ABC6A2"
-        android:gravity="top"
-        />
+        android:gravity="top" />
 
     <TextView
-        style="@style/TextSize16"
         android:id="@+id/name"
+        style="@style/TextSize16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/parent_fon"
         android:layout_centerInParent="true"
         android:layout_marginTop="28dp"
-        tools:text="Название"
-        android:textColor="#450101"/>
+        android:textColor="#450101"
+        tools:text="Название" />
 </RelativeLayout>

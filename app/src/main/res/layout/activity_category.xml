@@ -5,22 +5,22 @@
     android:layout_height="match_parent"
     android:background="#8BA781">
 
-<RelativeLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fon">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fon"
+        android:orientation="vertical">
 
-    <ListView
-        android:layout_marginTop="200dp"
-        android:id="@+id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp"
-        tools:listitem="@layout/list_for_kind_and_category"
-        android:dividerHeight="0dp"
-        android:divider="@android:color/transparent"/>
-</RelativeLayout>
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="20dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            tools:listitem="@layout/list_for_kind_and_category" />
+    </RelativeLayout>
 </RelativeLayout>
