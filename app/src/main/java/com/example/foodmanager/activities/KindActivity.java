@@ -43,21 +43,20 @@ public class KindActivity extends AppCompatActivity {
                         intent = new Intent(KindActivity.this, ProductActivity.class); //Заполняем Intent
                         break;
                 }
-                //intent = new Intent(getApplicationContext(), CategoryActivity.class);
                 intent.putExtra("id_kind", id);
                 startActivity(intent);
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
             }
         });
-        databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
-        databaseHelper.create_db();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper.create_db();
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
@@ -69,7 +68,6 @@ public class KindActivity extends AppCompatActivity {
                 kindCursor, headers, new int[]{R.id.name}, 0);
         kindList.setAdapter(kindAdapter);
     }
-
 
     @Override
     public void onDestroy() {

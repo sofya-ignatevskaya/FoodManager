@@ -22,9 +22,6 @@ public class AddActivity extends AppCompatActivity {
     String[] category = {"Молоко", "Крупы", "Овощи", "Фрукты", "Мясо", "Сладости"};
     String[] kind = {"Продукты", "Готовые блюда"};
 
-    long productId = 0;
-    String item;
-
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     DatabaseAdapter adapter;
@@ -34,8 +31,6 @@ public class AddActivity extends AppCompatActivity {
     TextView fats;
     TextView carbohydrates;
     TextView calories;
-    TextView kindSelection;
-    TextView categorySelection;
     Spinner kindSpinner;
     Spinner categorySpinner;
 
@@ -138,8 +133,7 @@ public class AddActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Закрываем подключение и курсор
+        // Закрываем подключение
         db.close();
-
     }
 }

@@ -43,9 +43,6 @@ public class CategoryActivity extends AppCompatActivity {
                         + id);
             }
         });
-        databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
-        databaseHelper.create_db();
 
         // передается id объекта
         Bundle extras = getIntent().getExtras();
@@ -53,28 +50,31 @@ public class CategoryActivity extends AppCompatActivity {
             kindId = extras.getLong("id_kind");
         }
     }
+
     @Override
     public void onResume() {
         super.onResume();
+
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper.create_db();
         // открываем подключение
         db = databaseHelper.open();
         //получаем данные из бд в виде курсора
-
-            categoryCursor = db.rawQuery("select * from " + DatabaseHelper.tCategory + " where " + DatabaseHelper.categoryKindId + "=?", new String[]{String.valueOf(kindId)});
-            // определяем, какие столбцы из курсора будут выводиться в ListView
-            String[] headers = new String[]{DatabaseHelper.nameCategory};
-            // создаем адаптер, передаем в него курсор
-            categoryAdapter = new SimpleCursorAdapter(this, R.layout.list_for_kind_and_category,
-                    categoryCursor, headers, new int[]{R.id.name}, 0);
-            categoryList.setAdapter(categoryAdapter);
+        categoryCursor = db.rawQuery("select * from " + DatabaseHelper.tCategory +
+                " where " + DatabaseHelper.categoryKindId + "=?", new String[]{String.valueOf(kindId)});
+        // определяем, какие столбцы из курсора будут выводиться в ListView
+        String[] headers = new String[]{DatabaseHelper.nameCategory};
+        // создаем адаптер, передаем в него курсор
+        categoryAdapter = new SimpleCursorAdapter(this, R.layout.list_for_kind_and_category,
+                categoryCursor, headers, new int[]{R.id.name}, 0);
+        categoryList.setAdapter(categoryAdapter);
     }
+
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
         categoryCursor.close();
     }
-
-
 }
