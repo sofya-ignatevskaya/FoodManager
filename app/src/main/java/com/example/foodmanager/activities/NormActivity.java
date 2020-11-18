@@ -109,12 +109,6 @@ public class NormActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
     public void installButton(View view){
         // переход к главной activity
         Intent intent = new Intent(this, MainActivity.class);

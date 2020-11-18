@@ -1,10 +1,8 @@
 package com.example.foodmanager.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -225,42 +223,43 @@ public class MainActivity extends AppCompatActivity
         productWithWeight = null;
     }
 
+        public void onButtonClick(View v) {
+            switch (v.getId()) {
+                case R.id.cleanProduct:
+                    editor = getPreferences(MODE_PRIVATE).edit();
+                    editor.clear();
+                    editor.apply();
+                    if (connectionsGet != null) {
+                        connectionsGet.clear();
+                    }
+                    productWithWeight = null;
+                    productAdapter.clear();
+                    productAdapter.notifyDataSetChanged();
 
-    public void cleanProduct(View view) {
-        editor = getPreferences(MODE_PRIVATE).edit();
-        editor.clear();
-        editor.apply();
-        if (connectionsGet != null) {
-            connectionsGet.clear();
+                    double calories = 0;
+                    double proteins = 0;
+                    double fats = 0;
+                    double carbohydrates = 0;
+
+                    caloriesText.setText(String.valueOf(calories));
+                    proteinsText.setText(String.valueOf(proteins));
+                    fatsText.setText(String.valueOf(fats));
+                    carbohydratesText.setText(String.valueOf(carbohydrates));
+                    break;
+                case R.id.settingsButton:
+                    Intent intent = new Intent(this, NormActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.addProduct:
+                    Intent intent1 = new Intent(this, AddActivity.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.chooseProduct:
+                    Intent intent2 = new Intent(this, KindActivity.class);
+                    startActivity(intent2);
+                    break;
+                default:
+                    break;
+            }
         }
-        productWithWeight = null;
-        productAdapter.clear();
-        productAdapter.notifyDataSetChanged();
-
-        double calories = 0;
-        double proteins = 0;
-        double fats = 0;
-        double carbohydrates = 0;
-
-
-        caloriesText.setText(String.valueOf(calories));
-        proteinsText.setText(String.valueOf(proteins));
-        fatsText.setText(String.valueOf(fats));
-        carbohydratesText.setText(String.valueOf(carbohydrates));
-    }
-
-    public void settingsButton(View view) {
-        Intent intent = new Intent(this, NormActivity.class);
-        startActivity(intent);
-    }
-
-    public void addProduct(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
-        startActivity(intent);
-    }
-
-    public void chooseProduct(View view) {
-        Intent intent = new Intent(this, KindActivity.class);
-        startActivity(intent);
-    }
 }

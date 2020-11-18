@@ -110,7 +110,6 @@ public class DatabaseAdapter {
         cv.put(DatabaseHelper.Weight, product.getWeight());
         cv.put(DatabaseHelper.productKindId, product.getKind());
         cv.put(DatabaseHelper.CategoryId, product.getCategory());
-
         return database.insert(DatabaseHelper.tProduct, null, cv);
     }
     public long delete(long productId) {

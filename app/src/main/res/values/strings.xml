@@ -13,4 +13,16 @@
         <item>высокая (6-7 раза в нед)</item>
         <item>очень высокая (ежедн. по 2 и > раз)</item>
     </string-array>
+    <string-array name="kind">
+        <item>Продукты</item>
+        <item>Готовые блюда</item>
+    </string-array>
+    <string-array name="category">
+        <item>Молоко</item>
+        <item>Крупы</item>
+        <item>Овощи</item>
+        <item>Фрукты</item>
+        <item>Мясо</item>
+        <item>Сладости</item>
+    </string-array>
 </resources>

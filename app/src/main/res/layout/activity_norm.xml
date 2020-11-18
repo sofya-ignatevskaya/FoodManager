@@ -12,25 +12,27 @@
 
         <TextView
             android:id="@+id/question"
-            style="@style/TextSize18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="170dp"
             android:text="Вы хотите рассчитать\nдневную норму калорий?"
-            android:textColor="@android:color/black" />
-
+            android:textColor="@android:color/black"
+            style="@style/TextSize18"
+            />
         <TextView
             android:id="@+id/genderText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/question"
-            android:layout_alignBaseline="@+id/genderSpinner"
             android:layout_marginStart="80dp"
             android:layout_marginTop="40dp"
             android:text="Пол"
-            android:textColor="#450101" />
+            android:layout_alignBaseline="@+id/genderSpinner"
+            android:textColor="#450101"
+            style="@style/TextSize16"
+            />
 
         <Spinner
             android:id="@+id/genderSpinner"
@@ -41,23 +43,22 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="65dp"
             android:layout_toRightOf="@+id/genderText"
-            android:entries="@array/gender" />
+            android:entries="@array/gender"/>
 
         <TextView
             android:id="@+id/weightText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/genderSpinner"
-            android:layout_alignBaseline="@+id/weightMeasurement"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Вес"
-            android:textColor="#450101" />
+            android:layout_alignBaseline="@+id/weightMeasurement"
+            android:textColor="#450101"
+            style="@style/TextSize16"/>
 
         <TextView
             android:id="@+id/weightMeasurement"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/genderSpinner"
@@ -65,37 +66,37 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="80dp"
             android:text="кг"
-            android:textColor="@android:color/black" />
+            style="@style/TextSize16"
+            android:textColor="@android:color/black"/>
 
         <EditText
             android:id="@+id/weightValue"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/genderSpinner"
-            android:layout_alignBaseline="@+id/weightMeasurement"
             android:layout_marginTop="7dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/weightMeasurement"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            android:layout_alignBaseline="@+id/weightMeasurement"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/heightText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/weightText"
-            android:layout_alignBaseline="@+id/heightMeasurement"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Рост"
-            android:textColor="#450101" />
+            android:layout_alignBaseline="@+id/heightMeasurement"
+            style="@style/TextSize16"
+            android:textColor="#450101"/>
 
         <TextView
             android:id="@+id/heightMeasurement"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/weightMeasurement"
@@ -103,68 +104,68 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="75dp"
             android:text="см"
-            android:textColor="@android:color/black" />
+            style="@style/TextSize16"
+            android:textColor="@android:color/black"/>
 
         <EditText
             android:id="@+id/heightValue"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/weightValue"
-            android:layout_alignBaseline="@+id/heightMeasurement"
             android:layout_marginTop="-5dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/heightMeasurement"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            android:layout_alignBaseline="@+id/heightMeasurement"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/ageText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/heightText"
-            android:layout_alignBaseline="@+id/ageValue"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Возраст"
-            android:textColor="#450101" />
+            android:layout_alignBaseline="@+id/ageValue"
+            style="@style/TextSize16"
+            android:textColor="#450101"/>
 
         <EditText
             android:id="@+id/ageValue"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/heightValue"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="0dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="100dp"
             android:backgroundTint="@android:color/transparent"
             android:hint="0"
+            style="@style/TextSize16"
             android:inputType="numberDecimal" />
-
         <TextView
             android:id="@+id/sportText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ageText"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:text="Физичсекая\nактивность"
-            android:textColor="#450101" />
+            style="@style/TextSize16"
+            android:textColor="#450101"/>
 
         <Spinner
             android:id="@+id/sportSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ageText"
+            android:layout_toRightOf="@+id/sportText"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="65dp"
-            android:layout_toRightOf="@+id/sportText"
-            android:entries="@array/sport" />
+            android:entries="@array/sport"/>
 
         <Button
             android:id="@+id/calculateButton"
@@ -180,39 +181,40 @@
 
         <TextView
             android:id="@+id/normaText"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/calculateButton"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            style="@style/TextSize16"
             android:text="Ваша норма калорий"
-            android:textColor="@android:color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/normaValue"
-            style="@style/TextSize16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/calculateButton"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
             android:layout_toRightOf="@+id/normaText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            style="@style/TextSize16"
             android:text="0"
-            android:textColor="#450101"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:textColor="#450101"/>
 
         <Button
             android:id="@+id/installButton"
             android:layout_width="109dp"
             android:layout_height="28dp"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/normaText"
             android:layout_marginStart="75dp"
-            android:layout_marginBottom="175dp"
+            android:layout_marginTop="30dp"
             android:onClick="installButton"
             android:background="@drawable/weightbutton"
             android:text="Установить"
             android:visibility="invisible" />
+
     </RelativeLayout>
 </RelativeLayout>
