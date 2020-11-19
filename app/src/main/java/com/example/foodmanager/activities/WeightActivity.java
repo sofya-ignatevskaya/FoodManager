@@ -19,13 +19,10 @@ import java.util.ArrayList;
 
 public class WeightActivity extends AppCompatActivity {
 
-
     long productId = 0;
     EditText weightEditText;
     Button weightButton;
     ArrayList<Product> products;
-    DatabaseHelper databaseHelper;
-    SQLiteDatabase db;
     Product onePr;
 
     @Override
@@ -41,22 +38,18 @@ public class WeightActivity extends AppCompatActivity {
         if (extras != null) {
             productId = extras.getLong("id_product");
         }
-
-
     }
-
 
     public void weightButton(View v) {
         try {
-
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            // products = new ArrayList<>();
             DatabaseAdapter adapter = new DatabaseAdapter(this);
             String w = weightEditText.getText().toString();
             if (productId > 0 && w != null) {
                 onePr = adapter.getProduct(productId, w);
             }
-            intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(), onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories(), onePr.getWeight()));
+            intent.putExtra("productsViaWeight", new Product(onePr.getId(), onePr.getName(), onePr.getProteins(),
+                    onePr.getFats(), onePr.getCarbohydrates(), onePr.getCalories(), onePr.getWeight()));
             startActivity(intent);
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -64,14 +57,6 @@ public class WeightActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // Закрываем подключение и курсор
-
-    }
-
 }
 
 

@@ -27,13 +27,9 @@ public class NormActivity extends AppCompatActivity {
     TextView normEditText;
     TextView normTextView;
     Button installButton;
-
-
     int genderPosition;
     int sportPosition;
-
     double normCalories = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +88,7 @@ public class NormActivity extends AppCompatActivity {
                 default:
                     break;
             }
+
             DatabaseAdapter da = new DatabaseAdapter(this);
             normEditText.setText(String.valueOf(da.roundAvoid(normCalories, 0)));
 
@@ -109,12 +106,11 @@ public class NormActivity extends AppCompatActivity {
         }
     }
 
-    public void installButton(View view){
+    public void installButton(View view) {
         // переход к главной activity
         Intent intent = new Intent(this, MainActivity.class);
         // передача данных для другого окна
         intent.putExtra("value_of_normaCalories", normEditText.getText().toString());
         startActivity(intent);
     }
-
 }

@@ -20,9 +20,7 @@ public class UpdateActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Product product;
-
     DatabaseAdapter adapter;
-
     TextView name;
     TextView proteins;
     TextView fats;
@@ -38,30 +36,23 @@ public class UpdateActivity extends AppCompatActivity {
         fats = (TextView) findViewById(R.id.updateFats);
         carbohydrates = (TextView) findViewById(R.id.updateCarbo);
         calories = (TextView) findViewById(R.id.updateCalories);
-        // Button updateButton = (Button) findViewById(R.id.updateButton);
 
         Bundle extrasKind = getIntent().getExtras();
         if (extrasKind != null) {
             productId = extrasKind.getLong("id_product_long");
         }
+
         databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
         databaseHelper.create_db();
         db = databaseHelper.open();
-        // products = new ArrayList<>();
         adapter = new DatabaseAdapter(this);
+
         product = adapter.getProduct(productId, "100");
-        // String nameProduct = product.getName();
         name.setText(product.getName());
         proteins.setText(String.valueOf(product.getProteins()));
         fats.setText(String.valueOf(product.getFats()));
         carbohydrates.setText(String.valueOf(product.getCarbohydrates()));
         calories.setText(String.valueOf(product.getCalories()));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     public void updateButton(View v) {
@@ -84,10 +75,8 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     public void deleteButton(View v) {
-        //Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
         adapter.delete(productId);
         goHome();
-        // startActivity(intent);
     }
 
     private void goHome() {
@@ -100,8 +89,7 @@ public class UpdateActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Закрываем подключение и курсор
+        // Закрываем подключение
         db.close();
-
     }
 }

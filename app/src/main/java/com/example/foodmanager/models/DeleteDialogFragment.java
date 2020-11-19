@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import interfaces.deleteInterface;
+
 import android.content.DialogInterface;
 
 import com.example.foodmanager.R;
@@ -18,7 +19,7 @@ public class DeleteDialogFragment extends DialogFragment {
     private deleteInterface.Datable datable;
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
         datable = (deleteInterface.Datable) context;
     }
@@ -26,7 +27,7 @@ public class DeleteDialogFragment extends DialogFragment {
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final String product = getArguments().getString("selectedProduct");
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         return builder
                 .setTitle("Удаление")
                 .setIcon(R.drawable.deletecross)

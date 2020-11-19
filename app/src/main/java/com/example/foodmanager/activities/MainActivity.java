@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         carbohydratesText = (TextView) findViewById(R.id.numberCarbo);
         normEditText = (TextView) findViewById(R.id.normCal);
 
-        // передается id объекта
+        // передается id продукта
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             productId = extras.getLong("id_product");
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                // получаем выбранный пункт
+                // получаем выбранный продукт для удаления
                 selectedProduct = (Product) parent.getItemAtPosition(position);
                 /*Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedProduct.getName(),
                         Toast.LENGTH_SHORT).show();*/
@@ -140,28 +140,23 @@ public class MainActivity extends AppCompatActivity
 
         //Здесь происходит получсение настроек
         //для нормы калорий
-       /* if(normCalories!=null) {
-            //normEditText.setText(normCalories);
-            if (getPreferences(MODE_PRIVATE).contains(APP_PREFERENCES_NORMA)) {
-                normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));
-            }
-        }*/
+
         if (normCalories != null) {
             normEditText.setText(normCalories);
         }
         if (normCalories == null && mSettings.contains(APP_PREFERENCES_NORMA)) {
             normEditText.setText(mSettings.getString(APP_PREFERENCES_NORMA, null));
         }
+
         //для списка
+
         String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
         Type type = new TypeToken<List<Product>>() {
         }.getType();
         connectionsGet = new Gson().fromJson(connectionsJSONString, type);
-       /* String connectionsJSONStringCalories = getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, null);
-        normEditText.setText(getPreferences(MODE_PRIVATE).getString(APP_PREFERENCES_NORMA, ""));*/
 
+        //добавление в список и вывод выбранных пользователем продуктов
         anotherProducts = new ArrayList<>();
-
         productAdapter = new ProductAdapter(this, R.layout.list_of_product, anotherProducts);
         userList.setAdapter(productAdapter);
         if (connectionsGet != null) {
@@ -200,15 +195,12 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
         //Сохранение настроек
-        //для калорийности
         if (normEditText != null) {
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString(APP_PREFERENCES_NORMA, normEditText.getText().toString());
             editor.apply();
         }
         normCalories = null;
-
-        //для списка продуктов
         editor = getPreferences(MODE_PRIVATE).edit();
         connections = new ArrayList<>();
         if (anotherProducts != null) {

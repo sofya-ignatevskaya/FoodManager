@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //таблица Kind
     public static final String tKind = "kind";
-    public static final String idKind= "_id";
+    public static final String idKind = "_id";
     public static final String nameKind = "NameKind";
 
     //таблица Product
@@ -90,7 +90,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public SQLiteDatabase open() throws SQLException {
-
         return SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE);
     }
 }

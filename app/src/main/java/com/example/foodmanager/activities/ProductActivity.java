@@ -27,12 +27,9 @@ public class ProductActivity extends AppCompatActivity {
     ListView productList;
     EditText searchEditText;
     DatabaseHelper databaseHelper;
-    DatabaseAdapter databaseAdapter;
     SQLiteDatabase db;
     Cursor productCursor;
     SimpleCursorAdapter productAdapter;
-    DatabaseAdapter adapter;
-
     long categoryId = 0;
     long productId = 0;
     long kindId = 0;
@@ -69,16 +66,16 @@ public class ProductActivity extends AppCompatActivity {
             }
 
         });
+
         databaseHelper = new DatabaseHelper(getApplicationContext());
-        // создаем базу данных
         databaseHelper.create_db();
 
-        // передается id объекта
+        // передается id продукта из подкатегории
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             categoryId = extras.getLong("id_category");
         }
-
+        // передается id продукта из категории
         Bundle extrasKind = getIntent().getExtras();
         if (extrasKind != null) {
             kindId = extrasKind.getLong("id_kind");
@@ -168,11 +165,9 @@ public class ProductActivity extends AppCompatActivity {
             });
             productList.setAdapter(productAdapter);
         }
-
     }
 
-    public void homeButton(View view)
-    {
+    public void homeButton(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -184,8 +179,6 @@ public class ProductActivity extends AppCompatActivity {
         db.close();
         productCursor.close();
     }
-
-
 }
 
 

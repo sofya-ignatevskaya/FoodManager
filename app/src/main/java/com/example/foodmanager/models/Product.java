@@ -60,10 +60,10 @@ public class Product implements Parcelable {
         fats = in.readDouble();
         carbohydrates = in.readDouble();
         calories = in.readDouble();
-        weight=in.readDouble();
+        weight = in.readDouble();
     }
-    // геттеры полей
 
+    // геттеры полей
     public long getId() {
         return id;
     }
@@ -92,9 +92,13 @@ public class Product implements Parcelable {
         return weight;
     }
 
-    public int getKind() {return kind;}
+    public int getKind() {
+        return kind;
+    }
 
-    public int getCategory() {return category;}
+    public int getCategory() {
+        return category;
+    }
 
     //сеттеры
     public void setName(String name) {
@@ -121,9 +125,13 @@ public class Product implements Parcelable {
         this.weight = weight;
     }
 
-    public void setKind(int kind) {this.kind = kind; }
+    public void setKind(int kind) {
+        this.kind = kind;
+    }
 
-    public void setCategory(int category) {this.category = category;}
+    public void setCategory(int category) {
+        this.category = category;
+    }
 
     @Override
     public int describeContents() {

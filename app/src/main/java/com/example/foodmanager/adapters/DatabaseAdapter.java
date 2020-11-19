@@ -25,9 +25,8 @@ public class DatabaseAdapter {
     private SQLiteDatabase database;
 
     public DatabaseAdapter(Context context) {
-
         dbHelper = new DatabaseHelper(context.getApplicationContext());
-        dbHelper.create_db(); // тут изменила
+        dbHelper.create_db();
     }
 
     private Cursor getAllEntries() {
@@ -35,10 +34,9 @@ public class DatabaseAdapter {
         String[] columns = new String[]{DatabaseHelper.idProduct, DatabaseHelper.nameProduct, DatabaseHelper.Proteins, DatabaseHelper.Fats,
                 DatabaseHelper.Carbohydrates, DatabaseHelper.Calories};
         return database.query(DatabaseHelper.tProduct, columns, null, null, null, null, null);
-
     }
-    public List<Product> getProducts() {
 
+    public List<Product> getProducts() {
         database = dbHelper.open();
 
         ArrayList<Product> products = new ArrayList<>();
@@ -53,23 +51,21 @@ public class DatabaseAdapter {
                 double carbohydrates = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Carbohydrates));
                 double calories = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Calories));
                 double weight = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Weight));
-                products.add(new Product(id, name, proteins, fats, carbohydrates, calories,weight));
+                products.add(new Product(id, name, proteins, fats, carbohydrates, calories, weight));
             }
             while (cursor.moveToNext());
         }
-
         cursor.close();
         return products;
     }
 
     public Product getProduct(long id, String text) {
-
         database = dbHelper.open();
+
         Product product = null;
 
         Cursor cursor = database.rawQuery("select * from " + DatabaseHelper.tProduct + " where " + DatabaseHelper.idProduct + "=?", new String[]{String.valueOf(id)});
         if (cursor.moveToFirst()) {
-
             String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.nameProduct));
             double proteins = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Proteins));
             double fats = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.Fats));
@@ -81,24 +77,25 @@ public class DatabaseAdapter {
 
         DecimalFormat df = new DecimalFormat("#.##");
         double proteins = product.getProteins() / 100 * Double.parseDouble(text);
-        product.setProteins(roundAvoid(proteins,2));
+        product.setProteins(roundAvoid(proteins, 2));
         double fats = product.getFats() / 100 * Double.parseDouble(text);
-        product.setFats(roundAvoid(fats,2));
+        product.setFats(roundAvoid(fats, 2));
         double carbohydrates = product.getCarbohydrates() / 100 * Double.parseDouble(text);
-        product.setCarbohydrates(roundAvoid(carbohydrates,2));
+        product.setCarbohydrates(roundAvoid(carbohydrates, 2));
         double calories = product.getCalories() / 100 * Double.parseDouble(text);
-        product.setCalories(roundAvoid(calories,0));
-        double weight =  Double.parseDouble(text);
+        product.setCalories(roundAvoid(calories, 0));
+        double weight = Double.parseDouble(text);
         product.setWeight(roundAvoid(weight, 0));
 
         cursor.close();
         return product;
     }
 
-    public  double roundAvoid(double value, int places) {
+    public double roundAvoid(double value, int places) {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
     }
+
     public long insert(Product product) {
         database = dbHelper.open();
         ContentValues cv = new ContentValues();
@@ -112,15 +109,15 @@ public class DatabaseAdapter {
         cv.put(DatabaseHelper.CategoryId, product.getCategory());
         return database.insert(DatabaseHelper.tProduct, null, cv);
     }
-    public long delete(long productId) {
 
-        String whereClause = "_id = ?";
-        String[] whereArgs = new String[]{String.valueOf(productId)};
-        return database.delete(DatabaseHelper.tProduct, whereClause, whereArgs);
+    public long delete(long productId) {
+        String id = "_id = ?";
+        String[] args = new String[]{String.valueOf(productId)};
+        return database.delete(DatabaseHelper.tProduct, id, args);
     }
 
     public long update(Product product) {
-        String whereClause = DatabaseHelper.idProduct + "=" + String.valueOf(product.getId());
+        String whereClause = DatabaseHelper.idProduct + "=" + product.getId();
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.nameProduct, product.getName());
         cv.put(DatabaseHelper.Proteins, product.getProteins());

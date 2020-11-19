@@ -14,8 +14,6 @@ import android.widget.SimpleCursorAdapter;
 
 import com.example.foodmanager.R;
 import com.example.foodmanager.helpers.DatabaseHelper;
-import com.example.foodmanager.models.Category;
-import com.example.foodmanager.models.Product;
 
 public class CategoryActivity extends AppCompatActivity {
 
